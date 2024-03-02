@@ -30,12 +30,13 @@ html, body {
   color: black; 
 }
 
-.table td {
-  white-space: nowrap; /* Isso evitará a quebra de palavras em células */
+.table-bordered {
+  border: 1px solid #98FB98; 
 }
 
-.table td.objeto-de-banco {
-  white-space: normal; /* Isso permitirá a quebra de palavras */
+.table th,
+.table td {
+  border-color: #98FB98; 
 }
 
 

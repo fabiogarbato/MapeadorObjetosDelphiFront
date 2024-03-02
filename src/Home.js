@@ -43,8 +43,8 @@ const App = () => {
                 </Col>
             </Row>
         </Navbar>
-        <Table striped bordered hover>
-            <thead>
+        <Table striped bordered hover  style={{ borderCollapse: 'collapse', width: '100%', marginTop: '20px' }}>
+            <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                 <tr>
                     <th>Form</th>
                     <th>Classe</th>
