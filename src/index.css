@@ -1,0 +1,58 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 12px;  
+}
+
+::-webkit-scrollbar-track {
+  background: #abf5ab;  
+}
+
+::-webkit-scrollbar-thumb {
+  background: #029c02;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #006400;  
+}
+
+::selection {
+  background-color: 	#006400;
+  color: black; 
+}
+
+.table td {
+  white-space: nowrap; /* Isso evitará a quebra de palavras em células */
+}
+
+.table td.objeto-de-banco {
+  white-space: normal; /* Isso permitirá a quebra de palavras */
+}
+
+
+@font-face {
+  font-family: 'Fira Sans Condensed';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Fira Sans Condensed'), 
+       url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@900&display=swap') format('truetype');
+}
+
+.fira-sans-condensed-black {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+
+
+
+
+
