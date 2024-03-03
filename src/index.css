@@ -30,15 +30,16 @@ html, body {
   color: black; 
 }
 
-.table-bordered {
-  border: 1px solid #98FB98; 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(1, 82, 1);
+  color: white;
+  padding: 10px 0;
 }
-
-.table th,
-.table td {
-  border-color: #98FB98; 
-}
-
 
 @font-face {
   font-family: 'Fira Sans Condensed';
