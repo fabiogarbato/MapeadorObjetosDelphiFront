@@ -27,6 +27,8 @@ const App = () => {
         });
       }, []);
 
+      const [filtro, setFiltro] = useState('');
+
   return (
     <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
         <Navbar id='inicio' expand="lg" style={{ backgroundColor: '#98FB98', minWidth: '100vh'}}>
@@ -43,6 +45,14 @@ const App = () => {
                 </Col>
             </Row>
         </Navbar>
+        <Container className='d-flex justify-content-center align-items-center' style={{ minHeight: '10vh' }}>
+            <input
+                type="text"
+                placeholder="Filtrar..."
+                value={filtro}
+                onChange={(e) => setFiltro(e.target.value)}
+            />   
+        </Container>
         <Table striped bordered hover  style={{ borderCollapse: 'collapse', width: '100%', marginTop: '20px' }}>
             <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                 <tr>
@@ -53,28 +63,45 @@ const App = () => {
                 </tr>
             </thead>
             <tbody>
-                {dados.map((linha, indexLinha) => {
-                    const [form, classe, sombra, ...objetosDeBanco] = linha;
-                    const objetosTiposConcatenados = objetosDeBanco
-                    .flatMap(objetoDeBanco => typeof objetoDeBanco === 'string'
-                        ? objetoDeBanco.replace('Objeto: ', '').replace('Tipo: ', '').split(' | ')
-                        : []
-                    )
-                    .join(' | ');  
+                {dados
+                    .filter((linha) => {
+                        const [form, classe, sombra, ...objetosDeBanco] = linha;
+                        const termoFiltrado = filtro.toLowerCase();
+                        return (
+                            form.toLowerCase().includes(termoFiltrado) ||
+                            classe.toLowerCase().includes(termoFiltrado) ||
+                            sombra.toLowerCase().includes(termoFiltrado) ||
+                            objetosDeBanco.some(objeto => objeto.toLowerCase().includes(termoFiltrado))
+                        );
+                    })
+                    .map((linha, indexLinha) => {
+                        const [form, classe, sombra, ...objetosDeBanco] = linha;
+                        const objetosTiposConcatenados = objetosDeBanco
+                            .flatMap(objetoDeBanco => typeof objetoDeBanco === 'string'
+                                ? objetoDeBanco.replace('Objeto: ', '').replace('Tipo: ', '').split(' | ')
+                                : []
+                            )
+                            .join(' | ');
 
-                    return (
-                    <React.Fragment key={indexLinha}>
-                        <tr>
-                        <td>{form}</td>
-                        <td>{classe}</td>
-                        <td>{sombra}</td>
-                        <td>{objetosTiposConcatenados || 'N/A'}</td>
-                        </tr>
-                    </React.Fragment>
-                    );
-                })}
+                        return (
+                            <React.Fragment key={indexLinha}>
+                                <tr>
+                                    <td>{form}</td>
+                                    <td>{classe}</td>
+                                    <td>{sombra}</td>
+                                    <td>{objetosTiposConcatenados || 'N/A'}</td>
+                                </tr>
+                            </React.Fragment>
+                        );
+                    })}
             </tbody>
+
         </Table>
+        <footer className="bg-black text-light py-3">
+            <Container fluid>
+                <p className="text-center mb-0">© Fábio Garbato - MPS Informática - {new Date().getFullYear()}</p>
+            </Container>
+        </footer>
   </Container>
   );
 }
