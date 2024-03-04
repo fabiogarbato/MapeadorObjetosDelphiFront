@@ -37,7 +37,6 @@ const Mapeador = () => {
         overflow: 'hidden', 
         whiteSpace: 'normal' 
       };
-      
 
   return (
     <Container fluid style={{ backgroundColor: 'white'}}>
