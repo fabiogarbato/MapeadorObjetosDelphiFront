@@ -35,7 +35,9 @@ const MapMenu = () => {
             </Row>
             <Row className='mb-5'>
                 <Col className='d-flex justify-content-center'>
+                <Link to="/mapeadorDataModule" style={{ textDecoration: 'none' }}> 
                     <Button variant="success" style={{ width: '300px', height:'100px' }}>DataModule</Button>
+                </Link>
                 </Col>
             </Row>  
         </Container>

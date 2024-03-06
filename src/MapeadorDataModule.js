@@ -1,19 +1,19 @@
-import './Mapeador.css';
-import {Container, Row, Col, Image, Table, Button}  from 'react-bootstrap';
+import './MapeadorDataModule.css';
+import {Container, Row, Col, Image, Table, Button, Modal }  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
 import Papa from 'papaparse';
-import relacaoFormsSombrasObjetos from './text/relacao_forms_sombras_objetos.csv'
+import relacaoFormsClassesObjetos from './text/relacao_forms_classes_objetos.csv'
 import { Link } from 'react-router-dom';
 
-const Mapeador = () => {  
+const MapeadorDataModule = () => {  
 
     const [dados, setDados] = useState([]);
 
     useEffect(() => {
-        Papa.parse(relacaoFormsSombrasObjetos, {
+        Papa.parse(relacaoFormsClassesObjetos, {
           download: true,
           header: false,
           skipEmptyLines: true,
@@ -86,30 +86,27 @@ const Mapeador = () => {
                 </Col>
             </Row>    
         </Container>
-        <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
-            <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: 'auto', margin: 'auto' }}>
+            <Table striped bordered hover style={{ width: 'auto', margin: 'auto' }}>
                 <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                     <tr>
                         <th>Form</th>
                         <th>Classe</th>
-                        <th>Sombra</th>
                         <th>Objetos de Banco</th>
                     </tr>
                 </thead>
                 <tbody>
                     {dados
                         .filter((linha) => {
-                            const [form, classe, sombra, ...objetosDeBanco] = linha;
+                            const [form, classe, ...objetosDeBanco] = linha;
                             const termoFiltrado = filtro.toLowerCase();
                             return (
                                 form.toLowerCase().includes(termoFiltrado) ||
                                 classe.toLowerCase().includes(termoFiltrado) ||
-                                sombra.toLowerCase().includes(termoFiltrado) ||
                                 objetosDeBanco.some(objeto => objeto.toLowerCase().includes(termoFiltrado))
                             );
                         })
                         .map((linha, indexLinha) => {
-                            const [form, classe, sombra, ...objetosDeBanco] = linha;
+                            const [form, classe, ...objetosDeBanco] = linha;
                             const objetosTiposConcatenados = objetosDeBanco
                                 .flatMap(objetoDeBanco => typeof objetoDeBanco === 'string'
                                     ? objetoDeBanco.replace('Objeto: ', '').replace('Tipo: ', '').split(' | ')
@@ -122,7 +119,6 @@ const Mapeador = () => {
                                     <tr>
                                         <td style={cellStyle}>{form}</td>
                                         <td style={cellStyle}>{classe}</td>
-                                        <td style={cellStyle}>{sombra}</td>
                                         <td style={cellStyle}>{objetosTiposConcatenados || 'N/A'}</td>
                                     </tr>
                                 </React.Fragment>
@@ -130,10 +126,9 @@ const Mapeador = () => {
                         })}
                 </tbody>
             </Table>
-        </div>
         <Container style={{ minHeight: '10vh'}}></Container>
         <footer className="footer">
-            <Container fluid>
+            <Container fluid >
                 <p className="text-center mb-0">© Fábio Garbato - MPS Informática - {new Date().getFullYear()}</p>
             </Container>
         </footer>
@@ -141,4 +136,4 @@ const Mapeador = () => {
   );
 }
 
-export default Mapeador;
+export default MapeadorDataModule;
