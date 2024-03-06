@@ -154,8 +154,8 @@ const MapeadorDataModule = () => {
                             return (
                                 <React.Fragment key={indexLinha}>
                                     <tr>
-                                        <td style={cellStyle}>{form}</td>
                                         <td style={cellStyle}>{classe}</td>
+                                        <td style={cellStyle}>{form}</td>
                                         <td style={cellStyle}>
                                             <Button
                                                 variant="success"
