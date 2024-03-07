@@ -192,6 +192,7 @@ const MapeadorDataModule = () => {
                     <tr>
                         <th>Form</th>
                         <th>Classe</th>
+                        <th>Relatório</th>
                         <th>Objetos de Banco</th>
                     </tr>
                 </thead>
@@ -220,6 +221,7 @@ const MapeadorDataModule = () => {
                                     <tr>
                                         <td style={cellStyle}>{classe}</td>
                                         <td style={cellStyle}>{form}</td>
+                                        <td style={cellStyle}>''</td>
                                         <td style={cellStyle}>
                                             <Button
                                                 variant="success"
