@@ -1,5 +1,5 @@
 Form,Sombra,Objetos de Banco
-FANSArqConf,CANSArqConfOpcoesValidacao,SANSArqConfOpcoesValidacao,Objeto: ANSArqConfOpcoesValidacao,Tipo: Table
+FANSArqConf,CANSArqConf,SANSArqConfOpcoesValidacao,Objeto: ANSArqConfOpcoesValidacao,Tipo: Table
 FANSArqSIP,CANSArqSIP,SANSArqSIP,Objeto: ANSArqSIP,Tipo: Table
 FANSArqSIPErrosCalculo,CANSArqSIPProblGuias,SANSArqSIPProblGuias,Objeto: ANSArqSIPProblGuias,Tipo: StoredProc
 FANSArqSIPResultadoGuias,CANSArqSIPResultadoGuias,SANSArqSIPResultadoGuias,Objeto: ANSArqSIPResultadoGuias,Tipo: StoredProc
@@ -10,14 +10,14 @@ FANSConsProf,CANSConsProf,SANSConsProf,Objeto: ANSConsProf,Tipo: Table
 FANSPais,CANSPais,SANSPais,Objeto: PaisANS,Tipo: Table
 FANSTipDebCredTISS,CANSTipDebCredTISS,SANSTipDebCredTISS,Objeto: ANSTipDebCredTISS,Tipo: Table
 FAbrangenciaGeografica,CAbrangenciaGeografica,SAbrangenciaGeografica,Objeto: AbrangGeog,Tipo: Table
-FAcaoJudicialTermoCont,CDocumentoAssociado,SAcaoJudicialTermoCont,Objeto: AcaoJudicial,Tipo: Table
-FAcompanhamentoGuiaRecursoGlosas,CRecursoAcompanhamento_WebService,SAcompanhamentoGuiaRecursoGlosas,Objeto: RecursoS_DadosGerais,Tipo: StoredProc
-FAcompanhamentoGuiaRecursoGlosas,CRecursoAcompanhamento_WebService,SRecursoAcompanhamento_GuiaNet,Objeto: RecursoS_DadosGerais,Tipo: StoredProc
+FAcaoJudicialTermoCont,CAcaoJudicialTermoCont,SAcaoJudicialTermoCont,Objeto: AcaoJudicial,Tipo: Table
+FAcompanhamentoGuiaRecursoGlosas,CAcompanhamentoGuiaRecursoGlosas,SAcompanhamentoGuiaRecursoGlosas,Objeto: RecursoS_DadosGerais,Tipo: StoredProc
+FAcompanhamentoGuiaRecursoGlosas,CRecursoAcompanhamento_GuiaNet,SRecursoAcompanhamento_GuiaNet,Objeto: RecursoS_DadosGerais,Tipo: StoredProc
 FAcompanhamentoGuiaRecursoGlosas,CRecursoAcompanhamento_WebService,SRecursoAcompanhamento_WebService,Objeto: RecursoS_DadosGerais,Tipo: StoredProc
 FAgendamentoCancelado,CAgendamentoCancelado,SAgendamentoCancelado,Objeto: AgendamentoCancelado,Tipo: Table
 FAgfaConselhoProfissional,CAgfaConselhoProfissional,SAgfaConselhoProfissional,Objeto: AgfaConselhoProfissional,Tipo: Table
 FAjudaConteudo,CAjudaConteudo,SAjudaConteudo,Objeto: VersaoLog,Tipo: Table
-FAnaliseGuiaRecursoGlosa,CRecursoanalise_GlosasProced,SAnaliseGuiaRecursoGlosa,Objeto: RecursoS_DadosGerais,Tipo: StoredProc | Objeto: Recurso_Analise,Tipo: StoredProc
+FAnaliseGuiaRecursoGlosa,CAnaliseGuiaRecursoGlosa,SAnaliseGuiaRecursoGlosa,Objeto: RecursoS_DadosGerais,Tipo: StoredProc | Objeto: Recurso_Analise,Tipo: StoredProc
 FAnaliseGuiaRecursoGlosa,CRecursoanalise_GlosasProced,SRecursoAnalise_GlosasProced,Objeto: RecursoS_GlosaProced,Tipo: StoredProc | Objeto: Recurso_AnaliseGlosaProced,Tipo: StoredProc
 FAnaliseLibGuia,CAnaliseLibGuia,SAnaliseLibGuia,Objeto: GuiaTipoAnLibGuia,Tipo: Table | Objeto: TipoAnLibGuia,Tipo: Table | Objeto: GuiaTipoAnLibGuia,Tipo: Table
 FArqSemRelacaoObj,CArqSemRelacaoObj,SArqSemRelacaoObj -
@@ -25,34 +25,34 @@ FArquivoDeGuia,CArquivoDeGuia,SArquivoDeGuia,Objeto: CustosS_GuiaProc,Tipo: Stor
 FArquivoExterSoft,CArquivoExterSoft,SArquivoExterSoft -
 FArquivoPagamento,CArquivoPagamento,SArquivoPagamento,Objeto: GuiaS_Competencia,Tipo: StoredProc
 FAssocANSRelatorios,CAssocANSRelatorios,SAssocANSRelatorios,Objeto: AssocANSRelatorios,Tipo: Table
-FAssociadoFalecimento,CsociadoFalecimento,SEnderecoRespPagador,Objeto: Endereco,Tipo: Table | Objeto: EnderecoU_Cliente,Tipo: StoredProc | Objeto: EnderecoI_Cliente,Tipo: StoredProc
+FAssociadoFalecimento,CEnderecoRespPagador,SEnderecoRespPagador,Objeto: Endereco,Tipo: Table | Objeto: EnderecoU_Cliente,Tipo: StoredProc | Objeto: EnderecoI_Cliente,Tipo: StoredProc
 FAssociadoInativoQtd,CAssociadoInativoQtd,SAssociadoInativoQtd -
-FAssociadoNew,CDocumentoAssociadoInativo,SAssocCPTCID,Objeto: AssocCPTCID,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SAssocCPTCIDGrupo,Objeto: AssocCPTCIDGrupo,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SAssocCPTCIDSubGrupo,Objeto: AssocCPTCIDSubGrupo,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SAssocCPTProcedClasse,Objeto: AssocCPTProcedClasse,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SAssocCPTProcedGrupo,Objeto: AssocCPTProcedGrupo,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SAssocCPTProcedSubGrupo,Objeto: AssocCPTProcedSubGrupo,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SAssociadoDomiciliosCadastro,Objeto: AssociadoDomicilios,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SCPTTabAssoc,Objeto: CPTTabAssoc,Tipo: Table
-FAssociadoNew,CDocumentoAssociadoInativo,SDocumentoAssociadoInativo,Objeto: AssociativaDocsArquivo,Tipo: Table | Objeto: DocumentoArquivo,Tipo: Table | Objeto: AssociativaDocsArquivo,Tipo: Table
+FAssociadoNew,CAssocCPTCID,SAssocCPTCID,Objeto: AssocCPTCID,Tipo: Table
+FAssociadoNew,CAssocCPTCIDGrupo,SAssocCPTCIDGrupo,Objeto: AssocCPTCIDGrupo,Tipo: Table
+FAssociadoNew,CAssocCPTCIDSubGrupo,SAssocCPTCIDSubGrupo,Objeto: AssocCPTCIDSubGrupo,Tipo: Table
+FAssociadoNew,CAssocCPTProcedClasse,SAssocCPTProcedClasse,Objeto: AssocCPTProcedClasse,Tipo: Table
+FAssociadoNew,CAssocCPTProcedGrupo,SAssocCPTProcedGrupo,Objeto: AssocCPTProcedGrupo,Tipo: Table
+FAssociadoNew,CAssocCPTProcedSubGrupo,SAssocCPTProcedSubGrupo,Objeto: AssocCPTProcedSubGrupo,Tipo: Table
+FAssociadoNew,CAssocCPTProcedTiss,SAssociadoDomiciliosCadastro,Objeto: AssociadoDomicilios,Tipo: Table
+FAssociadoNew,CAssociadoDomiciliosCadastro,SCPTTabAssoc,Objeto: CPTTabAssoc,Tipo: Table
+FAssociadoNew,CAssociadoNew,SDocumentoAssociadoInativo,Objeto: AssociativaDocsArquivo,Tipo: Table | Objeto: DocumentoArquivo,Tipo: Table | Objeto: AssociativaDocsArquivo,Tipo: Table
 FAssociadosCPT,CAssociadosCPT,SAssociadosCPT,Objeto: CPTTabAssoc,Tipo: Table
 FAssociadosSemPlano,CAssociadosSemPlano,SAssociadosSemPlano,Objeto: AssociadoS_MesmoTerc_SemPlano,Tipo: StoredProc
 FAuditoriaPai,CAuditoriaPai,SAuditoriaPai -
 FAusenciaCodValidacao,CAusenciaCodValidacao,SAusenciaCodValidacao,Objeto: AusenciaCodValidacao,Tipo: Table
 FAutorPrevCTS,CAutorPrevCTS,SAutorPrevCTS,Objeto: CTSAutorizPrev,Tipo: Table
-FAutorizaServGuia,CGuiaProcSolicAutorizServ,SAutorizaServGuia,Objeto: Guia,Tipo: Table
+FAutorizaServGuia,CAutorizaServGuia,SAutorizaServGuia,Objeto: Guia,Tipo: Table
 FAutorizaServGuia,CGuiaProcSolicAutorizServ,SGuiaProcSolicAutorizServ -
-FBloqueioReconsulta,CFornBloqRecons,SBloqueioReconsulta,Objeto: FornecedorLocalAtend,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table | Objeto: RegiaoAtuacao,Tipo: Table
+FBloqueioReconsulta,CBloqueioReconsulta,SBloqueioReconsulta,Objeto: FornecedorLocalAtend,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table | Objeto: RegiaoAtuacao,Tipo: Table
 FBloqueioReconsulta,CFornBloqRecons,SFornBloqRecons,Objeto: FornBloqRecons,Tipo: Table
 FCBHPMParametrosGerais,CCBHPMParametrosGerais,SCBHPMParametrosGerais,Objeto: CBHPMParametrosGerais,Tipo: Table
-FCBHPMPeriodo,CCBHPMPorteValor,SCBHPMPeriodo,Objeto: CBHPMPeriodo,Tipo: Table
+FCBHPMPeriodo,CCBHPMPeriodo,SCBHPMPeriodo,Objeto: CBHPMPeriodo,Tipo: Table
 FCBHPMPeriodo,CCBHPMPorteValor,SCBHPMPorteValor,Objeto: CBHPMPorteValor,Tipo: Table
 FCBHPMPorte,CCBHPMPorte,SCBHPMPorte,Objeto: CBHPMPorte,Tipo: Table
-FCBHPMPorteValorPeriodo,CCBHPMPorteValorPeriodoAgreg,SCBHPMPorteValorPeriodo,Objeto: CBHPMPorte,Tipo: Table
+FCBHPMPorteValorPeriodo,CCBHPMPorteValorPeriodo,SCBHPMPorteValorPeriodo,Objeto: CBHPMPorte,Tipo: Table
 FCBHPMPorteValorPeriodo,CCBHPMPorteValorPeriodoAgreg,SCBHPMPorteValorPeriodoAgreg,Objeto: CBHPMPorteValor,Tipo: Table
 FCBOS,CCBOS,SCBOS,Objeto: CBOS,Tipo: Table
-FCIDGuia,CGuiaCID,SCIDGuia -
+FCIDGuia,CCIDGuia,SCIDGuia -
 FCIDGuia,CGuiaCID,SGuiaCID,Objeto: GuiaCID,Tipo: Table
 FCNAE,CCNAE,SCNAE,Objeto: CNAE,Tipo: Table
 FCSLL,CCSLL,SCSLL,Objeto: CSLL,Tipo: Table
@@ -61,50 +61,50 @@ FCadGuiaCalculo,CCadGuiaCalculo,SCadGuiaCalculo -
 FCadTitTransfReceitaPremio,CCadTitTransfReceitaPremio,SCadTitTransfReceitaPremio,Objeto: ConfTransfReceita,Tipo: Table
 FCadastraGrupoFaturamento,CCadastraGrupoFaturamento,SCadastraGrupoFaturamento,Objeto: GrupoFaturamento,Tipo: Table
 FCadastraGuiasF2,CCadastraGuiasF2,SCadastraGuiasF2,Objeto: GuiaS_PesqInst,Tipo: StoredProc
-FCadastraMsgCarencia,CCarenciaCartMsg,SCadastraMsgCarencia,Objeto: CarenciaCart,Tipo: Table
+FCadastraMsgCarencia,CCadastraMsgCarencia,SCadastraMsgCarencia,Objeto: CarenciaCart,Tipo: Table
 FCadastraMsgCarencia,CCarenciaCartMsg,SCarenciaCartMsg,Objeto: CarenciaCartMsg,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTCID,Objeto: CPTCID,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTCIDGrupo,Objeto: CPTCIDGrupo,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTCIDSubGrupo,Objeto: CPTCIDSubGrupo,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTProcedClasse,Objeto: CPTProcedClasse,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTProcedGrupo,Objeto: CPTProcedGrupo,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTProcedSubGrupo,Objeto: CPTProcedSubGrupo,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTProcedTiss,Objeto: CPTProcedimento,Tipo: Table
-FCadastroCPT,CCadastroCPT,SCPTTabVigenciaCadastro,Objeto: CPTTabVigencia,Tipo: Table
+FCadastroCPT,CCPTCID,SCPTCID,Objeto: CPTCID,Tipo: Table
+FCadastroCPT,CCPTCIDGrupo,SCPTCIDGrupo,Objeto: CPTCIDGrupo,Tipo: Table
+FCadastroCPT,CCPTCIDSubGrupo,SCPTCIDSubGrupo,Objeto: CPTCIDSubGrupo,Tipo: Table
+FCadastroCPT,CCPTProcedClasse,SCPTProcedClasse,Objeto: CPTProcedClasse,Tipo: Table
+FCadastroCPT,CCPTProcedGrupo,SCPTProcedGrupo,Objeto: CPTProcedGrupo,Tipo: Table
+FCadastroCPT,CCPTProcedSubGrupo,SCPTProcedSubGrupo,Objeto: CPTProcedSubGrupo,Tipo: Table
+FCadastroCPT,CCPTProcedTiss,SCPTProcedTiss,Objeto: CPTProcedimento,Tipo: Table
+FCadastroCPT,CCPTTabVigenciaCadastro,SCPTTabVigenciaCadastro,Objeto: CPTTabVigencia,Tipo: Table
 FCadastroCPT,CCadastroCPT,SCadastroCPT,Objeto: CPTTabela,Tipo: Table
 FCadastroDevolucoes,CCadastroDevolucoes,SCadastroDevolucoes,Objeto: CoparticipacaoDevolucoes,Tipo: Table | Objeto: LancamentosPreviosD,Tipo: StoredProc
 FCadastroExecutivoRE,CCadastroExecutivoRE,SCadastroExecutivoRE,Objeto: ExecutivoRE,Tipo: Table
-FCadastroGuiaRecursoGlosa,CRecursoGuia,SCadastroGuiaRecursoGlosa,Objeto: RecursoS_DadosGerais,Tipo: StoredProc | Objeto: Recurso_Cadastro,Tipo: StoredProc
-FCadastroGuiaRecursoGlosa,CRecursoGuia,SRecursoGlosaLote,Objeto: RecursoS_GlosaLote,Tipo: StoredProc | Objeto: Recurso_CadastroGlosaLote,Tipo: StoredProc
+FCadastroGuiaRecursoGlosa,CCadastroGuiaRecursoGlosa,SCadastroGuiaRecursoGlosa,Objeto: RecursoS_DadosGerais,Tipo: StoredProc | Objeto: Recurso_Cadastro,Tipo: StoredProc
+FCadastroGuiaRecursoGlosa,CRecursoGlosaLote,SRecursoGlosaLote,Objeto: RecursoS_GlosaLote,Tipo: StoredProc | Objeto: Recurso_CadastroGlosaLote,Tipo: StoredProc
 FCadastroGuiaRecursoGlosa,CRecursoGuia,SRecursoGuia,Objeto: RecursoS_RecursoGuia,Tipo: StoredProc | Objeto: Recurso_CadastroGuia,Tipo: StoredProc
-FCadastroInativos,CDependentesCadInativo,SAssocInativo,Objeto: AssociadoInativo,Tipo: Table
-FCadastroInativos,CDependentesCadInativo,SAssocModPlanoCadInativos,Objeto: AssocModPlano,Tipo: Table
-FCadastroInativos,CDependentesCadInativo,SAssociadoCadastroInativo,Objeto: Associado,Tipo: Table
-FCadastroInativos,CDependentesCadInativo,SDadosAssociadoCadInativos -
+FCadastroInativos,CAssocInativo,SAssocInativo,Objeto: AssociadoInativo,Tipo: Table
+FCadastroInativos,CAssocModPlanoCadInativos,SAssocModPlanoCadInativos,Objeto: AssocModPlano,Tipo: Table
+FCadastroInativos,CAssociadoCadastroInativo,SAssociadoCadastroInativo,Objeto: Associado,Tipo: Table
+FCadastroInativos,CDadosAssociadoCadInativos,SDadosAssociadoCadInativos -
 FCadastroInativos,CDependentesCadInativo,SDependentesCadInativo -
 FCadastroInativosLib,CCadastroInativosLib,SCadastroInativosLib,Objeto: AssociadoInativo,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloAgrup,Objeto: CopartModeloAgrup,Tipo: Table | Objeto: CopartModeloConfig,Tipo: Table | Objeto: CopartModeloConfig,Tipo: Table | Objeto: CopartModeloAgrup,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloClasse,Objeto: CopartModeloClasse,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloGrupo,Objeto: CopartModeloGrupo,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloLocalAtend,Objeto: CopartModeloLocalAtend,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloProcedimento,Objeto: CopartModeloProcedimento,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloSubGrupo,Objeto: CopartModeloSubGrupo,Tipo: Table
-FCadastroModelo,CCopartModeloVigencia,SCopartModeloVigencia,Objeto: CopartModeloVigencia,Tipo: Table
-FCadastroProcessoCobranca,CGuiaProcessoCobranca,SCadastroProcessoCobranca,Objeto: ProcessoCobranca,Tipo: Table
+FCadastroModelo,CCadastroModelo,SCopartModeloAgrup,Objeto: CopartModeloAgrup,Tipo: Table | Objeto: CopartModeloConfig,Tipo: Table | Objeto: CopartModeloConfig,Tipo: Table | Objeto: CopartModeloAgrup,Tipo: Table
+FCadastroModelo,CCopartModeloAgrup,SCopartModeloClasse,Objeto: CopartModeloClasse,Tipo: Table
+FCadastroModelo,CCopartModeloClasse,SCopartModeloGrupo,Objeto: CopartModeloGrupo,Tipo: Table
+FCadastroModelo,CCopartModeloGrupo,SCopartModeloLocalAtend,Objeto: CopartModeloLocalAtend,Tipo: Table
+FCadastroModelo,CCopartModeloLocalAtend,SCopartModeloProcedimento,Objeto: CopartModeloProcedimento,Tipo: Table
+FCadastroModelo,CCopartModeloProcedimento,SCopartModeloSubGrupo,Objeto: CopartModeloSubGrupo,Tipo: Table
+FCadastroModelo,CCopartModeloSubGrupo,SCopartModeloVigencia,Objeto: CopartModeloVigencia,Tipo: Table
+FCadastroProcessoCobranca,CCadastroProcessoCobranca,SCadastroProcessoCobranca,Objeto: ProcessoCobranca,Tipo: Table
 FCadastroProcessoCobranca,CGuiaProcessoCobranca,SGuiaProcessoCobranca,Objeto: ProcessoCobrancaGuia,Tipo: Table
-FCadastroRecursoGuia,CRecursoGlosaProced,SRecursoGlosaGuia,Objeto: RecursoS_GlosaGuia,Tipo: StoredProc | Objeto: Recurso_CadastroGlosaGuia,Tipo: StoredProc
+FCadastroRecursoGuia,CRecursoGlosaGuia,SRecursoGlosaGuia,Objeto: RecursoS_GlosaGuia,Tipo: StoredProc | Objeto: Recurso_CadastroGlosaGuia,Tipo: StoredProc
 FCadastroRecursoGuia,CRecursoGlosaProced,SRecursoGlosaProced,Objeto: RecursoS_GlosaProced,Tipo: StoredProc | Objeto: Recurso_CadastroGlosaProced,Tipo: StoredProc
-FCadastroSuspensao,CCadastroSuspensao,SAssociadoSuspenso,Objeto: AssociadoSuspenso,Tipo: Table
+FCadastroSuspensao,CAssociadoSuspenso,SAssociadoSuspenso,Objeto: AssociadoSuspenso,Tipo: Table
 FCadastroSuspensao,CCadastroSuspensao,SCadastroSuspensao,Objeto: AssociadoSuspenso,Tipo: Table
 FCadastroTabRefProcLog,CCopartTabRefProcedimentoLog,SCopartTabRefProcedimentoLog,Objeto: CopartTabRefProcedimentoLog,Tipo: Table
 FCancelamentoProcessoCobrancaSP,CCancelamentoProcessoCobrancaSP,SCancelamentoProcessoCobrancaSP,Objeto: ProcessoCobranca,Tipo: Table
 FCaraterAtendimento,CCaraterAtendimento,SCaraterAtendimento,Objeto: CaraterAtendimento,Tipo: Table
-FCartaReajuste,CCartaReajusteAuto,SCartaReajuste,Objeto: CartaReajusteAutomatico_Rel,Tipo: StoredProc
+FCartaReajuste,CCartaReajuste,SCartaReajuste,Objeto: CartaReajusteAutomatico_Rel,Tipo: StoredProc
 FCartaReajusteAutoEdicao,CCartaReajusteAuto,SCartaReajusteAuto,Objeto: CartaReajusteAuto,Tipo: Table
 FCartaoValor,CCartaoValor,SCartaoValor,Objeto: CartaoValor,Tipo: Table
 FCategoriaLocAtend,CCategoriaLocAtend,SCategoriaLocAtend,Objeto: CategoriaLocAtend,Tipo: Table
 FClasse,CClasse,SClasse,Objeto: Classe,Tipo: Table
-FClasseTipoTabelaProced,CClasseVigenciaTabelaTISS,SClasseVigenciaTabelaTISS,Objeto: ClasseVigenciaTabelaTISS,Tipo: Table
+FClasseTipoTabelaProced,CClasseTipoTabelaProced,SClasseVigenciaTabelaTISS,Objeto: ClasseVigenciaTabelaTISS,Tipo: Table
 FCoParticCTS,CCoParticCTS,SCoParticCTS,Objeto: CTSCoPartic,Tipo: Table
 FCofins,CCofins,SCofins,Objeto: COFINS,Tipo: Table
 FComissao,CComissao,SComissao,Objeto: Comissao,Tipo: Table
@@ -118,61 +118,61 @@ FComunicAcidTrab,CComunicAcidTrab,SComunicAcidTrab,Objeto: CAT,Tipo: Table
 FComunicAcidTrabPesqInst,CComunicAcidTrabPesqInst,SComunicAcidTrabPesqInst,Objeto: CAT,Tipo: Table | Objeto: Guia,Tipo: Table
 FComunicacaoInternacaoAlta,CComunicacaoInternacaoAlta,SComunicacaoInternacaoAlta -
 FConfCopartCalcAuto,CConfCopartCalcAuto,SConfCopartCalcAuto,Objeto: ConfCopartCalcAuto,Tipo: Table
-FConfFeriado,CFeriadoMovel,SCalendarioAnualFeriado,Objeto: Feriado,Tipo: Table
-FConfFeriado,CFeriadoMovel,SConfFeriado,Objeto: Feriado,Tipo: Table
-FConfFeriado,CFeriadoMovel,SConfFeriadoDetalhe,Objeto: Feriado,Tipo: Table
+FConfFeriado,CCalendarioAnualFeriado,SCalendarioAnualFeriado,Objeto: Feriado,Tipo: Table
+FConfFeriado,CConfFeriado,SConfFeriado,Objeto: Feriado,Tipo: Table
+FConfFeriado,CConfFeriadoDetalhe,SConfFeriadoDetalhe,Objeto: Feriado,Tipo: Table
 FConfFeriado,CFeriadoMovel,SFeriadoMovel,Objeto: FeriadoMovel,Tipo: Table
-FConfGeralPlano,CPlanoRedeGama,SConfGeralPlano,Objeto: Plano,Tipo: Table
+FConfGeralPlano,CConfGeralPlano,SConfGeralPlano,Objeto: Plano,Tipo: Table
 FConfGeralPlano,CPlanoRedeGama,SPlanoRedeGama,Objeto: PlanoRedeGama,Tipo: Table
 FConfIntegPront,CConfIntegPront,SConfIntegPront,Objeto: ConfIntegPront,Tipo: Table
-FConfRatAcertoPrestador,CLctosPrevRatSubGrupo,SLctosPrevRatClasse,Objeto: LctosPrevRatClasse,Tipo: Table
-FConfRatAcertoPrestador,CLctosPrevRatSubGrupo,SLctosPrevRatGrupo,Objeto: LctosPrevRatGrupo,Tipo: Table
-FConfRatAcertoPrestador,CLctosPrevRatSubGrupo,SLctosPrevRatProced,Objeto: LctosPrevRatProced,Tipo: Table
-FConfRatAcertoPrestador,CLctosPrevRatSubGrupo,SLctosPrevRatSubGrupo,Objeto: LctosPrevRatSubGrupo,Tipo: Table
+FConfRatAcertoPrestador,CConfRatAcertoPrestador,SLctosPrevRatClasse,Objeto: LctosPrevRatClasse,Tipo: Table
+FConfRatAcertoPrestador,CLctosPrevRatClasse,SLctosPrevRatGrupo,Objeto: LctosPrevRatGrupo,Tipo: Table
+FConfRatAcertoPrestador,CLctosPrevRatGrupo,SLctosPrevRatProced,Objeto: LctosPrevRatProced,Tipo: Table
+FConfRatAcertoPrestador,CLctosPrevRatProced,SLctosPrevRatSubGrupo,Objeto: LctosPrevRatSubGrupo,Tipo: Table
 FConfRateioReceita,CConfRateioReceita,SConfRateioReceita,Objeto: ConfRateioReceita,Tipo: Table
 FConfRestr,CConfRestr,SConfRestr,Objeto: ConfigRestricaoVenc,Tipo: Table
-FConfTISSFornecedor,CProtocoloEnvioConfigTISSWS,SConfTISSEnvioTerceiro,Objeto: ConfTISSEnvioTerceiro,Tipo: Table
-FConfTISSFornecedor,CProtocoloEnvioConfigTISSWS,SConfTISSFornecedor,Objeto: ConfTISSFornecedor,Tipo: Table
+FConfTISSFornecedor,CConfTISSEnvioTerceiro,SConfTISSEnvioTerceiro,Objeto: ConfTISSEnvioTerceiro,Tipo: Table
+FConfTISSFornecedor,CConfTISSFornecedor,SConfTISSFornecedor,Objeto: ConfTISSFornecedor,Tipo: Table
 FConfTISSFornecedor,CProtocoloEnvioConfigTISSWS,SProtocoloEnvioConfigTISSWS -
-FConfTISSImportProcsTUSS,CConfigWSProtRecebimento,SConfTISSImporTabTISSPermitida,Objeto: ConfTISSImporTabTISSPermitida,Tipo: Table
-FConfTISSImportProcsTUSS,CConfigWSProtRecebimento,SConfTISSImportProcsTUSS -
+FConfTISSImportProcsTUSS,CConfTISSImporTabTISSPermitida,SConfTISSImporTabTISSPermitida,Objeto: ConfTISSImporTabTISSPermitida,Tipo: Table
+FConfTISSImportProcsTUSS,CConfTISSImportProcsTUSS,SConfTISSImportProcsTUSS -
 FConfTISSImportProcsTUSS,CConfigWSProtRecebimento,SConfigWSProtRecebimento,Objeto: ConfigWSProtRecebimento,Tipo: Table
-FConfigAprovacoes,CSituacaoAprovacao,SConfAprovacaoLibPgto,Objeto: ConfAprovacaoLibPgto,Tipo: Table
+FConfigAprovacoes,CConfAprovacaoLibPgto,SConfAprovacaoLibPgto,Objeto: ConfAprovacaoLibPgto,Tipo: Table
 FConfigAprovacoes,CSituacaoAprovacao,SSituacaoAprovacao,Objeto: SituacaoAprovacao,Tipo: Table
 FConfigEmailLiberacaoPgto,CConfLibPgtoEmail,SConfLibPgtoEmail,Objeto: ConfLibPgtoEmail,Tipo: Table
-FConfigGeralDivulgaPrestador,CEspecialidade,SConfigGeralDivulgaPrestador,Objeto: CategoriaLocAtend,Tipo: Table
-FConfigGeralDivulgaPrestador,CEspecialidade,SConfigRanking,Objeto: RankingConf,Tipo: Table
+FConfigGeralDivulgaPrestador,CConfigGeralDivulgaPrestador,SConfigGeralDivulgaPrestador,Objeto: CategoriaLocAtend,Tipo: Table
+FConfigGeralDivulgaPrestador,CConfigRanking,SConfigRanking,Objeto: RankingConf,Tipo: Table
 FConfigGeralDivulgaPrestador,CEspecialidade,SEspecialidade,Objeto: Especialidade,Tipo: Table
 FConfigImportProfUtilizacao,CConfigImportProfUtilizacao,SConfigImportProfUtilizacao,Objeto: ConfigImportProfUtilizacao,Tipo: Table
-FConfigRateioCustos,CConfRateioSubGrupo,SConfRateioClasse,Objeto: ConfRateioClasse,Tipo: Table
-FConfigRateioCustos,CConfRateioSubGrupo,SConfRateioCustos,Objeto: ConfRateio,Tipo: Table
-FConfigRateioCustos,CConfRateioSubGrupo,SConfRateioGrupo,Objeto: ConfRateioGrupo,Tipo: Table
-FConfigRateioCustos,CConfRateioSubGrupo,SConfRateioProc,Objeto: ConfRateioProc,Tipo: Table
+FConfigRateioCustos,CConfRateioClasse,SConfRateioClasse,Objeto: ConfRateioClasse,Tipo: Table
+FConfigRateioCustos,CConfRateioCustos,SConfRateioCustos,Objeto: ConfRateio,Tipo: Table
+FConfigRateioCustos,CConfRateioGrupo,SConfRateioGrupo,Objeto: ConfRateioGrupo,Tipo: Table
+FConfigRateioCustos,CConfRateioProc,SConfRateioProc,Objeto: ConfRateioProc,Tipo: Table
 FConfigRateioCustos,CConfRateioSubGrupo,SConfRateioSubGrupo,Objeto: ConfRateioSubGrupo,Tipo: Table
 FConfigSefip,CConfigSefip,SConfigSefip -
 FConfigTransfPlano,CConfigTransfPlano,SConfigTransfPlano,Objeto: ConfigTransfPlano,Tipo: Table
 FConfiguracaoContabilPendente,CConfiguracaoContabilPendente,SConfiguracaoContabilPendente,Objeto: LctoIntegracaoI_Faturamento,Tipo: StoredProc
 FConfiguracaoWSANS,CConfiguracaoWSANS,SConfiguracaoWSANS,Objeto: ConfiguracaoWSANS,Tipo: Table
 FConfiguracoesArquivosIFRS17,CConfiguracoesArquivosIFRS17,SConfiguracoesArquivosIFRS17,Objeto: IFRSConfArquivo,Tipo: Table | Objeto: IFRSConfArquivo,Tipo: Table | Objeto: RDI,Tipo: Table
-FConsultaArquivoIFRS,CIFRSArquivoDet,SConsultaArquivoIFRS,Objeto: RDILayoutCampos,Tipo: Table
+FConsultaArquivoIFRS,CConsultaArquivoIFRS,SConsultaArquivoIFRS,Objeto: RDILayoutCampos,Tipo: Table
 FConsultaArquivoIFRS,CIFRSArquivoDet,SIFRSArquivoDet,Objeto: IFRSArquivoDet,Tipo: Table
 FConsultaDataAvisoGuia,CConsultaDataAvisoGuia,SConsultaDataAvisoGuia,Objeto: Guia2,Tipo: Table | Objeto: Guia,Tipo: Table | Objeto: GuiaProcedimento,Tipo: Table
 FConsultaEmailFornecedor,CConsultaEmailFornecedor,SConsultaEmailFornecedor,Objeto: DocFaturamento,Tipo: Table | Objeto: LiberaPgtoEmailLog,Tipo: Table
-FConsultaProcedimentos,CProcedTipTProced,SConsultaProcedimentos -
+FConsultaProcedimentos,CConsultaProcedimentos,SConsultaProcedimentos -
 FContagemAssociadosPool,CContagemAssociadosPool,SContagemAssociadosPool,Objeto: VidasGrupoFaturamento,Tipo: Table | Objeto: VidasContrato,Tipo: Table | Objeto: Contrato,Tipo: Table | Objeto: Terceiro,Tipo: Table | Objeto: GrupoFaturamento,Tipo: Table | Objeto: Cliente,Tipo: Table
 FContasAutomaticasFatura,CContasAutomaticasFatura,SContasAutomaticasFatura,Objeto: tmpConfContabLcto,Tipo: Table | Objeto: tmpConfContabLctoU,Tipo: StoredProc
 FContasAutomaticasFaturaVisualizacao,CContasAutomaticasFaturaVisualizacao,SContasAutomaticasFaturaVisualizacao,Objeto: ConfContabFatLctoS,Tipo: StoredProc | Objeto: tmpConfContabLctoU,Tipo: StoredProc
-FContratanteNew,CTerceiroEmail,SContratanteClienteDomicilios,Objeto: ClienteDomicilios,Tipo: Table
-FContratanteNew,CTerceiroEmail,SIdentificacaoCongenere,Objeto: IdentificacaoCongenere,Tipo: Table
-FContratanteNew,CTerceiroEmail,SPlanosCongenere,Objeto: PlanosCongenere,Tipo: Table
-FContratoNew,CPeriodoInativoContrato,SCompatibilidadePlanosCadastro -
-FContratoNew,CPeriodoInativoContrato,SContratoDomicilioCadastro,Objeto: ContratoDomicilios,Tipo: Table
-FContratoNew,CPeriodoInativoContrato,SCopartPlanoModelo,Objeto: CopartPlanoModelo,Tipo: Table
-FContratoNew,CPeriodoInativoContrato,SModalidadePlanoInativo,Objeto: ModalidadePlanoInativo,Tipo: Table
-FContratoNew,CPeriodoInativoContrato,SModalidadePlanoVlrInativo,Objeto: ModalidadePlanoValorInativo,Tipo: Table
-FContratoNew,CPeriodoInativoContrato,SModalidadePlanoVlrInativo_Datas,Objeto: ModalidadePlanoValorInativo,Tipo: Table
-FContratoNew,CPeriodoInativoContrato,SMultaResc,Objeto: MultaRescisoria,Tipo: StoredProc
-FContratoNew,CPeriodoInativoContrato,SPeriodoInativoContrato,Objeto: Contrato,Tipo: Table
+FContratanteNew,CContratanteClienteDomicilios,SContratanteClienteDomicilios,Objeto: ClienteDomicilios,Tipo: Table
+FContratanteNew,CContratanteNew,SIdentificacaoCongenere,Objeto: IdentificacaoCongenere,Tipo: Table
+FContratanteNew,CIdentificacaoCongenere,SPlanosCongenere,Objeto: PlanosCongenere,Tipo: Table
+FContratoNew,CCompatibilidadePlanosCadastro,SCompatibilidadePlanosCadastro -
+FContratoNew,CContratoDomicilioCadastro,SContratoDomicilioCadastro,Objeto: ContratoDomicilios,Tipo: Table
+FContratoNew,CContratoNew,SCopartPlanoModelo,Objeto: CopartPlanoModelo,Tipo: Table
+FContratoNew,CCopartPlanoModelo,SModalidadePlanoInativo,Objeto: ModalidadePlanoInativo,Tipo: Table
+FContratoNew,CModalidadePlanoInativo,SModalidadePlanoVlrInativo,Objeto: ModalidadePlanoValorInativo,Tipo: Table
+FContratoNew,CModalidadePlanoVlrInativo,SModalidadePlanoVlrInativo_Datas,Objeto: ModalidadePlanoValorInativo,Tipo: Table
+FContratoNew,CModalidadePlanoVlrInativo_Datas,SMultaResc,Objeto: MultaRescisoria,Tipo: StoredProc
+FContratoNew,CMultaResc,SPeriodoInativoContrato,Objeto: Contrato,Tipo: Table
 FCopartAgrupamento,CCopartAgrupamento,SCopartAgrupamento,Objeto: CopartAgrupamento,Tipo: Table
 FCopartArqFolha,CCopartArqFolha,SCopartArqFolha,Objeto: CopartArqFolha,Tipo: Table
 FCopartAssociadoConfig,CCopartAssociadoConfig,SCopartAssociadoConfig,Objeto: CopartAssociadoConfig,Tipo: Table
@@ -190,10 +190,10 @@ FCopartFechamentoResumo,CCopartFechamentoResumo,SCopartFechamentoResumo,Objeto: 
 FCopartGerenciamentoGuiaI,CCopartGerenciamentoGuia,SCopartGerenciamentoGuia,Objeto: ParticipacaoCalc,Tipo: Table | Objeto: ParticipacaoCalc,Tipo: Table
 FCopartLogAlteracoes,CCopartLogAlteracoes,SCopartLogAlteracoes -
 FCopartModeloConfig,CCopartModeloConfig,SCopartModeloConfig,Objeto: CopartModeloConfig,Tipo: Table
-FCopartTabCompara,CCopartTabRefProcedimento,SCopartTabRefProcedimento,Objeto: CopartTabRefProcedimento,Tipo: Table
+FCopartTabCompara,CCadastroRevTabReferencia,SCopartTabRefProcedimento,Objeto: CopartTabRefProcedimento,Tipo: Table
 FCopartTabCopia,CCadastroRevTabReferencia,SCadastroRevTabReferencia,Objeto: CopartTabReferencia,Tipo: Table
 FCoparticipacao,CCoparticipacao,SCoparticipacao,Objeto: CopartTabReferencia,Tipo: Table
-FCredenciadosImpressos,CCredenciadosImpressos,SCredImpGrid,Objeto: CredenciadosImpressos,Tipo: Table
+FCredenciadosImpressos,CCredImpGrid,SCredImpGrid,Objeto: CredenciadosImpressos,Tipo: Table
 FCredenciadosImpressos,CCredenciadosImpressos,SCredenciadosImpressos,Objeto: CredenciadosImpressos,Tipo: Table
 FCustosCentroCustoUnidade,CCustosCentroCustoUnidade,SCustosCentroCustoUnidade,Objeto: UnidCCustoCalc,Tipo: Table
 FCustosDaGuia,CCustosDaGuia,SCustosDaGuia,Objeto: GuiaProcedimento,Tipo: Table
@@ -203,28 +203,28 @@ FCustosMedicos,CCustosMedicos,SCustosMedicos,Objeto: ClienteCCustosCalc,Tipo: Ta
 FCustosRateioConfCalc,CCustosRateioConfCalc,SCustosRateioConfCalc,Objeto: CustosCCRateioConfCalc,Tipo: Table
 FDARF,CDARF,SDARF,Objeto: DARF,Tipo: Table
 FDadosCartorioTabRef,CDadosCartorioTabRef,SDadosCartorioTabRef,Objeto: CopartTabReferencia,Tipo: Table
-FDadosProntuario,CTipoEndereco,SDadosProntuario,Objeto: Terceiro,Tipo: Table | Objeto: TerFisica,Tipo: Table | Objeto: TerFisicaPCL,Tipo: Table | Objeto: TerFisicaPCLSORM_DadosPront,Tipo: StoredProc | Objeto: TerFisicaPCLUORM_DadosPront,Tipo: StoredProc
-FDadosProntuario,CTipoEndereco,SEnderecoAssociadoPF,Objeto: Endereco,Tipo: Table | Objeto: EnderecoAssociadoPFSORM,Tipo: StoredProc | Objeto: EnderecoAssociadoPFIORM,Tipo: StoredProc | Objeto: EnderecoAssociadoPFUORM,Tipo: StoredProc | Objeto: EnderecoAssociadoPFDORM,Tipo: StoredProc
+FDadosProntuario,CDadosProntuario,SDadosProntuario,Objeto: Terceiro,Tipo: Table | Objeto: TerFisica,Tipo: Table | Objeto: TerFisicaPCL,Tipo: Table | Objeto: TerFisicaPCLSORM_DadosPront,Tipo: StoredProc | Objeto: TerFisicaPCLUORM_DadosPront,Tipo: StoredProc
+FDadosProntuario,CEnderecoAssociadoPF,SEnderecoAssociadoPF,Objeto: Endereco,Tipo: Table | Objeto: EnderecoAssociadoPFSORM,Tipo: StoredProc | Objeto: EnderecoAssociadoPFIORM,Tipo: StoredProc | Objeto: EnderecoAssociadoPFUORM,Tipo: StoredProc | Objeto: EnderecoAssociadoPFDORM,Tipo: StoredProc
 FDadosProntuario,CTipoEndereco,STipoEndereco,Objeto: TipoEndereco,Tipo: Table
-FDadosRapidos,CDadosRapidos,SCurriculoPrestador,Objeto: FornCurriculoS,Tipo: StoredProc | Objeto: FornCurriculo,Tipo: Table
+FDadosRapidos,CCurriculoPrestador,SCurriculoPrestador,Objeto: FornCurriculoS,Tipo: StoredProc | Objeto: FornCurriculo,Tipo: Table
 FDadosRapidos,CDadosRapidos,SDadosRapidos,Objeto: Fornecedor,Tipo: Table | Objeto: Terceiro,Tipo: Table | Objeto: FornecedorSORM,Tipo: StoredProc
 FDeducaoISSFaturamento,CDeducaoISSFaturamento,SDeducaoISSFaturamento,Objeto: DeducaoISSFaturamento,Tipo: Table
 FDetalhamentoCusto,CDetalhamentoCusto,SDetalhamentoCusto,Objeto: CustosS_CstProcedimento,Tipo: StoredProc
 FDiagImagem,CDiagImagem,SDiagImagem,Objeto: DiagImagem,Tipo: Table
 FDirecCTS,CDirecCTS,SDirecCTS,Objeto: CTSDireciona,Tipo: Table
 FDisponibilizaHorarioConjugado,CDisponibilizaHorarioConjugado,SDisponibilizaHorarioConjugado,Objeto: MapaAtendimento,Tipo: Table | Objeto: MapaAtendimetnoS_Manutencao,Tipo: StoredProc
-FDivulgaPrestador,CRankingConfPrestadorDivulga,SDivulgaPrestador,Objeto: Fornecedor,Tipo: Table
-FDivulgaPrestador,CRankingConfPrestadorDivulga,SFornLocAtTabPreco,Objeto: FornLocAtTabPreco,Tipo: Table
-FDivulgaPrestador,CRankingConfPrestadorDivulga,SFornLocalEspecialidadePlano,Objeto: FornLocalEspecialidadePlano,Tipo: Table
-FDivulgaPrestador,CRankingConfPrestadorDivulga,SFornecedorLocalAtend,Objeto: FornecedorLocalAtend,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table | Objeto: RegiaoAtuacao,Tipo: Table | Objeto: FornecedorLocalAtend,Tipo: Table
-FDivulgaPrestador,CRankingConfPrestadorDivulga,SFornecedorLocalEspecDivulga,Objeto: FornecedorLocalEspecialidade,Tipo: Table | Objeto: Especialidade,Tipo: Table | Objeto: FornecedorLocalEspecialidade,Tipo: Table
-FDivulgaPrestador,CRankingConfPrestadorDivulga,SRankingConfPrestadorDivulga,Objeto: RankingConf,Tipo: Table | Objeto: RankingConfPrestador,Tipo: Table
-FDivulgaPrestadorSubEspecialidade,CFornecedorLocalEspecialidadeSubEspec,SDivulgaPrestadorSubEspecialidade,Objeto: FornecedorEspecSubEspec,Tipo: Table
+FDivulgaPrestador,CDivulgaPrestador,SDivulgaPrestador,Objeto: Fornecedor,Tipo: Table
+FDivulgaPrestador,CFornLocAtTabPreco,SFornLocAtTabPreco,Objeto: FornLocAtTabPreco,Tipo: Table
+FDivulgaPrestador,CFornLocalEspecialidadePlano,SFornLocalEspecialidadePlano,Objeto: FornLocalEspecialidadePlano,Tipo: Table
+FDivulgaPrestador,CFornecedorDivulga,SFornecedorLocalAtend,Objeto: FornecedorLocalAtend,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table | Objeto: RegiaoAtuacao,Tipo: Table | Objeto: FornecedorLocalAtend,Tipo: Table
+FDivulgaPrestador,CFornecedorEspecCategoria,SFornecedorLocalEspecDivulga,Objeto: FornecedorLocalEspecialidade,Tipo: Table | Objeto: Especialidade,Tipo: Table | Objeto: FornecedorLocalEspecialidade,Tipo: Table
+FDivulgaPrestador,CFornecedorLocalAtend,SRankingConfPrestadorDivulga,Objeto: RankingConf,Tipo: Table | Objeto: RankingConfPrestador,Tipo: Table
+FDivulgaPrestadorSubEspecialidade,CDivulgaPrestadorSubEspecialidade,SDivulgaPrestadorSubEspecialidade,Objeto: FornecedorEspecSubEspec,Tipo: Table
 FDivulgaPrestadorSubEspecialidade,CFornecedorLocalEspecialidadeSubEspec,SFornecedorLocalEspecialidadeSubEspec -
 FDivulgaPrestadoresCorpoClinico,CDivulgaPrestadoresCorpoClinico,SDivulgaPrestadoresCorpoClinico,Objeto: FornecLocalAtendFiliado,Tipo: Table | Objeto: ProfissionalFiliado,Tipo: Table
 FDmed,CDocFaturamentoS_Dmed,SDocFaturamentoS_Dmed,Objeto: DocFaturamentoS_Dmed,Tipo: StoredProc
 FDocFatAprovPgtoLog,CDocFatAprovPgtoLog,SDocFatAprovPgtoLog,Objeto: DocFatAprovPgtoLog,Tipo: Table
-FDocumentoArquivo,CDocumentoArquivoLog,SDocumentoArquivo,Objeto: DocumentoArquivo,Tipo: Table
+FDocumentoArquivo,CDocumentoArquivo,SDocumentoArquivo,Objeto: DocumentoArquivo,Tipo: Table
 FDocumentoArquivo,CDocumentoArquivoLog,SDocumentoArquivoLog,Objeto: DocumentoArquivoLog,Tipo: Table
 FDocumentoAssociado,CDocumentoAssociado,SDocumentoAssociado,Objeto: AssociativaDocsArquivo,Tipo: Table | Objeto: DocumentoArquivo,Tipo: Table | Objeto: AssociativaDocsArquivo,Tipo: Table
 FDocumentoGuia,CDocumentoGuia,SDocumentoGuia,Objeto: AssociativaDocsArquivo,Tipo: Table | Objeto: DocumentoArquivo,Tipo: Table | Objeto: AssociativaDocsArquivo,Tipo: Table
@@ -235,7 +235,7 @@ FEnviaEmailLiberacaoPgto,CLiberaPgtoEmailLog,SLiberaPgtoEmailLog,Objeto: LiberaP
 FErroComunicProtEnvio,CErroComunicProtEnvio,SErroComunicProtEnvio,Objeto: ErroComunicProtEnvio,Tipo: Table
 FErroProtocoloEnvio,CErroProtocoloEnvio,SErroProtocoloEnvio,Objeto: ErroProtocoloEnvio,Tipo: Table
 FErrosMonitoramento,CMonitANSErrosCompilacao,SMonitANSErrosCompilacao,Objeto: MonitANSErrosCompilacao,Tipo: Table
-FEspecialidadeNew,CSubEspecialidade,SSubEspecialidade,Objeto: SubEspecialidade,Tipo: Table
+FEspecialidadeNew,CEspecialidadeNew,SSubEspecialidade,Objeto: SubEspecialidade,Tipo: Table
 FEstabelec,CEstabelec,SEstabelec,Objeto: ANSClassifEstabSaude,Tipo: Table
 FEstadiamentoTumor,CEstadiamentoTumor,SEstadiamentoTumor,Objeto: EstadiamentoTumor,Tipo: Table
 FEstrutura,CEstrutura,SEstrutura,Objeto: TabelaGeral,Tipo: Table
@@ -257,19 +257,19 @@ FFormaPagamento,CFormaPagamento,SFormaPagamento,Objeto: FormaPagamento,Tipo: Tab
 FFornLocAtTabPreco,CDivulgaPrestProced,SDivulgaPrestProced,Objeto: FornLocAtTabPreco,Tipo: Table
 FFornLocAtTabPrecoLog,CFornLocAtTabPrecoLog,SFornLocAtTabPrecoLog -
 FFornQualif,CFornQualif,SFornQualif,Objeto: FornQualif,Tipo: Table
-FFornecLocalAtendCateg,CestadorServ,SFornecLocalAtendCateg,Objeto: FornecLocalAtendCateg,Tipo: Table
+FFornecLocalAtendCateg,CFornecLocalAtendCateg,SFornecLocalAtendCateg,Objeto: FornecLocalAtendCateg,Tipo: Table
 FFornecedorLocalAtendPlano,CFornecedorLocalAtendPlano,SFornecedorLocalAtendPlano,Objeto: FornecedorLocalAtendPlano,Tipo: Table
 FFornecedorTempImportacao,CFornecedorTempImportacao,SFornecedorTempImportacao,Objeto: FornecedorTempImportacao,Tipo: Table
 FFranquiaCTS,CFranquiaCTS,SFranquiaCTS,Objeto: CTSFranquia,Tipo: Table
-FGNHP_ProcedimentosAnexados,CHP_ProcedimentosExecucaoSPSADT,SGNHP_ProcedimentosAnexados,Objeto: GNHP_ProcedimentosAnexados,Tipo: Table
-FGNHP_ProcedimentosAnexados,CHP_ProcedimentosExecucaoSPSADT,SGNHP_ProcedimentosAnexadosOQRP,Objeto: GNHP_ProcedimentosAnexadosOQRP,Tipo: Table
+FGNHP_ProcedimentosAnexados,CGNHP_ProcedimentosAnexados,SGNHP_ProcedimentosAnexados,Objeto: GNHP_ProcedimentosAnexados,Tipo: Table
+FGNHP_ProcedimentosAnexados,CGNHP_ProcedimentosAnexadosOQRP,SGNHP_ProcedimentosAnexadosOQRP,Objeto: GNHP_ProcedimentosAnexadosOQRP,Tipo: Table
 FGNHP_ProcedimentosAnexados,CHP_ProcedimentosExecucaoSPSADT,SHP_ProcedimentosExecucaoSPSADT,Objeto: HP_ProcedimentosExecucaoSPSADT,Tipo: Table
-FGeraContratoTermoCont,CGeraContratoTermoTestemunha,SDependentesContratoInativos,Objeto: AssociadoInativo,Tipo: Table
-FGeraContratoTermoCont,CGeraContratoTermoTestemunha,SFaixaValoresContratoTermo,Objeto: ModalidadePlanoValorInativo,Tipo: Table
-FGeraContratoTermoCont,CGeraContratoTermoTestemunha,SGeraContratoTermoCont,Objeto: ContratoTermo,Tipo: Table | Objeto: AssociadoInativo,Tipo: Table | Objeto: ContratoTermo,Tipo: Table
+FGeraContratoTermoCont,CDependentesContratoInativos,SDependentesContratoInativos,Objeto: AssociadoInativo,Tipo: Table
+FGeraContratoTermoCont,CFaixaValoresContratoTermo,SFaixaValoresContratoTermo,Objeto: ModalidadePlanoValorInativo,Tipo: Table
+FGeraContratoTermoCont,CGeraContratoTermoCont,SGeraContratoTermoCont,Objeto: ContratoTermo,Tipo: Table | Objeto: AssociadoInativo,Tipo: Table | Objeto: ContratoTermo,Tipo: Table
 FGeraContratoTermoCont,CGeraContratoTermoTestemunha,SGeraContratoTermoTestemunha -
 FGeraLotesContabilidade,CGeraLotesContabilidade,SGeraLotesContabilidade,Objeto: LctoIntegracaoI_Faturamento,Tipo: StoredProc
-FGerenciarFechamentos,CGerenciarFechamentos,SCopartFechamentoProvisorio,Objeto: CopartFechamento,Tipo: Table
+FGerenciarFechamentos,CCopartFechamentoProvisorio,SCopartFechamentoProvisorio,Objeto: CopartFechamento,Tipo: Table
 FGerenciarFechamentos,CGerenciarFechamentos,SGerenciarFechamentos,Objeto: DocParm,Tipo: Table
 FGlosa,CGlosa,SGlosa,Objeto: Glosa,Tipo: Table
 FGlosaRetornoProtocoloEnvio,CGlosaProtocoloEnvio,SGlosaProtocoloEnvio -
@@ -284,7 +284,7 @@ FGuiaDadosAdicIrreg,CGuiaDadosAdicIrreg,SGuiaDadosAdicIrreg,Objeto: GuiaIrregPro
 FGuiaExecProrrogIntern,CGuiaExecProrrogIntern,SGuiaExecProrrogIntern,Objeto: Guia,Tipo: Table
 FGuiaExecSolicOPME,CGuiaExecSolicOPME,SGuiaExecSolicOPME,Objeto: Guia,Tipo: Table | Objeto: Guia2,Tipo: Table
 FGuiaInternamento,CGuiaInternamento,SGuiaInternamento,Objeto: GuiaInternamentoS,Tipo: StoredProc | Objeto: GuiaInternamentoI,Tipo: StoredProc | Objeto: GuiaInternamentoU,Tipo: StoredProc | Objeto: GuiaInternamentoD,Tipo: StoredProc
-FGuiaIrregularidadeLog,CListaIrregularidades,SGuiaIrregLogLiberaGuia -
+FGuiaIrregularidadeLog,CGuiaIrregLogLiberaGuia,SGuiaIrregLogLiberaGuia -
 FGuiaLibera,CGuiaLibera,SGuiaLibera,Objeto: GuiaIrregularidadeS_Liberacao,Tipo: StoredProc | Objeto: GuiaIrregularidadeU_Liberacao,Tipo: StoredProc
 FGuiaProcedDesp,CGuiaProcedDesp,SGuiaProcedDesp,Objeto: GuiaProcedDesp,Tipo: Table
 FGuiaTipoAnLibGuiaLog,CGuiaTipoAnLibGuiaLog,SGuiaTipoAnLibGuiaLog,Objeto: GuiaTipoAnLibGuiaLog,Tipo: Table
@@ -302,9 +302,9 @@ FIFRSEmailLog,CIFRSEmailLog,SIFRSEmailLog,Objeto: IFRSEmailLog,Tipo: Table
 FIFRSProcRetornoRDIEnv,CIFRSProcRetornoRDIEnv,SIFRSProcRetornoRDIEnv,Objeto: IFRSArquivo,Tipo: Table
 FIFRSRelRecebiveis,CIFRSRelRecebiveis,SIFRSRelRecebiveis,Objeto: tmpIFRSRelRecebFinal,Tipo: Table
 FIFRS_ListaComissaoIFRS,CIFRS_ListaComissaoIFRS,SIFRS_ListaComissaoIFRS,Objeto: IFRS_ListaComissaoIFRS,Tipo: StoredProc
-FINSS,CINSSAutonomo,SINSS,Objeto: INSS,Tipo: Table
+FINSS,CINSS,SINSS,Objeto: INSS,Tipo: Table
 FINSS,CINSSAutonomo,SINSSAutonomo,Objeto: INSSAutonomo,Tipo: Table
-FIRRFFisDep,CIRRFFisDep,SIRRFFis,Objeto: IRRFFisica,Tipo: Table
+FIRRFFisDep,CIRRFFis,SIRRFFis,Objeto: IRRFFisica,Tipo: Table
 FIRRFFisDep,CIRRFFisDep,SIRRFFisDep,Objeto: IRRFFisicaDepend,Tipo: Table
 FIRRFJud,CIRRFJud,SIRRFJud,Objeto: IRRFJuridica,Tipo: Table
 FISS,CISS,SISS,Objeto: ISSFaturamento,Tipo: Table
@@ -322,10 +322,10 @@ FInclusaoCadastralSIB,CInclusaoCadastralSIB,SInclusaoCadastralSIB,Objeto: ANS_SI
 FIncorporacaoCarteira,CIncorporacaoCarteira,SIncorporacaoCarteira,Objeto: IncorporacaoCarteiraS,Tipo: StoredProc | Objeto: IncorporacaoCarteiraIU,Tipo: StoredProc | Objeto: IncorporacaoCarteiraD,Tipo: StoredProc
 FIndexadorReajuste,CIndexadorReaj,SIndexadorReaj,Objeto: IndexadorReajuste,Tipo: Table
 FInfoErrosImportacaoMonitQualidade,CANSArqMonitConfErro,SANSArqMonitConfErro,Objeto: ANSArqMonitConfErro,Tipo: Table
-FInfoGuiasMonitQualidade,CInfoGuiasMonitQualidade,SANSArqMonitConfDetalhePacote,Objeto: ANSArqMonitConfDetalhePacote,Tipo: Table
-FInfoGuiasMonitQualidade,CInfoGuiasMonitQualidade,SANSArqMonitConfGuia,Objeto: ANSArqMonitConfGuia,Tipo: Table
-FInfoGuiasMonitQualidade,CInfoGuiasMonitQualidade,SANSArqMonitConfLctoItem,Objeto: ANSArqMonitConfLctoItem,Tipo: Table
-FInfoGuiasMonitQualidade,CInfoGuiasMonitQualidade,SInfoGuiasMonitQualidade,Objeto: ANSArqMonitConferencia,Tipo: Table
+FInfoGuiasMonitQualidade,CANSArqMonitConfDetalhePacote,SANSArqMonitConfDetalhePacote,Objeto: ANSArqMonitConfDetalhePacote,Tipo: Table
+FInfoGuiasMonitQualidade,CANSArqMonitConfGuia,SANSArqMonitConfGuia,Objeto: ANSArqMonitConfGuia,Tipo: Table
+FInfoGuiasMonitQualidade,CANSArqMonitConfGuiaLcto,SANSArqMonitConfLctoItem,Objeto: ANSArqMonitConfLctoItem,Tipo: Table
+FInfoGuiasMonitQualidade,CANSArqMonitConfLctoItem,SInfoGuiasMonitQualidade,Objeto: ANSArqMonitConferencia,Tipo: Table
 FInfoLancRegistradosMonitQualidade,CANSArqMonitConfGuiaLctoReg,SANSArqMonitConfGuiaLctoReg,Objeto: ANSArqMonitConfGuiaLctoReg,Tipo: Table
 FInfoOcorrenciaMonitQualidade,CANSArqMonitConfOcorrencia,SANSArqMonitConfOcorrencia,Objeto: ANSArqMonitConfOcorrencia,Tipo: Table
 FInscricaoMedicinaPreventiva,CInscricaoMedicinaPreventiva,SInscricaoMedicinaPreventiva -
@@ -335,13 +335,13 @@ FIntermedParentesco,CIntermedParentesco,SIntermedParentesco,Objeto: IntermedPare
 FIntermedPlano,CIntermedPlano,SIntermedPlano,Objeto: IntermedPlano,Tipo: Table
 FIrregularidadesCobrancasSP,CIrregularidadesCobrancasSP,SIrregularidadesCobrancasSP,Objeto: ProcessoCobranca,Tipo: Table
 FItemObito,CItemObito,SItemObito,Objeto: SIPItemDespObito,Tipo: Table
-FLctosPreviosAssoc,CncaPrevioFaturamento,SLctosPreviosAssoc,Objeto: LctosPreviosAssoc,Tipo: Table
-FLegenda,CSIPItemDespLeg,SLegenda,Objeto: Legenda,Tipo: Table
+FLctosPreviosAssoc,CLctosPreviosAssoc,SLctosPreviosAssoc,Objeto: LctosPreviosAssoc,Tipo: Table
+FLegenda,CLegenda,SLegenda,Objeto: Legenda,Tipo: Table
 FLegenda,CSIPItemDespLeg,SSIPItemDespLeg,Objeto: SIPItemDespLeg,Tipo: Table
 FLegendagem,CLegendagem,SLegendagem,Objeto: MapaAtendimentoS_Legendagem,Tipo: StoredProc | Objeto: MapaAtendimentoU_Legendagem,Tipo: StoredProc
 FLibGuiasCredenciados,CLibGuiasCredenciados,SLibGuiasCredenciados,Objeto: Terceiro,Tipo: Table | Objeto: Fornecedor,Tipo: Table | Objeto: FornecedorS_Credenciado,Tipo: StoredProc | Objeto: tmpFornecedorIU,Tipo: StoredProc
 FLibGuiasCredenciadosProced,CLibGuiasCredenciadosProced,SLibGuiasCredenciadosProced,Objeto: tmpFornecedorProcedimento,Tipo: Table
-FListaIrregularidades,CMensConcat,SListaIrregularidades,Objeto: Guia,Tipo: Table
+FListaIrregularidades,CListaIrregularidades,SListaIrregularidades,Objeto: Guia,Tipo: Table
 FListaIrregularidades,CMensConcat,SMensConcat -
 FLocalAtendimento,CLocalAtendimento,SLocalAtendimento,Objeto: LocalAtendimento,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table
 FLocalAtendimentoPrestadores,CLocalAtendimentoPrestadores,SLocalAtendimentoPrestadores -
@@ -349,7 +349,7 @@ FLocalizacao,CLocalizacao,SLocalizacao,Objeto: Localizacao,Tipo: Table
 FLocalizacaoFisicaArquivo,CLocalizacaoFisicaArquivo,SLocalizacaoFisicaArquivo,Objeto: LocFisicaArqDoc,Tipo: Table
 FLogAtendimento,CLogAtendimento,SLogAtendimento -
 FLogEnvioSIB,CLogEnvioSIB,SLogEnvioSIB,Objeto: AssocANSS_AcompanhamentoLog,Tipo: StoredProc
-FLogGuia,CUsuarioConfigGuiaLog,SLogGuia,Objeto: GuiaLogS,Tipo: StoredProc
+FLogGuia,CLogGuia,SLogGuia,Objeto: GuiaLogS,Tipo: StoredProc
 FLogGuia,CUsuarioConfigGuiaLog,SUsuarioConfigGuiaLog,Objeto: UsuarioConfigGuiaLog,Tipo: Table
 FLogInscrMedPrev,CLogInscrMedPrev,SLogInscrMedPrev -
 FMapaManutPadrao,CMapaManutPadrao,SMapaManutPadrao -
@@ -364,15 +364,15 @@ FMobileSaudePermissaoPadrao,CMobileSaudePermissaoPadrao,SMobileSaudePermissaoPad
 FMobileSaudePermissaoTerceiro,CMobileSaudePermissaoTerceiro,SMobileSaudePermissaoTerceiro,Objeto: MobileSaudePermissaoTerceiro,Tipo: Table
 FModPlanoProd,CModPlanoProd,SModPlanoProd,Objeto: ModPlanoProd,Tipo: Table
 FModalidade,CModalidade,SModalidade,Objeto: Modalidade,Tipo: Table
-FMonitANSGuia,CMonitANSGuiaValores,SMonitANSGuia,Objeto: MonitANSGuia,Tipo: Table | Objeto: MonitANSGuia,Tipo: Table
-FMonitANSGuia,CMonitANSGuiaValores,SMonitANSGuiaCID,Objeto: MonitANSGuiaCID,Tipo: Table
-FMonitANSGuia,CMonitANSGuiaValores,SMonitANSGuiaProcedimentos,Objeto: MonitANSGuiaProcedimentos,Tipo: Table
+FMonitANSGuia,CMonitANSGuia,SMonitANSGuia,Objeto: MonitANSGuia,Tipo: Table | Objeto: MonitANSGuia,Tipo: Table
+FMonitANSGuia,CMonitANSGuiaCID,SMonitANSGuiaCID,Objeto: MonitANSGuiaCID,Tipo: Table
+FMonitANSGuia,CMonitANSGuiaProcedimentos,SMonitANSGuiaProcedimentos,Objeto: MonitANSGuiaProcedimentos,Tipo: Table
 FMonitANSGuia,CMonitANSGuiaValores,SMonitANSGuiaValores,Objeto: MonitANSGuiaValores,Tipo: Table
 FMonitANSTipoMovimento,CMonitANSTipoMovimento,SMonitANSTipoMovimento,Objeto: MonitANSTipoMovimento,Tipo: Table
-FMonitoramentoANS,CMonitoramentoANSRetorno,SANSMonitoramentoQualidade,Objeto: ANSMonitoramentoQualidade,Tipo: Table
-FMonitoramentoANS,CMonitoramentoANSRetorno,SMonitoramentoANS,Objeto: MonitoramentoANS,Tipo: Table
-FMonitoramentoANS,CMonitoramentoANSRetorno,SMonitoramentoANSRetorno,Objeto: MonitoramentoANSRetorno,Tipo: Table
-FMonitoramentoANSRetorno,CMonitANSRetornoGuiasErros,SMonitANSCodErro,Objeto: MonitANSCodErro,Tipo: Table
+FMonitoramentoANS,CANSMonitoramentoQualidade,SANSMonitoramentoQualidade,Objeto: ANSMonitoramentoQualidade,Tipo: Table
+FMonitoramentoANS,CMonitoramentoANS,SMonitoramentoANS,Objeto: MonitoramentoANS,Tipo: Table
+FMonitoramentoANS,CMonitoramentoANS,SMonitoramentoANSRetorno,Objeto: MonitoramentoANSRetorno,Tipo: Table
+FMonitoramentoANSRetorno,CMonitANSCodErro,SMonitANSCodErro,Objeto: MonitANSCodErro,Tipo: Table
 FMonitoramentoANSRetorno,CMonitANSRetornoGuiasErros,SMonitANSRetornoGuiasErros,Objeto: MonitANSRetornoGuiasErros,Tipo: Table
 FMostraMsgAuto,CMostraMsgAuto,SMostraMsgAuto,Objeto: MensagemAutoS,Tipo: StoredProc
 FMostraMsgAutoPonto,CMsgAutomatica,SMsgAutomatica,Objeto: MsgAutomatica,Tipo: Table
@@ -380,7 +380,7 @@ FMostraMsgPrest,CMensagemAutoPrest,SMensagemAutoPrest,Objeto: FornecMsgAuto,Tipo
 FMotivoCancelamentoANS,CMotivoCancelamentoANS,SMotivoCancelamentoANS,Objeto: MotivoCancelamentoANS,Tipo: Table
 FMotivoCancelamentoAutomatico,CMotivoCancelamentoAutomatico,SMotivoCancelamentoAutomatico,Objeto: MotivoCancelamentoAutomatico,Tipo: Table
 FMotivoPermitidoTIMB,CMotivoPermitidoTIMB,SMotivoPermitidoTIMB,Objeto: MotivoPermitidoTIMB,Tipo: Table
-FMsgAutomaticaBase,CMsgAutomaticaBase,SMsgAutoPonto,Objeto: MsgAutoPonto,Tipo: Table
+FMsgAutomaticaBase,CMsgAutoPonto,SMsgAutoPonto,Objeto: MsgAutoPonto,Tipo: Table
 FMsgAutomaticaBase,CMsgAutomaticaBase,SMsgAutomaticaBase -
 FMsgAutomaticaMedPrev,CMsgAutomaticaMedPrev,SMsgAutomaticaMedPrev -
 FNatJud,CNatJud,SNatJud,Objeto: NaturezaJuridica,Tipo: Table
@@ -396,12 +396,12 @@ FOutrasVigenciasDivulgaPrest,CTabPrecoPlano,STabPrecoPlano,Objeto: TabPrecoPlano
 FPIS,CPIS,SPIS,Objeto: PIS,Tipo: Table
 FPacotesFixosPagamentosRealizados,CPacotesFixosPagamentosRealizados,SPacotesFixosPagamentosRealizados -
 FPadraoConforto,CPadraoConforto,SPadraoConforto,Objeto: PadraoConforto,Tipo: Table
-FPadraoContaModalidade,CPadraoContaModalidade,SConfContCliente,Objeto: ConfContCliente,Tipo: Table
-FPadraoContaModalidade,CPadraoContaModalidade,SPadraoContaClientes,Objeto: ConfContClienteCta,Tipo: Table
+FPadraoContaModalidade,CConfContCliente,SConfContCliente,Objeto: ConfContCliente,Tipo: Table
+FPadraoContaModalidade,CPadraoContaClientes,SPadraoContaClientes,Objeto: ConfContClienteCta,Tipo: Table
 FPadraoContaModalidade,CPadraoContaModalidade,SPadraoContaModalidade -
-FPagamento,Cgamento,SProcedimentoVigenciaValorS,Objeto: ProcedimentoVigenciaValorS,Tipo: StoredProc
-FPagamento,Cgamento,STabPrecoAdic,Objeto: TabPrecoAdic,Tipo: Table
-FParamGeraisPagamentos,CParamGeraisPagamentos,SCopartPrestadorConfig,Objeto: CopartPrestadorConfig,Tipo: Table
+FPagamento,CProcedimentoVigenciaValorS,SProcedimentoVigenciaValorS,Objeto: ProcedimentoVigenciaValorS,Tipo: StoredProc
+FPagamento,CTabPrecoAdic,STabPrecoAdic,Objeto: TabPrecoAdic,Tipo: Table
+FParamGeraisPagamentos,CCopartPrestadorConfig,SCopartPrestadorConfig,Objeto: CopartPrestadorConfig,Tipo: Table
 FParamIrregularidades,CParamIrregularidades,SParamIrregularidades,Objeto: ConfIrregularidade,Tipo: Table
 FParametroDmed,CParametroDmed,SParametroDmed,Objeto: ParametroDmed,Tipo: Table
 FParametroNFSe,CParametroNFSe,SParametroNFSe,Objeto: ParametroNFSe,Tipo: Table
@@ -410,41 +410,41 @@ FParamsGeraisAtendimento,CConfAtendimento,SConfAtendimento,Objeto: ConfAtendimen
 FPesqAssociadoInativos,CPesqAssociadoInativos,SPesqAssociadoInativos,Objeto: AssociadoInativo,Tipo: Table
 FPesqCIDNew,CCIDPesqInstantanea,SCIDPesqInstantanea -
 FPesqCadastroRevTabReferencia,CPesqCadastroRevTabReferencia,SPesqCadastroRevTabReferencia -
-FPesqFornecedor,CTipoDocumento,STerceiroDocumento,Objeto: TerceiroDocumento,Tipo: Table
+FPesqFornecedor,CTerceiroDocumento,STerceiroDocumento,Objeto: TerceiroDocumento,Tipo: Table
 FPesqGuia,CPesqGuia,SPesqGuia -
 FPesqGuiaPrincipal,CPesqGuiaPrincipal,SPesqGuiaPrincipal,Objeto: GuiaS_F2GuiaPrinc,Tipo: StoredProc
 FPesqGuias,CPesqGuias,SPesqGuias,Objeto: GuiaS_PesqGuia,Tipo: StoredProc
 FPesqLoteIFRS,CPesqLoteIFRS,SPesqLoteIFRS,Objeto: IFRSArquivo,Tipo: Table
 FPesqPrestadorSimplificada,CPesqPrestadorSimplificada,SPesqPrestadorSimplificada,Objeto: ConfTISS,Tipo: Table
 FPesqProcessoCobranca,CPesqProcessoCobranca,SPesqProcessoCobranca,Objeto: ProcessoCobranca,Tipo: Table
-FPlano,CPlanoValor,SPlano,Objeto: Plano,Tipo: Table
-FPlano,CPlanoValor,SPlanoClasse,Objeto: PlanoClasse,Tipo: Table
-FPlano,CPlanoValor,SPlanoValor,Objeto: PlanoValor,Tipo: Table
-FPlanoCopia,CPlanoCopia,SPlanoCop,Objeto: Plano,Tipo: Table
+FPlano,CPlano,SPlano,Objeto: Plano,Tipo: Table
+FPlano,CPlanoClasse,SPlanoClasse,Objeto: PlanoClasse,Tipo: Table
+FPlano,CPlanoProcPortaEnt,SPlanoValor,Objeto: PlanoValor,Tipo: Table
+FPlanoCopia,CPlanoCop,SPlanoCop,Objeto: Plano,Tipo: Table
 FPlanoCopia,CPlanoCopia,SPlanoCopia,Objeto: PlanoCopia,Tipo: Table
 FPlanoInativo,CPlanoInativo,SPlanoInativo,Objeto: PlanoInativo,Tipo: Table
 FPlanoLocalAtend,CPlanoLocalAtend,SPlanoLocalAtend -
 FPlanoPreviaPacoteFixo,CPlanoPreviaPacoteFixo,SPlanoPreviaPacoteFixo,Objeto: Plano,Tipo: Table
 FPlanoPreviaPagamentos,CPlanoPreviaPagamentos,SPlanoPreviaPagamentos,Objeto: Plano,Tipo: Table
-FPoolDeRisco,CRelatorioPoolRiscoPeriodo,SPoolRiscoPeriodo,Objeto: PoolRiscoPeriodo,Tipo: Table
+FPoolDeRisco,CPoolRiscoPeriodo,SPoolRiscoPeriodo,Objeto: PoolRiscoPeriodo,Tipo: Table
 FPoolDeRisco,CRelatorioPoolRiscoPeriodo,SRelatorioPoolRiscoPeriodo,Objeto: PoolRiscoPeriodo,Tipo: Table | Objeto: PoolRiscoPeriodoVidas,Tipo: Table | Objeto: VidasGrupoFaturamento,Tipo: Table | Objeto: VidasContrato,Tipo: Table | Objeto: Contrato,Tipo: Table | Objeto: Terceiro,Tipo: Table | Objeto: GrupoFaturamento,Tipo: Table | Objeto: Cliente,Tipo: Table
-FPoolEmpresas,CPoolEmpresas,SClientePool,Objeto: Cliente,Tipo: Table | Objeto: Terceiro,Tipo: Table
+FPoolEmpresas,CClientePool,SClientePool,Objeto: Cliente,Tipo: Table | Objeto: Terceiro,Tipo: Table
 FPoolEmpresas,CPoolEmpresas,SPoolEmpresas -
 FPortEntCTS,CPortEntCTS,SPortEntCTS,Objeto: CTSPortaEntr,Tipo: Table
 FPosicaoRelatorioPrevia,CPosicaoRelatorioPrevia,SPosicaoRelatorioPrevia,Objeto: PosicaoRelatorioPrevia,Tipo: Table
 FPostoColeta,CPostoColeta,SPostoColeta,Objeto: PostoColeta,Tipo: Table
 FPrestadorGuia,CPrestadorGuia,SPrestadorGuia,Objeto: Fornecedor,Tipo: Table | Objeto: Terceiro,Tipo: Table | Objeto: FornecedorSORM,Tipo: StoredProc
-FPrestadorServ,CestadorServ,SFornecLocalAtendTipoGuia,Objeto: FornecLocalAtendTipoGuia,Tipo: Table
-FPrestadorServ,CestadorServ,SFornecedorGrupo,Objeto: FornecedorGrupo,Tipo: Table
-FPrestadorServ,CestadorServ,SFornecedorProcedimento,Objeto: FornecedorProcedimento,Tipo: Table
-FPrestadorServ,CestadorServ,SFornecedorSubGrupo,Objeto: FornecedorSubGrupo,Tipo: Table
-FPrestadorServ,CestadorServ,STerceiroEmail,Objeto: TerceiroEmail,Tipo: Table | Objeto: TerceiroEmail,Tipo: Table | Objeto: TipoEmail,Tipo: Table
-FPrestadorServEspecialidadeLocAtend,CPrestadorServEspecialidadeLocAtend,SFornecedorEspecCategoria,Objeto: FornecedorEspecCategoria,Tipo: Table
-FPrestadorServEspecialidadeLocAtend,CPrestadorServEspecialidadeLocAtend,SFornecedorEspecSubEspec,Objeto: FornecedorEspecSubEspec,Tipo: Table
-FPrestadorServEspecialidadeLocAtend,CPrestadorServEspecialidadeLocAtend,SFornecedorLocalEspecialidade,Objeto: FornecedorLocalEspecialidade,Tipo: Table
+FPrestadorServ,CFornecLocalAtendTipoGuia,SFornecLocalAtendTipoGuia,Objeto: FornecLocalAtendTipoGuia,Tipo: Table
+FPrestadorServ,CFornecedorEspecSubEspec,SFornecedorGrupo,Objeto: FornecedorGrupo,Tipo: Table
+FPrestadorServ,CFornecedorGrupo,SFornecedorProcedimento,Objeto: FornecedorProcedimento,Tipo: Table
+FPrestadorServ,CFornecedorProcedimento,SFornecedorSubGrupo,Objeto: FornecedorSubGrupo,Tipo: Table
+FPrestadorServ,CFornecedorSubGrupo,STerceiroEmail,Objeto: TerceiroEmail,Tipo: Table | Objeto: TerceiroEmail,Tipo: Table | Objeto: TipoEmail,Tipo: Table
+FPrestadorServEspecialidadeLocAtend,CFornecedorEspecCategoria,SFornecedorEspecCategoria,Objeto: FornecedorEspecCategoria,Tipo: Table
+FPrestadorServEspecialidadeLocAtend,CFornecedorEspecSubEspec,SFornecedorEspecSubEspec,Objeto: FornecedorEspecSubEspec,Tipo: Table
+FPrestadorServEspecialidadeLocAtend,CFornecedorLocalEspecialidade,SFornecedorLocalEspecialidade,Objeto: FornecedorLocalEspecialidade,Tipo: Table
 FPrestadorServEspecialidadeLocAtend,CPrestadorServEspecialidadeLocAtend,SPrestadorServEspecialidadeLocAtend -
-FPreviaDocFatDetalhe,CtmpDocFaturamento,StmpDocFatLancamento,Objeto: tmpDocFatLancamento,Tipo: Table
-FPreviaDocFatDetalhe,CtmpDocFaturamento,StmpDocFaturamento,Objeto: tmpDocFaturamento,Tipo: Table | Objeto: PreviaFaturamentoD_New,Tipo: StoredProc
+FPreviaDocFatDetalhe,CPreviaFaturamento,StmpDocFatLancamento,Objeto: tmpDocFatLancamento,Tipo: Table
+FPreviaDocFatDetalhe,CtmpDocFatLancamento,StmpDocFaturamento,Objeto: tmpDocFaturamento,Tipo: Table | Objeto: PreviaFaturamentoD_New,Tipo: StoredProc
 FPreviaFaturamento,CPreviaFaturamento,SPreviaFaturamento,Objeto: PreviaFaturamento,Tipo: Table | Objeto: PreviaFaturamentoD_New,Tipo: StoredProc | Objeto: DocFaturamentoS_PreviaNew,Tipo: StoredProc
 FPreviaFaturamentoGuiasCopart,CPreviaFaturamentoGuiasCopart,SPreviaFaturamentoGuiasCopart,Objeto: LancamentosPrevios,Tipo: Table
 FPreviaPesqInst,CPreviaPesqInst,SPreviaPesqInst,Objeto: PreviaFaturamentoS_PesqInst,Tipo: StoredProc
@@ -454,19 +454,19 @@ FProcedDiretriz,CProcedDiretriz,SProcedDiretriz,Objeto: ProcedDiretriz,Tipo: Tab
 FProcedDiretrizTexto,CProcedDiretrizTexto,SProcedDiretrizTexto -
 FProcedInativa,CProcedInativa,SProcedInativa,Objeto: Procedimento,Tipo: Table | Objeto: Procedimento,Tipo: Table
 FProcedPacoteFixoLog,CProcedPacoteFixoLog,SProcedPacoteFixoLog -
-FProcedTipoTabela,CProcedTipoTabela,SProcedTipTProced,Objeto: ProcedTipTProced,Tipo: Table | Objeto: ProcedTipTProced,Tipo: Table | Objeto: Procedimento,Tipo: Table | Objeto: ProcedTipoTISS,Tipo: Table
-FProcedTipoTabela,CProcedTipoTabela,SProcedTipoTISSTxt,Objeto: ProcedTipoTISSTxt,Tipo: Table
-FProcedTipoTabela,CProcedTipoTabela,SProcedTipoTPcte,Objeto: ProcedTipoTPcte,Tipo: Table
+FProcedTipoTabela,CProcedTipTProced,SProcedTipTProced,Objeto: ProcedTipTProced,Tipo: Table | Objeto: ProcedTipTProced,Tipo: Table | Objeto: Procedimento,Tipo: Table | Objeto: ProcedTipoTISS,Tipo: Table
+FProcedTipoTabela,CProcedTipoTISSTxt,SProcedTipoTISSTxt,Objeto: ProcedTipoTISSTxt,Tipo: Table
+FProcedTipoTabela,CProcedTipoTPcte,SProcedTipoTPcte,Objeto: ProcedTipoTPcte,Tipo: Table
 FProcedTipoTabela,CProcedTipoTabela,SProcedTipoTabela -
-FProcedimento,CProcedimentoExcludente,SGrdProcedTipoAnLibGuia,Objeto: ProcedTipoAnLibGuia,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SPlanoProcPortaEnt,Objeto: PlanoProcPortaEnt,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedItemSIP,Objeto: ProcedItemSIP,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedTipoGuia,Objeto: ProcedTipoGuia,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedimento,Objeto: Procedimento,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedimentoAgrupamento,Objeto: AgrupamentoProcedimento,Tipo: Table | Objeto: AgrupamentoProcedimento,Tipo: Table | Objeto: AgrupGrupoSubGrupo,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedimentoCIDSubGrupo,Objeto: ProcCIDSubGrupo,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedimentoCta,Objeto: ProcedimentoCta,Tipo: Table
-FProcedimento,CProcedimentoExcludente,SProcedimentoExcludente,Objeto: ProcedimentoExcludente,Tipo: Table | Objeto: ProcedimentoExcludente,Tipo: Table | Objeto: Procedimento,Tipo: Table
+FProcedimento,CGrdProcedTipoAnLibGuia,SGrdProcedTipoAnLibGuia,Objeto: ProcedTipoAnLibGuia,Tipo: Table
+FProcedimento,CGrdProcedTipoAnLibGuia,SPlanoProcPortaEnt,Objeto: PlanoProcPortaEnt,Tipo: Table
+FProcedimento,CPlanoProcPortaEnt,SProcedItemSIP,Objeto: ProcedItemSIP,Tipo: Table
+FProcedimento,CProcedItemSIP,SProcedTipoGuia,Objeto: ProcedTipoGuia,Tipo: Table
+FProcedimento,CProcedPermitidoAMB,SProcedimento,Objeto: Procedimento,Tipo: Table
+FProcedimento,CProcedTipoGuia,SProcedimentoAgrupamento,Objeto: AgrupamentoProcedimento,Tipo: Table | Objeto: AgrupamentoProcedimento,Tipo: Table | Objeto: AgrupGrupoSubGrupo,Tipo: Table
+FProcedimento,CProcedimento,SProcedimentoCIDSubGrupo,Objeto: ProcCIDSubGrupo,Tipo: Table
+FProcedimento,CProcedimentoAgrupamento,SProcedimentoCta,Objeto: ProcedimentoCta,Tipo: Table
+FProcedimento,CProcedimentoCIDSubGrupo,SProcedimentoExcludente,Objeto: ProcedimentoExcludente,Tipo: Table | Objeto: ProcedimentoExcludente,Tipo: Table | Objeto: Procedimento,Tipo: Table
 FProcedimentoAgrupaImp,CProcedimentoAgrupaImp,SProcedimentoAgrupaImp,Objeto: ProcedimentoAgrupaImp,Tipo: Table
 FProcedimentoCopiar,CProcedimentoCopiar,SProcedimentoCopiar,Objeto: ProcedimentoI_Copiar,Tipo: StoredProc
 FProcedimentoTroca,CProcedimentoTroca,SProcedimentoTroca,Objeto: ProcedimentoTroca,Tipo: Table | Objeto: ProcedimentoTroca,Tipo: Table | Objeto: CodIntProcTipo,Tipo: 'ProcedimentoTroca.CodIntProcTipo
@@ -475,25 +475,25 @@ FProcessoCobrancaClienteF2,CProcessoCobrancaClienteF2,SProcessoCobrancaClienteF2
 FProcessoCobrancaGuiaF2,CValidacaoGuiaProcessoCobranca,SValidacaoGuiaProcessoCobranca,Objeto: ProcessoCobrancaGuia,Tipo: Table
 FProcessoCobrancaValores,CProcessoCobrancaValores,SProcessoCobrancaValores,Objeto: ProcessoCobrancaGuiaProced,Tipo: Table
 FProcessoLog,CProcessoLog,SProcessoLog,Objeto: ProcessoLog,Tipo: Table
-FProcessoPagSelecGuias,CocessoPagSelecGuias,SLocalAtendSelecionaGuias,Objeto: LocalAtendimento,Tipo: Table
+FProcessoPagSelecGuias,CLocalAtendSelecionaGuias,SLocalAtendSelecionaGuias,Objeto: LocalAtendimento,Tipo: Table
 FProcessoPagamentoConfig,CProcessoPagamentoConfig,SProcessoPagamentoConfig,Objeto: ConfProcPagto,Tipo: Table
 FProcessosCobrancasSP,CProcessosCobrancasSP,SProcessosCobrancasSP,Objeto: ProcessoCobranca,Tipo: Table
 FProduto,CProduto,SProduto,Objeto: Produto,Tipo: Table
 FProfissionalImportacao,CArquivoCRMImportacao,SArquivoCRMImportacao -
 FProtocoloEnvioInformacoes,CProtocoloEnvioInformacoes,SProtocoloEnvioInformacoes,Objeto: ProtocoloEnvio,Tipo: Table
 FProtocoloF2,CProtocoloF2,SProtocoloF2,Objeto: RecursoS_F2Protocolo,Tipo: StoredProc
-FProtocoloRecebimento,CProtocoloRecebConsulta,SProtocoloGuiaNet,Objeto: ProtocoloGuiaNet,Tipo: Table
+FProtocoloRecebimento,CProtocoloGuiaNet,SProtocoloGuiaNet,Objeto: ProtocoloGuiaNet,Tipo: Table
 FProtocoloRecebimento,CProtocoloRecebConsulta,SProtocoloRecebConsulta,Objeto: Protocolo,Tipo: Table
 FProtocoloRecebimentoAviso,CProtocoloRecebimentoAviso,SProtocoloRecebimentoAviso,Objeto: AvisoProtocolo,Tipo: Table
 FRDILayout,CRDILayout,SRDILayout,Objeto: TestesRDILayout,Tipo: Table
 FRDILayoutCampos,CRDILayoutCampos,SRDILayoutCampos,Objeto: RDILayoutCampos,Tipo: Table
 FRacaCor,CRacaCor,SRacaCor,Objeto: RacaCor,Tipo: Table
 FRateioCstUnidCopiaConf,CRateioCstUnidCopiaConf,SRateioCstUnidCopiaConf -
-FRateioCustosBeneficiario,CRateioCustosBeneficiario,SRateioCustosBenefCCRateio,Objeto: ConfCstCCstACCst,Tipo: Table | Objeto: CCustos,Tipo: Table | Objeto: ConfCstCCstACCst,Tipo: Table
-FRateioCustosBeneficiario,CRateioCustosBeneficiario,SRateioCustosBenefRateioPlanoAcess,Objeto: ConfCstCCstAPlano,Tipo: Table | Objeto: Plano,Tipo: Table
+FRateioCustosBeneficiario,CRateioCustosBenefCCRateio,SRateioCustosBenefCCRateio,Objeto: ConfCstCCstACCst,Tipo: Table | Objeto: CCustos,Tipo: Table | Objeto: ConfCstCCstACCst,Tipo: Table
+FRateioCustosBeneficiario,CRateioCustosBenefRateioPlanoAcess,SRateioCustosBenefRateioPlanoAcess,Objeto: ConfCstCCstAPlano,Tipo: Table | Objeto: Plano,Tipo: Table
 FRateioCustosBeneficiario,CRateioCustosBeneficiario,SRateioCustosBeneficiario,Objeto: ConfCstCCstAssoc,Tipo: Table | Objeto: ConfCstCCstAssoc,Tipo: Table | Objeto: ParametroInterno,Tipo: Table
 FRateioCustosUnidFechaCompet,CCCstUnidConfRat,SCCstUnidConfRat,Objeto: CCstUnidConfRat,Tipo: Table | Objeto: Unidade,Tipo: Table | Objeto: ConfRateio,Tipo: Table | Objeto: CCstUnidConfRat,Tipo: Table
-FRateioCustosUnidades,CRateioCustosUnidadesDetalhe,SRateioCustosUnidades,Objeto: CCstUnidConfRat,Tipo: Table | Objeto: CCstUnidConfRat,Tipo: Table
+FRateioCustosUnidades,CRateioCustosUnidades,SRateioCustosUnidades,Objeto: CCstUnidConfRat,Tipo: Table | Objeto: CCstUnidConfRat,Tipo: Table
 FRateioCustosUnidadesValoresCopiados,CRateioCustosUnidadesValoresCopiados,SRateioCustosUnidadesValoresCopiados,Objeto: CCstUnidConfRat,Tipo: Table
 FRateioPorAssociado,CRateioPorAssociado,SRateioPorAssociado,Objeto: CustosS_RelCustosAssocOR,Tipo: StoredProc
 FRateioTipoApropriacao,CRateioTipoApropriacao,SRateioTipoApropriacao,Objeto: CustosCCRateioConf,Tipo: Table
@@ -501,12 +501,12 @@ FReajusteTabelfaReferencia,CReajusteTabelfaReferencia,SReajusteTabelfaReferencia
 FRecursoConfig,CRecursoConfig,SRecursoConfig,Objeto: RecursoConfig,Tipo: Table
 FRecursoGlosaF2,CRecursoGlosaF2,SRecursoGlosaF2,Objeto: RecursoS_F2,Tipo: StoredProc
 FRedeGama,CRedeGama,SRedeGama,Objeto: RedeGama,Tipo: Table
-FRegAtuacao,CRegAtuacao,SCidadeXRegiao,Objeto: RegiaoAtLoc,Tipo: Table
+FRegAtuacao,CCidadeXRegiao,SCidadeXRegiao,Objeto: RegiaoAtLoc,Tipo: Table
 FRegAtuacao,CRegAtuacao,SRegAtuacao,Objeto: RegiaoAtuacao,Tipo: Table
 FRegAuxLog,CRegAuxLog,SRegAuxLog,Objeto: RegAuxLog,Tipo: Table
 FRegAuxLogGeracao,CRegAuxLogGeracao,SRegAuxLogGeracao,Objeto: RegAuxTipo,Tipo: Table
 FRegAuxTipo,CRegAuxTipo,SRegAuxTipo,Objeto: RegAuxTipo,Tipo: Table
-FRegiaoMetro,CRegiaoMetroCidade,SRegiaoMetro,Objeto: RegiaoMetro,Tipo: Table
+FRegiaoMetro,CRegiaoMetro,SRegiaoMetro,Objeto: RegiaoMetro,Tipo: Table
 FRegiaoMetro,CRegiaoMetroCidade,SRegiaoMetroCidade,Objeto: RegiaoMetroCidade,Tipo: Table
 FRegimeInternacao,CRegimeInternacao,SRegimeInternacao,Objeto: RegimeInternacao,Tipo: Table
 FRegionalSaude,CRegionalSaude,SRegionalSaude,Objeto: RegionalSaude,Tipo: Table
@@ -514,7 +514,7 @@ FRegionalSaudeANS,CRegionalSaudeANS,SRegionalSaudeANS,Objeto: CidadeRegionalSaud
 FRelacaoPagamentos,CRelacaoPagamentos,SRelacaoPagamentos,Objeto: DocFaturamento,Tipo: Table | Objeto: Fornecedor,Tipo: Table | Objeto: Terceiro,Tipo: Table
 FRelatAssociadoSuspenso,CRelatAssociadoSuspenso,SRelatAssociadoSuspenso,Objeto: AssociadoSuspensoS,Tipo: StoredProc
 FRelatCobrancaCopart,CRelatCobrancaCopart,SRelatCobrancaCopart,Objeto: ParticipacaoCalc,Tipo: Table
-FRelatContratoTipoReajuste,CRelatContratoTipoReajuste,SRelatContratoTipoReajTela,Objeto: ContratoS_FatReajuste,Tipo: StoredProc
+FRelatContratoTipoReajuste,CRelatContratoTipoReajTela,SRelatContratoTipoReajTela,Objeto: ContratoS_FatReajuste,Tipo: StoredProc
 FRelatContratoTipoReajuste,CRelatContratoTipoReajuste,SRelatContratoTipoReajuste,Objeto: ContratoS_FatReajuste,Tipo: StoredProc
 FRelatDevolucoesNaoFat,CRelatDevolucoesNaoFat,SRelatDevolucoesNaoFat,Objeto: LancamentosPrevios,Tipo: Table
 FRelatFichaExtrSint,CRelatFichaExtrSint,SRelatFichaExtrSint,Objeto: DocFaturamentoS_Pgto,Tipo: StoredProc
@@ -526,7 +526,7 @@ FReposMensagemGeral,CMensagemGeral,SMensagemGeral,Objeto: MensagemGeral,Tipo: Ta
 FResumoConfiguracaoModelo,CResumoConfiguracaoModelo,SResumoConfiguracaoModelo -
 FResumoInativos,CResumoInativos_Contrato,SResumoInativos_Contrato,Objeto: ModalidadePlanoValorInativo,Tipo: Table
 FRetificacaoCadastralSIB,CRetificacaoCadastralSIB,SRetificacaoCadastralSIB,Objeto: ANS_SIB_RetificaAssocSU,Tipo: StoredProc
-FRevisaoCadastroInativos,CRevisaoCadastroInativos,SHistPlanoRevisaoInativos -
+FRevisaoCadastroInativos,CHistPlanoRevisaoInativos,SHistPlanoRevisaoInativos -
 FRevisaoCadastroInativos,CRevisaoCadastroInativos,SRevisaoCadastroInativos,Objeto: AssociadoInativo,Tipo: Table
 FSecaoCTS,CSecaoCTS,SSecaoCTS,Objeto: CTSSecao,Tipo: Table
 FSelecionaPlanosPermitidos,CSelecionaPlanosPermitidos,SSelecionaPlanosPermitidos,Objeto: Plano,Tipo: Table
@@ -534,14 +534,14 @@ FServProfCirurgico,CServProfCirurgico,SServProfCirurgico,Objeto: ServicosProfCir
 FSituacaoGuia,CSituacaoGuia,SSituacaoGuia,Objeto: SituacaoGuia,Tipo: Table
 FSituacaoInscricao,CSituacaoInscricao,SSituacaoInscricao -
 FSituacaoProcesso,CSituacaoProcesso,SSituacaoProcesso,Objeto: SituacaoProcesso,Tipo: Table
-FSituacaoProtocoloComunicacao,CProcGuiaRetProtEnvio,SComunicProtEnvio,Objeto: ComunicProtEnvio,Tipo: Table
-FSituacaoProtocoloComunicacao,CProcGuiaRetProtEnvio,SGuiaRetornoProtEnvio,Objeto: GuiaRetornoProtEnvio,Tipo: Table
+FSituacaoProtocoloComunicacao,CComunicProtEnvio,SComunicProtEnvio,Objeto: ComunicProtEnvio,Tipo: Table
+FSituacaoProtocoloComunicacao,CGuiaRetornoProtEnvio,SGuiaRetornoProtEnvio,Objeto: GuiaRetornoProtEnvio,Tipo: Table
 FSituacaoProtocoloComunicacao,CProcGuiaRetProtEnvio,SProcGuiaRetProtEnvio,Objeto: ProcGuiaRetProtEnvio,Tipo: Table
 FStatusCanc,CStatusCanc,SStatusCanc,Objeto: StatusCanc,Tipo: Table
 FStatusProtoc,CStatusProtoc,SStatusProtoc,Objeto: StatusProtoc,Tipo: Table
 FStatusSolic,CStatusSolic,SStatusSolic,Objeto: StatusSolic,Tipo: Table
 FSubstituicaoPrestadorCredenciado,CSubstituicaoPrestadorCredenciado,SSubstituicaoPrestadorCredenciado,Objeto: FornecedorDivulga,Tipo: Table
-FSubstituicaoPrestadorDivulga,CSubstituicaoPrestadorDivulga,SFornecedorDivulga,Objeto: FornecedorDivulga,Tipo: Table | Objeto: FornecedorLocalEspecialidade,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table | Objeto: FornLocAtEndereco,Tipo: Table | Objeto: FornecedorDivulga,Tipo: Table
+FSubstituicaoPrestadorDivulga,CFornecedorDivulga,SFornecedorDivulga,Objeto: FornecedorDivulga,Tipo: Table | Objeto: FornecedorLocalEspecialidade,Tipo: Table | Objeto: LocalAtendimento,Tipo: Table | Objeto: FornLocAtEndereco,Tipo: Table | Objeto: FornecedorDivulga,Tipo: Table
 FSubstituicaoPrestadorDivulga,CSubstituicaoPrestadorDivulga,SSubstituicaoPrestadorDivulga,Objeto: FornecedorDivulga,Tipo: Table
 FTIMBEfetivacaoCadastral,CTIMBEfetivacaoCadastral,STIMBEfetivacaoCadastral -
 FTIMBRelatorioSolicitacoes,CTIMBRelatorioSolicitacoes,STIMBRelatorioSolicitacoes,Objeto: TIMB_ListaMovimentos,Tipo: StoredProc
@@ -558,14 +558,13 @@ FTipoAcidente,CTipoAcidente,STipoAcidente,Objeto: TipoAcidente,Tipo: Table
 FTipoAcomodacaoANS,CTipoAcomodacaoANS,STipoAcomodacaoANS,Objeto: TipoAcomodacaoANS,Tipo: Table
 FTipoAjusteMonitQualidade,CANSArqMonitConfGuiaLcto,SANSArqMonitConfGuiaLcto,Objeto: ANSArqMonitConfGuiaLcto,Tipo: Table
 FTipoAlta,CTipoAlta,STipoAlta,Objeto: TipoAlta,Tipo: Table
-FTipoAnLibGuia,CTipoAnLibGuia,STipoAnLibGUsuario,Objeto: TipoAnLibGUsuario,Tipo: Table
+FTipoAnLibGuia,CTipoAnLibGUsuario,STipoAnLibGUsuario,Objeto: TipoAnLibGUsuario,Tipo: Table
 FTipoAnLibGuia,CTipoAnLibGuia,STipoAnLibGuia,Objeto: TipoAnLibGuia,Tipo: Table
 FTipoAnLibProc,CTipoAnLibProc,STipoAnLibProc,Objeto: TipoAnLibProc,Tipo: Table
-FTipoAprovador,CTipoAprovadorUsuario,STipoAprovador,Objeto: TipoAprovador,Tipo: Table
+FTipoAprovador,CTipoAprovador,STipoAprovador,Objeto: TipoAprovador,Tipo: Table
 FTipoAprovador,CTipoAprovadorUsuario,STipoAprovadorUsuario,Objeto: TipoAprovadorUsuario,Tipo: Table
 FTipoAssoc,CTipoAssoc,STipoAssoc,Objeto: TipoAssociado,Tipo: Table
 FTipoAssociadoANS,CTipoAssociadoANS,STipoAssociadoANS,Objeto: TipoAssocANS,Tipo: Table
-FTipoAtendimento,CTipoAtendimento,STipoAtendimento,Objeto: TipoAtendimento,Tipo: Table | Objeto: TipoAtendimento,Tipo: Table
 FTipoAtendimento,CTipoAtendimento,STipoAtendimento,Objeto: TipoAtendimento,Tipo: Table | Objeto: TipoAtendimento,Tipo: Table
 FTipoAtendimentoANS,CTipoAtendimentoANS,STipoAtendimentoANS,Objeto: TipoAtendimentoANS,Tipo: Table
 FTipoAtividade,CTipoAtividade,STipoAtividade,Objeto: TipoAtividade,Tipo: Table
@@ -584,11 +583,11 @@ FTipoIdentificacaoBenef,CTipoIdentificacaoBenef,STipoIdentificacaoBenef,Objeto: 
 FTipoInformacao,CTipoInformacao,STipoInformacao,Objeto: TipoInfProc,Tipo: Table
 FTipoInternacao,CTipoInternacao,STipoInternacao,Objeto: TipoInternacao,Tipo: Table
 FTipoLancamento,CTipoLancamento,STipoLancamento,Objeto: TipoLancamento,Tipo: Table
-FTipoLancamentoFaturamento,CTipoLancamentoFaturamento,STipoLancamentoFaturamento,Objeto: TipoLancamento,Tipo: Table
+FTipoLancamentoFaturamento,CTipoCustosLctos,STipoLancamentoFaturamento,Objeto: TipoLancamento,Tipo: Table
 FTipoLocAtend,CTipoLocAtend,STipoLocAtend,Objeto: TipoLocAtend,Tipo: Table
 FTipoLogradouro,CTipoLogradouro,STipoLogradouro,Objeto: TipoLogradouro,Tipo: Table
 FTipoMercadoSimpro,CTipoMercadoSimpro,STipoMercadoSimpro,Objeto: TipoMercadoSimpro,Tipo: Table
-FTipoMotivo,CTipoMotivo,SMotivo,Objeto: Motivo,Tipo: Table | Objeto: TipoMotivo,Tipo: Table | Objeto: Motivo,Tipo: Table
+FTipoMotivo,CMotivo,SMotivo,Objeto: Motivo,Tipo: Table | Objeto: TipoMotivo,Tipo: Table | Objeto: Motivo,Tipo: Table
 FTipoMotivo,CTipoMotivo,STipoMotivo,Objeto: TipoMotivo,Tipo: Table
 FTipoPrestador,CTipoPrestador,STipoPrestador,Objeto: TipoPrestador,Tipo: Table
 FTipoProduto,CTipoProduto,STipoProduto,Objeto: TipoProduto,Tipo: Table
@@ -597,30 +596,30 @@ FTipoReajuste,CTipoReajuste,STipoReajuste,Objeto: TipoReajuste,Tipo: Table
 FTipoReceita,CTipoCustosLctos,STipoCustosLctos,Objeto: TipoCustosLctos,Tipo: Table
 FTipoSaida,CTipoSaida,STipoSaida,Objeto: TipoSaida,Tipo: Table
 FTipoSanguineo,CTipoSanguineo,STipoSanguineo,Objeto: TipoSanguineo,Tipo: Table
-FTipoVencimento,CTipoVencimento,STipoVencimento,Objeto: TipoVencimento,Tipo: Table
+FTipoVencimento,CTipoVencFaixa,STipoVencimento,Objeto: TipoVencimento,Tipo: Table
 FTipoVencimento,CTipoVencimento,STipoVencimentoFaixas,Objeto: TipoVencimentoFaixas,Tipo: Table
 FTipoWebServiceTISS,CTipoWebServiceTISS,STipoWebServiceTISS,Objeto: TipoWebServiceTISS,Tipo: Table
 FTitulosCCR,CTitulosCCR,STitulosCCR,Objeto: TipVenda,Tipo: Table | Objeto: TitulosCCRI_Gera,Tipo: StoredProc
 FTpBenefCTS,CTpBenefCTS,STpBenefCTS,Objeto: CTSTipoBenef,Tipo: Table
 FTpRedeCTS,CTpRedeCTS,STpRedeCTS,Objeto: CTSTipoRede,Tipo: Table
-FTrocaProcedimento,CTrocaProcedimentoLog,STrocaProcedimento -
+FTrocaProcedimento,CTrocaProcedimento,STrocaProcedimento -
 FTrocaProcedimento,CTrocaProcedimentoLog,STrocaProcedimentoLog,Objeto: TrocaProcedimentoLog,Tipo: Table
 FTumor,CTumor,STumor,Objeto: Tumor,Tipo: Table
 FTurno,CTurno,STurno,Objeto: Turno,Tipo: Table
 FUFANS,CUFANS,SUFANS,Objeto: UFANS,Tipo: Table
 FUnidadeMedidaANS,CUnidadeMedidaANS,SUnidadeMedidaANS,Objeto: UnidadeMedidaANS,Tipo: Table
-FUnidadeSetoresIntegracao,CUnidadeSetor,SUnidadeProcSetor,Objeto: UnidadeProcSetor,Tipo: Table
+FUnidadeSetoresIntegracao,CUnidadeProcSetor,SUnidadeProcSetor,Objeto: UnidadeProcSetor,Tipo: Table
 FUnidadeSetoresIntegracao,CUnidadeSetor,SUnidadeSetor,Objeto: Unidade,Tipo: Table
 FUnidadesAcertos,CUnidadesAcertos,SUnidadesAcertos -
-FUnidadesPorUsuario,CUsuarioUnidade,SUnidade,Objeto: Unidade,Tipo: Table
-FUnidadesPorUsuario,CUsuarioUnidade,SUnidadesPorUsuario -
+FUnidadesPorUsuario,CUnidade,SUnidade,Objeto: Unidade,Tipo: Table
+FUnidadesPorUsuario,CUnidadesPorUsuario,SUnidadesPorUsuario -
 FUnidadesPorUsuario,CUsuarioUnidade,SUsuarioUnidade,Objeto: UsuarioUnidade,Tipo: Table
 FUsuarioAprovador,CUsuarioAprovador,SUsuarioAprovador,Objeto: UsuarioAprovador,Tipo: Table
 FValoresCentroCustoBeneficiario,CValoresCentroCustoBeneficiario,SValoresCentroCustoBeneficiario,Objeto: ConfCstCCstACCstCalc,Tipo: Table
 FValoresContaContabil,CValoresContaContabil,SValoresContaContabil,Objeto: ConfRateioReceitaCCCalc,Tipo: Table | Objeto: ContaContabil,Tipo: Table
 FValoresContaContabilDetelhado,CValoresContaContabilDetelhado,SValoresContaContabilDetelhado,Objeto: RateioReceitaCCDet,Tipo: Table
 FVerifCIM,CVerifCIM,SVerifCIM,Objeto: GuiaS_VerifCIM,Tipo: StoredProc
-FVerificaBaseANSNew,CVerificaArquivoBaseANSNew,SANSArqConf,Objeto: ANSArqConf,Tipo: Table
+FVerificaBaseANSNew,CANSArqConf,SANSArqConf,Objeto: ANSArqConf,Tipo: Table
 FVerificaIrregularidadeCadastral,CVerificaIrregularidadeCadastral,SVerificaIrregularidadeCadastral,Objeto: IrregularidadeCadastral,Tipo: Table
 FVersaoTISS,CVersaoTISSANS,SVersaoTISSANS,Objeto: VersaoTISSANS,Tipo: Table
 FViaAcesso,CViaAcesso,SViaAcesso,Objeto: ViaAcesso,Tipo: Table

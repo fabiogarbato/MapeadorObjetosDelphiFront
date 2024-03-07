@@ -8,6 +8,8 @@ import Mps from './images/mps.png'
 import Papa from 'papaparse';
 import relacaoFormsClassesObjetos from './text/relacao_forms_classes_objetos.csv'
 import { Link } from 'react-router-dom';
+import ExcelJS from 'exceljs';
+import saveAs from 'file-saver';
 
 const MapeadorDataModule = () => {  
 
@@ -72,7 +74,66 @@ const MapeadorDataModule = () => {
           );
         });
       };
-      
+
+      const exportToExcel = async () => {
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Dados');
+    
+        worksheet.columns = [
+            { header: '', key: 'form', width: 20 },
+            { header: '', key: 'classe', width: 20 },
+            { header: '', key: 'objetosDeBanco', width: 40 }
+        ];
+    
+        worksheet.mergeCells('A1:D1');
+        worksheet.getCell('A1').value = 'Nome: Mapeador Data Module';
+        worksheet.getCell('A1').font = { bold: true };
+    
+        worksheet.mergeCells('A2:D2');
+        worksheet.getCell('A2').value = 'Autor: Fábio Garbato';
+        worksheet.getCell('A2').font = { bold: true };
+    
+        worksheet.mergeCells('A3:D3');
+        worksheet.getCell('A3').value = 'Objetivo: Mapear todos os arquivos do sistema que utilizam a tecnologia sombra e seus objetos de banco';
+        worksheet.getCell('A3').font = { bold: true };
+    
+        worksheet.addRow([]); 
+    
+        worksheet.addRow(['Form', 'Classe', 'Objetos de Banco']);
+    
+        const headerRowNumber = 5; 
+        const headerRow = worksheet.getRow(headerRowNumber);
+        headerRow.font = { bold: true };
+        headerRow.alignment = { horizontal: 'center', vertical: 'center' };
+        headerRow.eachCell((cell) => {
+            cell.border = {
+                top: { style: 'thin' },
+                left: { style: 'thin' },
+                bottom: { style: 'thin' },
+                right: { style: 'thin' }
+            };
+        });
+    
+        dados.forEach(linha => {
+            const [classe, form, ...objetosDeBanco] = linha;
+            worksheet.addRow({
+                classe,
+                form,
+                objetosDeBanco: objetosDeBanco.join(' | ')
+            });
+        });
+    
+        worksheet.eachRow({ includeEmpty: true }, function(row, rowNumber) {
+            if (rowNumber > headerRowNumber) { 
+                row.eachCell({ includeEmpty: true }, function(cell, colNumber) {
+                    cell.alignment = { horizontal: 'center', vertical: 'center' };
+                });
+            }
+        });
+    
+        const buffer = await workbook.xlsx.writeBuffer();
+        saveAs(new Blob([buffer]), 'DataModule.xlsx');
+    };
 
   return (
     
@@ -94,27 +155,30 @@ const MapeadorDataModule = () => {
         <Container className='d-flex justify-content-center align-items-center' style={{ minHeight: '10vh'}}>
             <Row className="w-100">
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
-                <input
-                    type="text"
-                    placeholder="Filtrar..."
-                    value={filtro}
-                    onChange={(e) => setFiltro(e.target.value)}
-                    style={{
-                        borderRadius: '15px', 
-                        border: '1px solid #ced4da', 
-                        padding: '0.375rem 0.75rem', 
-                        outline: 'none', 
-                        transition: 'border-color 0.15s ease-in-out', 
-                    }}
-                    onMouseOver={(e) => (e.currentTarget.style.borderColor = '#198754')} 
-                    onMouseOut={(e) => (e.currentTarget.style.borderColor = '#ced4da')} 
-                />
- 
+                    <input
+                        type="text"
+                        placeholder="Filtrar..."
+                        value={filtro}
+                        onChange={(e) => setFiltro(e.target.value)}
+                        style={{
+                            borderRadius: '15px', 
+                            border: '1px solid #ced4da', 
+                            padding: '0.375rem 0.75rem', 
+                            outline: 'none', 
+                            transition: 'border-color 0.15s ease-in-out', 
+                        }}
+                        onMouseOver={(e) => (e.currentTarget.style.borderColor = '#198754')} 
+                        onMouseOut={(e) => (e.currentTarget.style.borderColor = '#ced4da')} 
+                    />
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center align-items-center">
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
+                    <Button variant="success" style={{ width: '100px', height: '50px' }} onClick={exportToExcel}>
+                        Excel
+                    </Button>
+                    <Container></Container>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <Button variant="success" style={{ width: '100px', height:'50px' }}>
                             Voltar
