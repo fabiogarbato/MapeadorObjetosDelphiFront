@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
-import Papa from 'papaparse';
 import { Link } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
@@ -69,7 +68,7 @@ const Mapeador = () => {
         });
       };
 
-    const [dadosDaTabela, setDadosDaTabela] = useState([]);
+    const [dadosDaTabela] = useState([]);
 
     const exportToExcel = async () => {
     const workbook = new ExcelJS.Workbook();

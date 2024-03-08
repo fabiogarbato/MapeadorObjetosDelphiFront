@@ -14,25 +14,37 @@ import saveAs from 'file-saver';
 const MapeadorDataModule = () => {  
 
     const [dados, setDados] = useState([]);
+    const [filtro, setFiltro] = useState('');
 
     useEffect(() => {
-        Papa.parse(relacaoFormsClassesObjetos, {
-          download: true,
-          header: false,
-          skipEmptyLines: true,
-          complete: (resultado) => {
-            const dadosSemCabecalho = resultado.data.slice(1).map((linha) => {
-              return linha.map((celula) => {
-                return celula.replace('Objeto:', '').replace('Tipo:', '').trim();
-              });
-            });
-            console.log(dadosSemCabecalho);
-            setDados(dadosSemCabecalho);
+        const fetchData = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/dadosDataModule');
+            const data = await response.json();
+            setDados(data);
+          } catch (error) {
+            console.error('Erro ao buscar dados:', error);
           }
-        });
-      }, []);
+        };
+        fetchData();
+      }, [filtro]);
 
-    const [filtro, setFiltro] = useState('');
+    // useEffect(() => {
+    //     Papa.parse(relacaoFormsClassesObjetos, {
+    //       download: true,
+    //       header: false,
+    //       skipEmptyLines: true,
+    //       complete: (resultado) => {
+    //         const dadosSemCabecalho = resultado.data.slice(1).map((linha) => {
+    //           return linha.map((celula) => {
+    //             return celula.replace('Objeto:', '').replace('Tipo:', '').trim();
+    //           });
+    //         });
+    //         console.log(dadosSemCabecalho);
+    //         setDados(dadosSemCabecalho);
+    //       }
+    //     });
+    //   }, []);
 
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
@@ -187,52 +199,42 @@ const MapeadorDataModule = () => {
                 </Col>
             </Row>    
         </Container>
-            <Table striped bordered hover style={{ width: 'auto', margin: 'auto' }}>
+        <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: 'auto', margin: 'auto' }}>
                 <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                     <tr>
                         <th>Form</th>
                         <th>Classe</th>
-                        <th>Relatório</th>
+                        <th>Relatorio</th>
                         <th>Objetos de Banco</th>
                     </tr>
                 </thead>
                 <tbody>
                     {dados
-                        .filter((linha) => {
-                            const [form, classe, ...objetosDeBanco] = linha;
+                        .filter(linha => {
                             const termoFiltrado = filtro.toLowerCase();
                             return (
-                                form.toLowerCase().includes(termoFiltrado) ||
-                                classe.toLowerCase().includes(termoFiltrado) ||
-                                objetosDeBanco.some(objeto => objeto.toLowerCase().includes(termoFiltrado))
+                                (linha.form && linha.form.toLowerCase().includes(termoFiltrado)) ||
+                                (linha.classe && linha.classe.toLowerCase().includes(termoFiltrado)) ||
+                                '' ||
+                                (linha.objetobanco && linha.objetobanco.toLowerCase().includes(termoFiltrado))
                             );
                         })
                         .map((linha, indexLinha) => {
-                            const [form, classe, ...objetosDeBanco] = linha;
-                            const objetosTiposConcatenados = objetosDeBanco
-                                .flatMap(objetoDeBanco => typeof objetoDeBanco === 'string'
-                                    ? objetoDeBanco.replace('Objeto: ', '').replace('Tipo: ', '').split(' | ')
-                                    : []
-                                )
-                                .join(' | ');
-
                             return (
-                                <React.Fragment key={indexLinha}>
-                                    <tr>
-                                        <td style={cellStyle}>{classe}</td>
-                                        <td style={cellStyle}>{form}</td>
-                                        <td style={cellStyle}>''</td>
-                                        <td style={cellStyle}>
+                                <tr key={indexLinha}>
+                                    <td style={cellStyle}>{linha.form}</td>
+                                    <td style={cellStyle}>{linha.classe}</td>
+                                    <td style={cellStyle}>''</td>
+                                    <td style={cellStyle}>
                                             <Button
                                                 variant="success"
                                                 style={{ width: '70px', height: '50px' }}
-                                                onClick={() => handleOpenModal(objetosTiposConcatenados || 'N/A')}
+                                                onClick={() => handleOpenModal(linha.objetobanco)}
                                             >
                                                 Ver
                                             </Button>
                                         </td>
-                                    </tr>
-                                </React.Fragment>
+                                </tr>
                             );
                         })}
                 </tbody>

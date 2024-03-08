@@ -17,7 +17,7 @@ const pool = new Pool({
 
 app.get('/dados', async (req, res) => {
     try {
-      const result = await pool.query('SELECT "form", classe, sombra, objetobanco FROM Mapa');
+      const result = await pool.query('SELECT "form", classe, sombra, objetobanco FROM Mapa WHERE sombra IS NOT NULL');
       const rows = result.rows;
       res.json(rows);
     } catch (err) {
@@ -25,6 +25,17 @@ app.get('/dados', async (req, res) => {
       res.status(500).send('Server Error');
     }
   });  
+
+app.get('/dadosDataModule', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT form, classe, objetobanco FROM Mapa WHERE Relatorio ISNULL AND Sombra ISNULL');
+        const rows = result.rows;
+        res.json(rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});  
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
