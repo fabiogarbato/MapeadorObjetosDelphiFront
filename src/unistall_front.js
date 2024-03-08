@@ -6,7 +6,7 @@ var svc = new Service({
     //Descricao que vai aparecer no Gerenciamento de serviço do Windows
     description: 'Front do Mapeamento do HomePar',
     //caminho absoluto do seu script
-    script: 'C:\\Projetos\\fabio.garbato\\MapeadorObjetosDelphiFront\\App.js'
+    script: 'C:\\Projetos\\fabio.garbato\\MapeadorObjetosDelphiFront\\src\\App.js'
 });
 svc.on('uninstall', function () {
     console.log('Uninstall complete.');
