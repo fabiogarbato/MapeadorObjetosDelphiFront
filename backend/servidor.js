@@ -12,14 +12,13 @@ const pool = new Pool({
     password: 'BPt3bpMRzivTo3tamwC9',
     database: 'migracaoSql',
     port: 5432,
-    ssl: false // Desative o SSL aqui
+    ssl: false 
   });
 
 app.get('/dados', async (req, res) => {
     try {
       const result = await pool.query('SELECT "form", classe, sombra, objetobanco FROM Mapa');
       const rows = result.rows;
-      console.log(rows);  
       res.json(rows);
     } catch (err) {
       console.error(err.message);
