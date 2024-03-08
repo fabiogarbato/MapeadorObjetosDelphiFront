@@ -6,7 +6,7 @@ var svc = new Service({
     //Descricao que vai aparecer no Gerenciamento de serviço do Windows
     description: 'Serviço do Mapeamento do HomePar',
     //caminho absoluto do seu script
-    script: 'C:\\Projetos\\MigraçãoSQL\\MapeadorObjetosDelphiFront\\backend\\servidor.js',
+    script: 'C:\\Projetos\\fabio.garbato\\MapeadorObjetosDelphiFront\\backend\\servidor.js',
     env: [{
         name: "NODE_ENV",
         value: "production" // service is now able to access the user who created its' home directory
