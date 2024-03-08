@@ -17,7 +17,7 @@ const Mapeador = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:5000/dados');
+            const response = await fetch('http://cerato.mps.interno:4444/dados');
             const data = await response.json();
             setDados(data);
           } catch (error) {
@@ -170,10 +170,9 @@ const Mapeador = () => {
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
-                    <Button variant="success" style={{ width: '100px', height: '50px' }} onClick={() => exportToExcel(dadosDaTabela)}>
+                    <Button classname='mr-5' variant="success" style={{ width: '100px', height: '50px', marginRight:'5px' }} onClick={() => exportToExcel(dadosDaTabela)}>
                         Excel
                     </Button>
-                    <Container></Container>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <Button variant="success" style={{ width: '100px', height:'50px' }}>
                             Voltar
