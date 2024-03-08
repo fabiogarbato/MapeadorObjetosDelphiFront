@@ -2,11 +2,11 @@ var Service = require('node-windows').Service;
 // Criando um novo objeto do serviço
 var svc = new Service({
     //Nome do servico
-    name: 'MigracaoSQL-Front',
+    name: 'MigracaoSQL_Front',
     //Descricao que vai aparecer no Gerenciamento de serviço do Windows
     description: 'Front do Mapeamento do HomePar',
     //caminho absoluto do seu script
-    script: 'C:\\Projetos\\fabio.garbato\\MapeadorObjetosDelphiFront\\src\\Home.js',
+    script: 'C:\\Projetos\\fabio.garbato\\MapeadorObjetosDelphiFront\\src\\App.js',
     env: [{
         name: "NODE_ENV",
         value: "production" // service is now able to access the user who created its' home directory
