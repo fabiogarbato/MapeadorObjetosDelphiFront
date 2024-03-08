@@ -13,7 +13,7 @@ var svc = new Service({
     },
 	{
 		name:"port",
-		value:"4040"
+		value:"4444"
 	}]//,
     //allowServiceLogon: true
 });
