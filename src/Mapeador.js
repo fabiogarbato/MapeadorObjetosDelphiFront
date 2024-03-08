@@ -5,7 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
 import Papa from 'papaparse';
-import relacaoFormsSombrasObjetos from './text/relacao_forms_sombras_objetos.csv'
 import { Link } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
@@ -13,25 +12,20 @@ import saveAs from 'file-saver';
 const Mapeador = () => {  
 
     const [dados, setDados] = useState([]);
+    const [filtro, setFiltro] = useState('');
 
     useEffect(() => {
-        Papa.parse(relacaoFormsSombrasObjetos, {
-          download: true,
-          header: false,
-          skipEmptyLines: true,
-          complete: (resultado) => {
-            const dadosSemCabecalho = resultado.data.slice(1).map((linha) => {
-              return linha.map((celula) => {
-                return celula.replace('Objeto:', '').replace('Tipo:', '').trim();
-              });
-            });
-            console.log(dadosSemCabecalho);
-            setDados(dadosSemCabecalho);
+        const fetchData = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/dados');
+            const data = await response.json();
+            setDados(data);
+          } catch (error) {
+            console.error('Erro ao buscar dados:', error);
           }
-        });
-      }, []);
-
-      const [filtro, setFiltro] = useState('');
+        };
+        fetchData();
+      }, [filtro]);
 
       const cellStyle = {
         wordBreak: 'break-word', 
@@ -39,16 +33,17 @@ const Mapeador = () => {
         overflow: 'hidden', 
         whiteSpace: 'normal' 
       };
-    
+      const [dadosDaTabela, setDadosDaTabela] = useState([]);
+
       const exportToExcel = async () => {
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Dados');
     
         worksheet.columns = [
-            { header: '', key: 'form', width: 20 },
-            { header: '', key: 'classe', width: 20 },
-            { header: '', key: 'sombra', width: 20 },
-            { header: '', key: 'objetosDeBanco', width: 40 }
+            { header: 'Form', key: 'form', width: 20 },
+            { header: 'Classe', key: 'classe', width: 20 },
+            { header: 'Sombra', key: 'sombra', width: 20 },
+            { header: 'Objetos de Banco', key: 'objetobanco', width: 40 }
         ];
     
         worksheet.mergeCells('A1:D1');
@@ -81,12 +76,11 @@ const Mapeador = () => {
         });
     
         dados.forEach(linha => {
-            const [form, classe, sombra, ...objetosDeBanco] = linha;
             worksheet.addRow({
-                form,
-                classe,
-                sombra,
-                objetosDeBanco: objetosDeBanco.join(' | ')
+                form: linha.form,
+                classe: linha.classe,
+                sombra: linha.sombra,
+                objetobanco: linha.objetobanco
             });
         });
     
@@ -100,7 +94,7 @@ const Mapeador = () => {
     
         const buffer = await workbook.xlsx.writeBuffer();
         saveAs(new Blob([buffer]), 'Sombra.xlsx');
-    };
+    }; 
     
   return (
     <Container fluid style={{ backgroundColor: 'white'}}>
@@ -142,7 +136,7 @@ const Mapeador = () => {
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
-                    <Button variant="success" style={{ width: '100px', height: '50px' }} onClick={exportToExcel}>
+                    <Button variant="success" style={{ width: '100px', height: '50px' }} onClick={() => exportToExcel(dadosDaTabela)}>
                         Excel
                     </Button>
                     <Container></Container>
@@ -166,34 +160,24 @@ const Mapeador = () => {
                 </thead>
                 <tbody>
                     {dados
-                        .filter((linha) => {
-                            const [form, classe, sombra, ...objetosDeBanco] = linha;
+                        .filter(linha => {
+                           
                             const termoFiltrado = filtro.toLowerCase();
                             return (
-                                form.toLowerCase().includes(termoFiltrado) ||
-                                classe.toLowerCase().includes(termoFiltrado) ||
-                                sombra.toLowerCase().includes(termoFiltrado) ||
-                                objetosDeBanco.some(objeto => objeto.toLowerCase().includes(termoFiltrado))
+                                linha.form.toLowerCase().includes(termoFiltrado) ||
+                                linha.classe.toLowerCase().includes(termoFiltrado) ||
+                                linha.sombra.toLowerCase().includes(termoFiltrado) ||
+                                linha.objetobanco.toLowerCase().includes(termoFiltrado)
                             );
                         })
                         .map((linha, indexLinha) => {
-                            const [form, classe, sombra, ...objetosDeBanco] = linha;
-                            const objetosTiposConcatenados = objetosDeBanco
-                                .flatMap(objetoDeBanco => typeof objetoDeBanco === 'string'
-                                    ? objetoDeBanco.replace('Objeto: ', '').replace('Tipo: ', '').split(' | ')
-                                    : []
-                                )
-                                .join(' | ');
-
                             return (
-                                <React.Fragment key={indexLinha}>
-                                    <tr>
-                                        <td style={cellStyle}>{form}</td>
-                                        <td style={cellStyle}>{classe}</td>
-                                        <td style={cellStyle}>{sombra}</td>
-                                        <td style={cellStyle}>{objetosTiposConcatenados || 'N/A'}</td>
-                                    </tr>
-                                </React.Fragment>
+                                <tr key={indexLinha}>
+                                    <td style={cellStyle}>{linha.form}</td>
+                                    <td style={cellStyle}>{linha.classe}</td>
+                                    <td style={cellStyle}>{linha.sombra}</td>
+                                    <td style={cellStyle}>{linha.objetobanco}</td>
+                                </tr>
                             );
                         })}
                 </tbody>
