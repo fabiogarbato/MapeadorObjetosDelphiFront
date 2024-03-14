@@ -47,6 +47,10 @@ const Mapeador = () => {
     };
 
     const formatModalContent = (content) => {
+        if (!content) {
+            return <div style={{ textAlign: 'center', padding: '20px' }}>Nenhum dado disponível, verificar .PAS</div>;
+        }
+
         const blocks = content.split(/(?:StoredProcName:|SQL.Query:)/).filter(Boolean);
         return blocks.map((block, index) => {
           const trimmedBlock = block.trim().replace(/\|\s*$/, ''); 
