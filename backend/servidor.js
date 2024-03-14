@@ -17,7 +17,7 @@ const pool = new Pool({
 
 app.get('/dados', async (req, res) => {
     try {
-      const result = await pool.query('SELECT "form", classe, sombra, objetobanco FROM Mapa WHERE sombra IS NOT NULL');
+      const result = await pool.query('SELECT form, classe, sombra, objetobanco FROM Mapa WHERE sombra IS NOT NULL ORDER BY form ASC');
       const rows = result.rows;
       res.json(rows);
     } catch (err) {
@@ -28,7 +28,7 @@ app.get('/dados', async (req, res) => {
 
 app.get('/dadosDataModule', async (req, res) => {
     try {
-        const result = await pool.query('SELECT form, classe, objetobanco FROM Mapa WHERE Relatorio ISNULL AND Sombra ISNULL');
+        const result = await pool.query('SELECT form, classe, relatorio, objetobanco FROM Mapa WHERE Sombra ISNULL ORDER BY form ASC');
         const rows = result.rows;
         res.json(rows);
     } catch (err) {
