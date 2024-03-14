@@ -204,46 +204,48 @@ const MapeadorDataModule = () => {
                 </Col>
             </Row>    
         </Container>
-        <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: 'auto', margin: 'auto' }}>
-            <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
-                <tr>
-                    <th>Form</th>
-                    <th>Classe</th>
-                    <th>Relatorio</th>
-                    <th>Objetos de Banco</th>
-                </tr>
-            </thead>
-            <tbody>
-                {dados
-                    .filter(linha => {
-                        const termoFiltrado = filtro.toLowerCase();
-                        return (
-                            (linha.form && linha.form.toLowerCase().includes(termoFiltrado)) ||
-                            (linha.classe && linha.classe.toLowerCase().includes(termoFiltrado)) ||
-                            (linha.relatorio && linha.relatorio.toLowerCase().includes(termoFiltrado)) ||
-                            (linha.objetobanco && linha.objetobanco.toLowerCase().includes(termoFiltrado))
-                        );
-                    })
-                    .map((linha, indexLinha) => {
-                        return (
-                            <tr key={indexLinha}>
-                                <td style={cellStyle}>{linha.form}</td>
-                                <td style={cellStyle}>{linha.classe}</td>
-                                <td style={cellStyle}>{linha.relatorio ? linha.relatorio : ''}</td>
-                                <td style={cellStyle}>
-                                    <Button
-                                        variant="success"
-                                        style={{ width: '70px', height: '50px' }}
-                                        onClick={() => handleOpenModal(linha.objetobanco)}
-                                    >
-                                        Ver
-                                    </Button>
-                                </td>
-                            </tr>
-                        );
-                    })}
-            </tbody>
-        </Table>
+        <Container className='d-flex justify-content-center align-items-center' style={{ minHeight: '10vh'}}>
+            <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: '100%', margin: 'auto' }}>
+                <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
+                    <tr>
+                        <th>Form</th>
+                        <th>Classe</th>
+                        <th>Relatorio</th>
+                        <th>Objetos de Banco</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {dados
+                        .filter(linha => {
+                            const termoFiltrado = filtro.toLowerCase();
+                            return (
+                                (linha.form && linha.form.toLowerCase().includes(termoFiltrado)) ||
+                                (linha.classe && linha.classe.toLowerCase().includes(termoFiltrado)) ||
+                                (linha.relatorio && linha.relatorio.toLowerCase().includes(termoFiltrado)) ||
+                                (linha.objetobanco && linha.objetobanco.toLowerCase().includes(termoFiltrado))
+                            );
+                        })
+                        .map((linha, indexLinha) => {
+                            return (
+                                <tr key={indexLinha}>
+                                    <td style={cellStyle}>{linha.form}</td>
+                                    <td style={cellStyle}>{linha.classe}</td>
+                                    <td style={cellStyle}>{linha.relatorio ? linha.relatorio : ''}</td>
+                                    <td style={cellStyle}>
+                                        <Button
+                                            variant="success"
+                                            style={{ width: '70px', height: '50px' }}
+                                            onClick={() => handleOpenModal(linha.objetobanco)}
+                                        >
+                                            Ver
+                                        </Button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                </tbody>
+            </Table>
+        </Container>
         <Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Detalhes dos Objetos de Banco</Modal.Title>
