@@ -17,7 +17,7 @@ const Mapeador = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://cerato.mps.interno:4444/dados');
+            const response = await fetch('https://cerato.mps.interno:4446/dados');
             const data = await response.json();
             setDados(data);
           } catch (error) {
