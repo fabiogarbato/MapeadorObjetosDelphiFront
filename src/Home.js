@@ -40,7 +40,11 @@ const App = () => {
             </Row>
             <Row className='mb-5'>
                 <Col className='d-flex justify-content-center'>
-                    <Button variant="success" style={{ width: '300px', height:'100px' }}>Relatório</Button>
+                    <Link to="/Relatorio" style={{ textDecoration: 'none' }}>
+                        <Button variant="success" style={{ width: '300px', height:'100px' }}>
+                            Relatório
+                        </Button>
+                    </Link>
                 </Col>
             </Row>      
         </Container>

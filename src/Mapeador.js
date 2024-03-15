@@ -47,6 +47,10 @@ const Mapeador = () => {
     };
 
     const formatModalContent = (content) => {
+        if (!content) {
+            return <div style={{ textAlign: 'center', padding: '20px' }}>Nenhum dado disponível, verificar .PAS</div>;
+        }
+
         const blocks = content.split(/(?:StoredProcName:|SQL.Query:)/).filter(Boolean);
         return blocks.map((block, index) => {
           const trimmedBlock = block.trim().replace(/\|\s*$/, ''); 
@@ -181,8 +185,8 @@ const Mapeador = () => {
                 </Col>
             </Row>    
         </Container>
-        <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
-            <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: 'auto', margin: 'auto' }}>
+        <Container className='d-flex justify-content-center align-items-center' style={{ minHeight: '10vh'}}>
+            <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: '100%', margin: 'auto' }}>
                 <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                     <tr>
                         <th>Form</th>
@@ -222,7 +226,7 @@ const Mapeador = () => {
                         })}
                 </tbody>
             </Table>
-        </div>
+        </Container>
         <Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Detalhes dos Objetos de Banco</Modal.Title>

@@ -37,6 +37,17 @@ app.get('/dadosDataModule', async (req, res) => {
     }
 });  
 
+app.get('/dadosRelatorio', async (req, res) => {
+  try {
+      const result = await pool.query('SELECT form, classe, sombra, relatorio, objetobanco FROM Mapa ORDER BY form ASC');
+      const rows = result.rows;
+      res.json(rows);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+  }
+});  
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
