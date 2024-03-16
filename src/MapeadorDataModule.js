@@ -5,11 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Mps from './images/mps.png'
-import Papa from 'papaparse';
-import relacaoFormsClassesObjetos from './text/relacao_forms_classes_objetos.csv'
 import { Link } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
+import { API_BASE_URL } from './config';
 
 const MapeadorDataModule = () => {  
 
@@ -19,7 +18,7 @@ const MapeadorDataModule = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://cerato.mps.interno:4446/dadosDataModule');
+            const response = await fetch(`${API_BASE_URL}/dadosDataModule`);
             const data = await response.json();
             setDados(data);
           } catch (error) {
@@ -192,10 +191,9 @@ const MapeadorDataModule = () => {
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
-                    <Button variant="success" style={{ width: '100px', height: '50px' }} onClick={exportToExcel}>
+                    <Button classname='mr-5' variant="success" style={{ width: '100px', height: '50px', marginRight:'5px' }} onClick={exportToExcel}>
                         Excel
                     </Button>
-                    <Container></Container>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <Button variant="success" style={{ width: '100px', height:'50px' }}>
                             Voltar

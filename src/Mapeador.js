@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { API_BASE_URL } from './config';
 
 const Mapeador = () => {  
 
@@ -17,7 +18,7 @@ const Mapeador = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://cerato.mps.interno:4446/dados');
+            const response = await fetch(`${API_BASE_URL}/dados`);
             const data = await response.json();
             setDados(data);
           } catch (error) {

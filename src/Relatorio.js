@@ -1,5 +1,5 @@
 import './Relatorio.css';
-import {Container, Row, Col, Image, Button, Modal, Form}  from 'react-bootstrap';
+import {Container, Row, Col, Image, Button, Modal}  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +12,7 @@ import 'react-calendar/dist/Calendar.css';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import ListaEventos from './ListaEventos.js'
+import { API_BASE_URL } from './config';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -40,7 +41,7 @@ const Relatorio = () => {
 
     const fetchEventos = async () => {
         try {
-            const response = await fetch('http://localhost:5000/eventosProjeto');
+            const response = await fetch(`${API_BASE_URL}/eventosProjeto`);
             const eventos = await response.json();
             const eventosComDataComoDate = eventos.map(evento => ({
                 ...evento,
@@ -81,7 +82,7 @@ const Relatorio = () => {
             };
 
             try {
-                const response = await fetch(`http://localhost:5000/eventosProjeto/${eventoEmEdicao.id}`, {
+                const response = await fetch(`${API_BASE_URL}/eventosProjeto/${eventoEmEdicao.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ const Relatorio = () => {
     const handleAddEvento = async () => {
         const novoEvento = { data: new Date().toISOString(), evento: 'Novo Evento' };
         try {
-            const response = await fetch('http://localhost:5000/eventosProjeto', {
+            const response = await fetch(`${API_BASE_URL}/eventosProjeto`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -129,7 +130,7 @@ const Relatorio = () => {
 
     const handleDeleteEvento = async (id) => {
         try {
-            await fetch(`http://localhost:5000/eventosProjeto/${id}`, {
+            await fetch(`${API_BASE_URL}/eventosProjeto/${id}`, {
                 method: 'DELETE',
             });
             setEventosCronograma(eventosCronograma.filter(evento => evento.id !== id));
