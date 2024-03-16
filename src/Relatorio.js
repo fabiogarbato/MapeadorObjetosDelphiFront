@@ -73,6 +73,7 @@ const ListaDeEventos = ({
                                     console.error('Evento em edição ou texto editado é undefined');
                                 }
                             }}
+                            className="ms-2"
                             >
                             Salvar
                         </Button>
