@@ -1,6 +1,6 @@
 import './Relatorio.css';
 import {Container, Row, Col, Image, Button, Modal, Form}  from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
@@ -11,7 +11,7 @@ import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -19,7 +19,6 @@ Chart.register(ArcElement, Tooltip, Legend);
 
 const ListaDeEventos = ({
     eventos,
-    eventoSelecionado,
     setEventoSelecionado,
     handleAddEvento,
     handleEditInicio,
@@ -29,14 +28,18 @@ const ListaDeEventos = ({
     textoEditado,
     setTextoEditado,
     dataEditada,
-    setDataEditada
+    setDataEditada,
+    handleDeleteEvento
   }) => {
-  
-    const handleEditarClick = (evento) => {
-      setEventoEmEdicao(evento); 
-      setEventoSelecionado(evento); 
+
+    const [showModal, setShowModal] = useState(false);
+    const [eventoParaExcluir, setEventoParaExcluir] = useState(null);
+
+    const abrirModalExclusao = (evento) => {
+        setEventoParaExcluir(evento);
+        setShowModal(true);
     };
-  
+    
     return (
         <div className="lista-eventos">
           <h5>Eventos do Projeto:</h5>
@@ -79,13 +82,42 @@ const ListaDeEventos = ({
                         </Button>
                     </>
                     ) : (
-                    <Button 
-                        variant="outline-success" 
-                        onClick={() => handleEditInicio(evento)}
-                        className="ms-2 btn-editar"
-                    >
-                        <FontAwesomeIcon icon={faPencilAlt} />
-                    </Button>
+                        <>
+                            <Button 
+                                variant="outline-success" 
+                                onClick={() => handleEditInicio(evento)}
+                                className="ms-2 btn-editar"
+                            >
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            </Button>
+                            <Button 
+                                variant="outline-danger" 
+                                onClick={() => abrirModalExclusao(evento)}
+                                className="ms-2 btn-excluir"
+                            >
+                                <FontAwesomeIcon icon={faTrashAlt} />
+                            </Button>
+
+                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Confirmação de Exclusão</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    Tem certeza de que deseja excluir este evento?
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="success" onClick={() => setShowModal(false)}>
+                                        Cancelar
+                                    </Button>
+                                    <Button variant="danger" onClick={() => {
+                                        handleDeleteEvento(eventoParaExcluir.id);
+                                        setShowModal(false);
+                                    }}>
+                                        Excluir
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </>
                 )}
               </Form.Group>
             ))}
@@ -120,16 +152,30 @@ const Relatorio = () => {
 
     const [showCronogramaModal, setShowCronogramaModal] = useState(false);
 
+    const fetchEventos = async () => {
+        try {
+            const response = await fetch('http://cerato.mps.interno:4446/eventosProjeto');
+            const eventos = await response.json();
+            const eventosComDataComoDate = eventos.map(evento => ({
+                ...evento,
+                data: new Date(evento.data) 
+            }));
+            setEventosCronograma(eventosComDataComoDate); 
+        } catch (err) {
+            console.error('Erro ao buscar eventos:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchEventos(); 
+    }, []); 
+
     const handleCronogramaClose = () => setShowCronogramaModal(false);
     const handleCronogramaShow = () => setShowCronogramaModal(true);
 
-    const [eventosCronograma, setEventosCronograma] = useState([
-        { data: new Date(2024, 1, 12), evento: 'Início da Migração' },
-        { data: new Date(2024, 4, 15), evento: 'Revisão Intermediária' },
-        { data: new Date(2025, 1, 12), evento: 'Fim da Migração' }
-    ]);
+    const [eventosCronograma, setEventosCronograma] = useState([]);
 
-    const [eventoSelecionado, setEventoSelecionado] = useState(null);
+    const [setEventoSelecionado] = useState(null);
     const [eventoEmEdicao, setEventoEmEdicao] = useState(null);
     const [textoEditado, setTextoEditado] = useState("");
     const [dataEditada, setDataEditada] = useState(null);
@@ -140,34 +186,87 @@ const Relatorio = () => {
         setDataEditada(evento.data);
       };
     
-      const handleEditSalvar = (index) => {
+    const handleEditSalvar = async (index) => {
         if (eventoEmEdicao && textoEditado && dataEditada) {
-          const eventosAtualizados = eventosCronograma.map((evento, idx) =>
-            idx === index ? { ...evento, evento: textoEditado, data: dataEditada } : evento
-          );
-          setEventosCronograma(eventosAtualizados);
-          setEventoEmEdicao(null);
-          setTextoEditado("");
-          setDataEditada(null); 
+            const eventoAtualizado = {
+                ...eventoEmEdicao,
+                evento: textoEditado,
+                data: dataEditada.toISOString(),
+            };
+
+            try {
+                const response = await fetch(`http://cerato.mps.interno:4446/eventosProjeto/${eventoEmEdicao.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(eventoAtualizado),
+                });
+                const eventoSalvo = await response.json();
+
+                eventoSalvo.data = new Date(eventoSalvo.data);
+
+                const eventosAtualizados = eventosCronograma.map((evento) =>
+                    evento.id === eventoSalvo.id ? { ...eventoSalvo, data: new Date(eventoSalvo.data) } : evento
+                );
+
+                setEventosCronograma(eventosAtualizados);
+                setEventoEmEdicao(null);
+                setTextoEditado("");
+                setDataEditada(null);
+            } catch (err) {
+                console.error('Erro ao salvar evento:', err);
+            }
         } else {
-          console.error('Algo está undefined ao salvar');
+            console.error('Algo está undefined ao salvar');
         }
-      };
+    };
+    
+    const handleAddEvento = async () => {
+        const novoEvento = { data: new Date().toISOString(), evento: 'Novo Evento' };
+        try {
+            const response = await fetch('http://cerato.mps.interno:4446/eventosProjeto', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(novoEvento),
+            });
+            const eventoAdicionado = await response.json();
+            eventoAdicionado.data = new Date(eventoAdicionado.data);
+            setEventosCronograma([...eventosCronograma, eventoAdicionado]);
+            setEventoEmEdicao(eventoAdicionado);
+        } catch (err) {
+            console.error('Erro ao adicionar evento:', err);
+        }
+    };
 
-    const handleAddEvento = () => {
-        const novoEvento = { data: new Date(), evento: 'Novo Evento' };
-        setEventosCronograma([...eventosCronograma, novoEvento]);
-        setEventoEmEdicao(novoEvento); 
-      };
-
-    const renderPopover = (evento) => (
-        <Popover id="popover-basic">
-            <Popover.Header as="h3">{evento.data.toLocaleDateString()}</Popover.Header>
-            <Popover.Body>
-                <strong>Evento:</strong> {evento.evento}
-            </Popover.Body>
-        </Popover>
-    );
+    const handleDeleteEvento = async (id) => {
+        try {
+            await fetch(`http://cerato.mps.interno:4446/eventosProjeto/${id}`, {
+                method: 'DELETE',
+            });
+            setEventosCronograma(eventosCronograma.filter(evento => evento.id !== id));
+        } catch (err) {
+            console.error('Erro ao excluir evento:', err);
+        }
+    };
+    
+    
+    const renderPopover = (evento) => {
+        const dataFormatada = evento.data instanceof Date
+            ? evento.data.toLocaleDateString()
+            : 'Data Inválida';
+    
+        return (
+            <Popover id="popover-basic">
+                <Popover.Header as="h3">{dataFormatada}</Popover.Header>
+                <Popover.Body>
+                    <strong>Evento:</strong> {evento.evento}
+                </Popover.Body>
+            </Popover>
+        );
+    };
 
     return (
       <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
@@ -258,7 +357,7 @@ const Relatorio = () => {
                         <Calendar
                             tileContent={({ date, view }) => {
                                 if (view === 'month') {
-                                    const evento = eventosCronograma.find(e => e.data && e.data.toDateString() === date.toDateString());
+                                    const evento = eventosCronograma.find(e => e.data && new Date(e.data).toDateString() === date.toDateString());
                                     return evento ? (
                                         <OverlayTrigger trigger="click" placement="top" overlay={renderPopover(evento)}>
                                             <button className="event-indicator">{evento.evento}</button>
@@ -266,10 +365,10 @@ const Relatorio = () => {
                                     ) : null;
                                 }
                             }}
+                            
                         />
                         <ListaDeEventos
                             eventos={eventosCronograma}
-                            eventoSelecionado={eventoSelecionado}
                             setEventoSelecionado={setEventoSelecionado}
                             handleAddEvento={handleAddEvento}
                             handleEditInicio={handleEditInicio}
@@ -280,6 +379,7 @@ const Relatorio = () => {
                             setTextoEditado={setTextoEditado}
                             dataEditada={dataEditada}
                             setDataEditada={setDataEditada}
+                            handleDeleteEvento={handleDeleteEvento}
                         />
                     </Modal.Body>
                     <Modal.Footer>
