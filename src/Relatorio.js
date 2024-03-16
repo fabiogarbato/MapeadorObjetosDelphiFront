@@ -1,5 +1,5 @@
 import './Relatorio.css';
-import {Container, Row, Col, Image, Button, Modal}  from 'react-bootstrap';
+import {Container, Row, Col, Image, Button, Modal, Form}  from 'react-bootstrap';
 import React, { useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,9 +7,94 @@ import Mps from './images/mps.png'
 import { Link } from 'react-router-dom';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { Calendar } from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
+const ListaDeEventos = ({
+    eventos,
+    eventoSelecionado,
+    setEventoSelecionado,
+    handleAddEvento,
+    handleEditInicio,
+    handleEditSalvar,
+    eventoEmEdicao,
+    setEventoEmEdicao,
+    textoEditado,
+    setTextoEditado,
+    dataEditada,
+    setDataEditada
+  }) => {
+  
+    const handleEditarClick = (evento) => {
+      setEventoEmEdicao(evento); 
+      setEventoSelecionado(evento); 
+    };
+  
+    return (
+        <div className="lista-eventos">
+          <h5>Eventos do Projeto:</h5>
+          <ul className="list-unstyled">
+            {eventos.map((evento, index) => (
+              <Form.Group key={index} as="li" className="d-flex mb-2 align-items-center">
+                {eventoEmEdicao === evento ? (
+                  <Form.Control
+                    type="text"
+                    value={textoEditado}
+                    onChange={(e) => setTextoEditado(e.target.value)}
+                    className="me-2"
+                  />
+                ) : (
+                    <span className="mr-3" onClick={() => setEventoSelecionado(evento)}>
+                        {evento.data.toLocaleDateString()} - {evento.evento}
+                    </span>
+                )}
+                {eventoEmEdicao === evento ? (
+                    <>
+                        <DatePicker
+                            selected={dataEditada}
+                            onChange={date => setDataEditada(date)}
+                            className="form-control me-3"
+                        />
+                        <Button
+                            variant="success"
+                            onClick={() => {
+                                if (eventoEmEdicao && textoEditado) {
+                                    handleEditSalvar(index, textoEditado, eventoEmEdicao.data);
+                                    setEventoEmEdicao(null);
+                                    setTextoEditado("");
+                                } else {
+                                    console.error('Evento em edição ou texto editado é undefined');
+                                }
+                            }}
+                            >
+                            Salvar
+                        </Button>
+                    </>
+                    ) : (
+                    <Button 
+                        variant="outline-success" 
+                        onClick={() => handleEditInicio(evento)}
+                        className="ms-2 btn-editar"
+                    >
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                    </Button>
+                )}
+              </Form.Group>
+            ))}
+          </ul>
+          <Button variant="success" onClick={handleAddEvento}>
+            Adicionar Evento
+          </Button>
+        </div>
+      );
+    };
 
 const Relatorio = () => {  
 
@@ -32,6 +117,56 @@ const Relatorio = () => {
         ]
     };
 
+    const [showCronogramaModal, setShowCronogramaModal] = useState(false);
+
+    const handleCronogramaClose = () => setShowCronogramaModal(false);
+    const handleCronogramaShow = () => setShowCronogramaModal(true);
+
+    const [eventosCronograma, setEventosCronograma] = useState([
+        { data: new Date(2024, 1, 12), evento: 'Início da Migração' },
+        { data: new Date(2024, 4, 15), evento: 'Revisão Intermediária' },
+        { data: new Date(2025, 1, 12), evento: 'Fim da Migração' }
+    ]);
+
+    const [eventoSelecionado, setEventoSelecionado] = useState(null);
+    const [eventoEmEdicao, setEventoEmEdicao] = useState(null);
+    const [textoEditado, setTextoEditado] = useState("");
+    const [dataEditada, setDataEditada] = useState(null);
+
+    const handleEditInicio = (evento) => {
+        setEventoEmEdicao(evento);
+        setTextoEditado(evento.evento); 
+        setDataEditada(evento.data);
+      };
+    
+      const handleEditSalvar = (index) => {
+        if (eventoEmEdicao && textoEditado && dataEditada) {
+          const eventosAtualizados = eventosCronograma.map((evento, idx) =>
+            idx === index ? { ...evento, evento: textoEditado, data: dataEditada } : evento
+          );
+          setEventosCronograma(eventosAtualizados);
+          setEventoEmEdicao(null);
+          setTextoEditado("");
+          setDataEditada(null); 
+        } else {
+          console.error('Algo está undefined ao salvar');
+        }
+      };
+
+    const handleAddEvento = () => {
+        const novoEvento = { data: new Date(), evento: 'Novo Evento' };
+        setEventosCronograma([...eventosCronograma, novoEvento]);
+        setEventoEmEdicao(novoEvento); 
+      };
+
+    const renderPopover = (evento) => (
+        <Popover id="popover-basic">
+            <Popover.Header as="h3">{evento.data.toLocaleDateString()}</Popover.Header>
+            <Popover.Body>
+                <strong>Evento:</strong> {evento.evento}
+            </Popover.Body>
+        </Popover>
+    );
 
     return (
       <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
@@ -74,10 +209,9 @@ const Relatorio = () => {
                 <Row className="mb-5">
                     <Col md={6} className="mb-4">
                         <h2 className="h3">Cronograma do Projeto</h2>
-                        <Button variant="outline-success" onClick={handleShow} className="mt-2">
+                        <Button variant="outline-success" onClick={handleCronogramaShow} className="mt-2">
                             Ver Cronograma
                         </Button>
-                        
                     </Col>
                     <Col md={6} className="mb-4">
                         <h2 className="h3">Status de Migração</h2>
@@ -92,7 +226,7 @@ const Relatorio = () => {
                         <h2 className="h3">Riscos e Problemas</h2>
                         <ul className="list-unstyled">
                             <li><i className="bi bi-exclamation-triangle-fill text-warning me-2"></i> <strong>Risco:</strong> Entregar o projeto a tempo</li>
-                            <li><i className="bi bi-exclamation-triangle-fill text-warning me-2"></i><strong>Problema:</strong>  Não há um padrão, as exceções precisam ser tratadas com cuidado</li>
+                            <li><i className="bi bi-exclamation-triangle-fill text-warning me-2"></i><strong>Problema:</strong> Não há um padrão, as exceções precisam ser tratadas com cuidado</li>
                         </ul>
                     </Col>
                     <Col md={6}>
@@ -111,6 +245,44 @@ const Relatorio = () => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" onClick={handleClose}>
+                            Fechar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={showCronogramaModal} onHide={handleCronogramaClose} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Cronograma do Projeto</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Calendar
+                            tileContent={({ date, view }) => {
+                                if (view === 'month') {
+                                    const evento = eventosCronograma.find(e => e.data && e.data.toDateString() === date.toDateString());
+                                    return evento ? (
+                                        <OverlayTrigger trigger="click" placement="top" overlay={renderPopover(evento)}>
+                                            <button className="event-indicator">{evento.evento}</button>
+                                        </OverlayTrigger>
+                                    ) : null;
+                                }
+                            }}
+                        />
+                        <ListaDeEventos
+                            eventos={eventosCronograma}
+                            eventoSelecionado={eventoSelecionado}
+                            setEventoSelecionado={setEventoSelecionado}
+                            handleAddEvento={handleAddEvento}
+                            handleEditInicio={handleEditInicio}
+                            handleEditSalvar={handleEditSalvar}
+                            eventoEmEdicao={eventoEmEdicao}
+                            setEventoEmEdicao={setEventoEmEdicao}
+                            textoEditado={textoEditado}
+                            setTextoEditado={setTextoEditado}
+                            dataEditada={dataEditada}
+                            setDataEditada={setDataEditada}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="success" onClick={handleCronogramaClose}>
                             Fechar
                         </Button>
                     </Modal.Footer>

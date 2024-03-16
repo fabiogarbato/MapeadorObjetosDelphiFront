@@ -1,0 +1,78 @@
+.react-calendar__tile { 
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+}
+
+.event-indicator {
+    position: absolute;
+    bottom: 2px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: #05740a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: 0; 
+    cursor: pointer;
+    font-size: 0.8em; 
+}
+
+.event-indicator:hover {
+    background-color: #24b300;
+}
+
+.react-calendar__tile {
+    flex: 1;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.react-calendar {
+    width: 100%; 
+    max-width: 350px; 
+    margin: auto;
+}
+
+.lista-eventos {
+    width: 100%; 
+    margin-top: 20px; 
+}
+
+.lista-eventos h5 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lista-eventos ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.lista-eventos li {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px; 
+    background-color: #f8f9fa; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+.lista-eventos li:hover {
+    background-color: #b9ffbd; 
+}
+
+.lista-eventos .evento-selecionado {
+    background-color: #05740a; 
+    color: white;
+    font-weight: bold;
+}
+
