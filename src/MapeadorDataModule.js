@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
 import { API_BASE_URL } from './config';
+import Footer from './Footer';
 
 const MapeadorDataModule = () => {  
 
@@ -263,11 +264,7 @@ const MapeadorDataModule = () => {
             </Modal.Footer>
         </Modal>
         <Container style={{ minHeight: '10vh'}}></Container>
-        <footer className="footer">
-            <Container fluid >
-                <p className="text-center mb-0">© Fábio Garbato - MPS Informática - {new Date().getFullYear()}</p>
-            </Container>
-        </footer>
+        <Footer/>
   </Container>
   );
 }

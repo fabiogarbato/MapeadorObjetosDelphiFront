@@ -9,6 +9,7 @@ import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { API_BASE_URL } from './config';
 import jschardet from 'jschardet';
+import Footer from './Footer';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -163,11 +164,7 @@ const Migrador = () => {
                 </Link>
             </Container>
             <Container style={{ minHeight: '10vh'}}></Container>
-            <footer className="footer">
-                <Container fluid>
-                    <p className="mb-0">© Fábio Garbato - MPS Informática - {new Date().getFullYear()}</p>
-                </Container>
-            </footer>
+            <Footer/>
         </Container>
     );
   }

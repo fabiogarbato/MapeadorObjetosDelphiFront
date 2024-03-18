@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const App = () => {  
   return (
@@ -50,11 +51,7 @@ const App = () => {
                 </Col>
             </Row>      
         </Container>
-        <footer className="footer">
-            <Container fluid>
-                <p className="mb-0">© Fábio Garbato - MPS Informática - {new Date().getFullYear()}</p>
-            </Container>
-        </footer>
+        <Footer/>
   </Container>
   );
 }

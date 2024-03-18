@@ -13,6 +13,7 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import ListaEventos from './ListaEventos.js'
 import { API_BASE_URL } from './config';
+import Footer from './Footer';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -283,11 +284,7 @@ const Relatorio = () => {
                 </Link>
             </Container>
             <Container style={{ minHeight: '4vh'}}></Container>
-            <footer className="footer">
-                <Container fluid>
-                    <p className="mb-0">© Fábio Garbato - MPS Informática - {new Date().getFullYear()}</p>
-                </Container>
-            </footer>
+            <Footer/>
         </Container>
     );
   }
