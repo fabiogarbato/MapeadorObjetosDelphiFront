@@ -2,18 +2,18 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 
-const app = express();
+const app = express(); 
 app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({
-    host: 'localhost',
-    user: 'postgres',
-    password: 'gbt101',
-    database: 'migracaoSql',
-    port: 5432,
-    ssl: false 
-  });
+  host: 'cerato.mps.interno',
+  user: 'FabioGarbato',
+  password: 'BPt3bpMRzivTo3tamwC9',
+  database: 'migracaoSql',
+  port: 5432,
+  ssl: false 
+});
 
 app.get('/dados', async (req, res) => {
     try {
