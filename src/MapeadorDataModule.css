@@ -11,3 +11,10 @@
     font-family: 'Fira Sans Condensed', sans-serif;
     font-weight: 700;
 }
+
+.modal-content-code {
+    font-family: 'Courier New', Courier, monospace; 
+    white-space: pre-wrap; 
+    word-break: break-all; 
+}
+  

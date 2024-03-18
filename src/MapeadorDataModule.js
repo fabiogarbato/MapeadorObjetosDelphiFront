@@ -5,11 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Mps from './images/mps.png'
-import Papa from 'papaparse';
-import relacaoFormsClassesObjetos from './text/relacao_forms_classes_objetos.csv'
 import { Link } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
+import { API_BASE_URL } from './config';
 
 const MapeadorDataModule = () => {  
 
@@ -19,7 +18,7 @@ const MapeadorDataModule = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://cerato.mps.interno:4446/dadosDataModule');
+            const response = await fetch(`${API_BASE_URL}/dadosDataModule`);
             const data = await response.json();
             setDados(data);
           } catch (error) {
@@ -62,9 +61,12 @@ const MapeadorDataModule = () => {
                 <div key={index} style={{ marginBottom: '10px', maxHeight: '200px', overflowY: 'auto' }}>
                     <CopyToClipboard text={fullText}
                         onCopy={() => console.log('Texto copiado!')}>
-                            <button>
+                            <Button
+                                variant="outline-success" 
+                                className="ms-2 btn-editar"
+                            >
                                 <span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="svg octicon-copy" width="16" height="16" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg></span>
-                            </button>
+                            </Button>
                     </CopyToClipboard>
                     <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
                         <code>{fullText}</code>
@@ -192,10 +194,9 @@ const MapeadorDataModule = () => {
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
-                    <Button variant="success" style={{ width: '100px', height: '50px' }} onClick={exportToExcel}>
+                    <Button classname='mr-5' variant="success" style={{ width: '100px', height: '50px', marginRight:'5px' }} onClick={exportToExcel}>
                         Excel
                     </Button>
-                    <Container></Container>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <Button variant="success" style={{ width: '100px', height:'50px' }}>
                             Voltar
@@ -251,7 +252,9 @@ const MapeadorDataModule = () => {
                 <Modal.Title>Detalhes dos Objetos de Banco</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+            <div className="modal-content-code">
                 {formatModalContent(modalContent)}
+            </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="success" onClick={handleCloseModal}>

@@ -1,15 +1,20 @@
 import './Relatorio.css';
 import {Container, Row, Col, Image, Button, Modal}  from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
 import { Link } from 'react-router-dom';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { Calendar } from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
+import 'react-datepicker/dist/react-datepicker.css';
+import ListaEventos from './ListaEventos.js'
+import { API_BASE_URL } from './config';
 
 Chart.register(ArcElement, Tooltip, Legend);
-
 
 const Relatorio = () => {  
 
@@ -32,6 +37,122 @@ const Relatorio = () => {
         ]
     };
 
+    const [showCronogramaModal, setShowCronogramaModal] = useState(false);
+
+    const fetchEventos = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/eventosProjeto`);
+            const eventos = await response.json();
+            const eventosComDataComoDate = eventos.map(evento => ({
+                ...evento,
+                data: new Date(evento.data) 
+            }));
+            setEventosCronograma(eventosComDataComoDate); 
+        } catch (err) {
+            console.error('Erro ao buscar eventos:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchEventos(); 
+    }, []); 
+
+    const handleCronogramaClose = () => setShowCronogramaModal(false);
+    const handleCronogramaShow = () => setShowCronogramaModal(true);
+
+    const [eventosCronograma, setEventosCronograma] = useState([]);
+
+    const [setEventoSelecionado] = useState(null);
+    const [eventoEmEdicao, setEventoEmEdicao] = useState(null);
+    const [textoEditado, setTextoEditado] = useState("");
+    const [dataEditada, setDataEditada] = useState(null);
+
+    const handleEditInicio = (evento) => {
+        setEventoEmEdicao(evento);
+        setTextoEditado(evento.evento); 
+        setDataEditada(evento.data);
+      };
+    
+    const handleEditSalvar = async (index) => {
+        if (eventoEmEdicao && textoEditado && dataEditada) {
+            const eventoAtualizado = {
+                ...eventoEmEdicao,
+                evento: textoEditado,
+                data: dataEditada.toISOString(),
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/eventosProjeto/${eventoEmEdicao.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(eventoAtualizado),
+                });
+                const eventoSalvo = await response.json();
+
+                eventoSalvo.data = new Date(eventoSalvo.data);
+
+                const eventosAtualizados = eventosCronograma.map((evento) =>
+                    evento.id === eventoSalvo.id ? { ...eventoSalvo, data: new Date(eventoSalvo.data) } : evento
+                );
+
+                setEventosCronograma(eventosAtualizados);
+                setEventoEmEdicao(null);
+                setTextoEditado("");
+                setDataEditada(null);
+            } catch (err) {
+                console.error('Erro ao salvar evento:', err);
+            }
+        } else {
+            console.error('Algo está undefined ao salvar');
+        }
+    };
+    
+    const handleAddEvento = async () => {
+        const novoEvento = { data: new Date().toISOString(), evento: 'Novo Evento' };
+        try {
+            const response = await fetch(`${API_BASE_URL}/eventosProjeto`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(novoEvento),
+            });
+            const eventoAdicionado = await response.json();
+            eventoAdicionado.data = new Date(eventoAdicionado.data);
+            setEventosCronograma([...eventosCronograma, eventoAdicionado]);
+            setEventoEmEdicao(eventoAdicionado);
+        } catch (err) {
+            console.error('Erro ao adicionar evento:', err);
+        }
+    };
+
+    const handleDeleteEvento = async (id) => {
+        try {
+            await fetch(`${API_BASE_URL}/eventosProjeto/${id}`, {
+                method: 'DELETE',
+            });
+            setEventosCronograma(eventosCronograma.filter(evento => evento.id !== id));
+        } catch (err) {
+            console.error('Erro ao excluir evento:', err);
+        }
+    };
+    
+    const renderPopover = (evento) => {
+        const dataFormatada = evento.data instanceof Date
+            ? evento.data.toLocaleDateString()
+            : 'Data Inválida';
+    
+        return (
+            <Popover id="popover-basic">
+                <Popover.Header as="h3">{dataFormatada}</Popover.Header>
+                <Popover.Body>
+                    <strong>Evento:</strong> {evento.evento}
+                </Popover.Body>
+            </Popover>
+        );
+    };
 
     return (
       <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
@@ -74,10 +195,9 @@ const Relatorio = () => {
                 <Row className="mb-5">
                     <Col md={6} className="mb-4">
                         <h2 className="h3">Cronograma do Projeto</h2>
-                        <Button variant="outline-success" onClick={handleShow} className="mt-2">
+                        <Button variant="outline-success" onClick={handleCronogramaShow} className="mt-2">
                             Ver Cronograma
                         </Button>
-                        
                     </Col>
                     <Col md={6} className="mb-4">
                         <h2 className="h3">Status de Migração</h2>
@@ -92,7 +212,7 @@ const Relatorio = () => {
                         <h2 className="h3">Riscos e Problemas</h2>
                         <ul className="list-unstyled">
                             <li><i className="bi bi-exclamation-triangle-fill text-warning me-2"></i> <strong>Risco:</strong> Entregar o projeto a tempo</li>
-                            <li><i className="bi bi-exclamation-triangle-fill text-warning me-2"></i><strong>Problema:</strong>  Não há um padrão, as exceções precisam ser tratadas com cuidado</li>
+                            <li><i className="bi bi-exclamation-triangle-fill text-warning me-2"></i><strong>Problema:</strong> Não há um padrão, as exceções precisam ser tratadas com cuidado</li>
                         </ul>
                     </Col>
                     <Col md={6}>
@@ -111,6 +231,45 @@ const Relatorio = () => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" onClick={handleClose}>
+                            Fechar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={showCronogramaModal} onHide={handleCronogramaClose} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Cronograma do Projeto</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Calendar
+                            tileContent={({ date, view }) => {
+                                if (view === 'month') {
+                                    const evento = eventosCronograma.find(e => e.data && new Date(e.data).toDateString() === date.toDateString());
+                                    return evento ? (
+                                        <OverlayTrigger trigger="click" placement="top" overlay={renderPopover(evento)}>
+                                            <button className="event-indicator">{evento.evento}</button>
+                                        </OverlayTrigger>
+                                    ) : null;
+                                }
+                            }}
+                            
+                        />
+                        <ListaEventos
+                            eventos={eventosCronograma}
+                            setEventoSelecionado={setEventoSelecionado}
+                            handleAddEvento={handleAddEvento}
+                            handleEditInicio={handleEditInicio}
+                            handleEditSalvar={handleEditSalvar}
+                            eventoEmEdicao={eventoEmEdicao}
+                            setEventoEmEdicao={setEventoEmEdicao}
+                            textoEditado={textoEditado}
+                            setTextoEditado={setTextoEditado}
+                            dataEditada={dataEditada}
+                            setDataEditada={setDataEditada}
+                            handleDeleteEvento={handleDeleteEvento}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="success" onClick={handleCronogramaClose}>
                             Fechar
                         </Button>
                     </Modal.Footer>
