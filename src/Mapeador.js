@@ -1,5 +1,5 @@
 import './Mapeador.css';
-import {Container, Row, Col, Image, Table, Button, Modal}  from 'react-bootstrap';
+import {Container, Row, Col, Image, Table, Button, Modal, Form}  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +28,29 @@ const Mapeador = () => {
         };
         fetchData();
       }, [filtro]);
+    
+      const handleMigradoChange = async (event, id) => {
+        const migrado = event.target.checked;
+        try {
+          const response = await fetch(`${API_BASE_URL}/dados/${id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ migrado }),
+          });
+          if (response.ok) {
+            const newDados = dados.map((linha) =>
+              linha.id === id ? { ...linha, migrado } : linha
+            );
+            setDados(newDados);
+          } else {
+            throw new Error('Falha ao atualizar o registro');
+          }
+        } catch (error) {
+          console.error('Erro ao atualizar o estado de migrado:', error);
+        }
+      };
 
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
@@ -201,6 +224,7 @@ const Mapeador = () => {
                         <th>Classe</th>
                         <th>Sombra</th>
                         <th>Objetos de Banco</th>
+                        <th>Migrado?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -208,30 +232,38 @@ const Mapeador = () => {
                         .filter(linha => {
                             const termoFiltrado = filtro.toLowerCase();
                             return (
-                                (linha.form && linha.form.toLowerCase().includes(termoFiltrado)) ||
-                                (linha.classe && linha.classe.toLowerCase().includes(termoFiltrado)) ||
-                                (linha.sombra && linha.sombra.toLowerCase().includes(termoFiltrado)) ||
-                                (linha.objetobanco && linha.objetobanco.toLowerCase().includes(termoFiltrado))
+                            (linha.form && linha.form.toLowerCase().includes(termoFiltrado)) ||
+                            (linha.classe && linha.classe.toLowerCase().includes(termoFiltrado)) ||
+                            (linha.sombra && linha.sombra.toLowerCase().includes(termoFiltrado)) ||
+                            (linha.objetobanco && linha.objetobanco.toLowerCase().includes(termoFiltrado))
                             );
                         })
-                        .map((linha, indexLinha) => {
+                        .map((linha) => {
                             return (
-                                <tr key={indexLinha}>
-                                    <td style={cellStyle}>{linha.form}</td>
-                                    <td style={cellStyle}>{linha.classe}</td>
-                                    <td style={cellStyle}>{linha.sombra}</td>
-                                    <td style={cellStyle}>
-                                        <Button
-                                            variant="success"
-                                            style={{ width: '70px', height: '50px' }}
-                                            onClick={() => handleOpenModal(linha.objetobanco)}
-                                        >
-                                            Ver
-                                        </Button>
-                                    </td>
-                                </tr>
+                            <tr key={linha.id}>
+                                <td style={cellStyle}>{linha.form}</td>
+                                <td style={cellStyle}>{linha.classe}</td>
+                                <td style={cellStyle}>{linha.sombra}</td>
+                                <td style={cellStyle}>
+                                <Button
+                                    variant="success"
+                                    style={{ width: '70px', height: '50px' }}
+                                    onClick={() => handleOpenModal(linha.objetobanco)}
+                                >
+                                    Ver
+                                </Button>
+                                </td>
+                                <td style={cellStyle}>
+                                    <Form.Check
+                                        type="checkbox"
+                                        className="custom-checkbox"
+                                        checked={linha.migrado}
+                                        onChange={(e) => handleMigradoChange(e, linha.id)}
+                                    />
+                                </td>
+                            </tr>
                             );
-                        })}
+                    })}
                 </tbody>
             </Table>
         </Container>

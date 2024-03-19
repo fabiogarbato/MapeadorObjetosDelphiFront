@@ -1,5 +1,5 @@
 import './MapeadorDataModule.css';
-import {Container, Row, Col, Image, Table, Button, Modal }  from 'react-bootstrap';
+import {Container, Row, Col, Image, Table, Button, Modal, Form}  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +28,29 @@ const MapeadorDataModule = () => {
         };
         fetchData();
       }, [filtro]);
+    
+      const handleMigradoChange = async (event, id) => {
+        const migrado = event.target.checked;
+        try {
+          const response = await fetch(`${API_BASE_URL}/dadosDataModule/${id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ migrado }),
+          });
+          if (response.ok) {
+            const newDados = dados.map((linha) =>
+              linha.id === id ? { ...linha, migrado } : linha
+            );
+            setDados(newDados);
+          } else {
+            throw new Error('Falha ao atualizar o registro');
+          }
+        } catch (error) {
+          console.error('Erro ao atualizar o estado de migrado:', error);
+        }
+      };
 
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
@@ -217,6 +240,7 @@ const MapeadorDataModule = () => {
                         <th>Classe</th>
                         <th>Relatorio</th>
                         <th>Objetos de Banco</th>
+                        <th>Migrado?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -230,9 +254,9 @@ const MapeadorDataModule = () => {
                                 (linha.objetobanco && linha.objetobanco.toLowerCase().includes(termoFiltrado))
                             );
                         })
-                        .map((linha, indexLinha) => {
+                        .map((linha) => {
                             return (
-                                <tr key={indexLinha}>
+                                <tr key={linha.id}>
                                     <td style={cellStyle}>{linha.form}</td>
                                     <td style={cellStyle}>{linha.classe}</td>
                                     <td style={cellStyle}>{linha.relatorio ? linha.relatorio : ''}</td>
@@ -244,6 +268,14 @@ const MapeadorDataModule = () => {
                                         >
                                             Ver
                                         </Button>
+                                    </td>
+                                    <td style={cellStyle}>
+                                        <Form.Check
+                                            type="checkbox"
+                                            className="custom-checkbox"
+                                            checked={linha.migrado}
+                                            onChange={(e) => handleMigradoChange(e, linha.id)}
+                                        />
                                     </td>
                                 </tr>
                             );

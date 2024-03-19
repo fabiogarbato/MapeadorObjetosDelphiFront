@@ -17,7 +17,7 @@ const pool = new Pool({
 
 app.get('/dados', async (req, res) => {
     try {
-      const result = await pool.query('SELECT form, classe, sombra, objetobanco FROM Mapa WHERE sombra IS NOT NULL ORDER BY form ASC');
+      const result = await pool.query('SELECT id, form, classe, sombra, objetobanco, migrado FROM Mapa WHERE sombra IS NOT NULL ORDER BY form ASC');
       const rows = result.rows;
       res.json(rows);
     } catch (err) {
@@ -26,9 +26,28 @@ app.get('/dados', async (req, res) => {
     }
   });  
 
+app.patch('/dados/:id', async (req, res) => {
+    const { id } = req.params;
+    const { migrado } = req.body;
+    try {
+        const result = await pool.query(
+            'UPDATE mapa SET migrado = $1 WHERE id = $2 RETURNING *',
+            [migrado, id]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).send('Registro não encontrado');
+        }
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+  });
+  
+
 app.get('/dadosDataModule', async (req, res) => {
     try {
-        const result = await pool.query('SELECT form, classe, relatorio, objetobanco FROM Mapa WHERE Sombra ISNULL ORDER BY form ASC');
+        const result = await pool.query('SELECT id, form, classe, relatorio, objetobanco, migrado FROM Mapa WHERE Sombra ISNULL ORDER BY form ASC');
         const rows = result.rows;
         res.json(rows);
     } catch (err) {
@@ -36,6 +55,24 @@ app.get('/dadosDataModule', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });  
+
+app.patch('/dadosDataModule/:id', async (req, res) => {
+  const { id } = req.params;
+  const { migrado } = req.body;
+  try {
+      const result = await pool.query(
+          'UPDATE mapa SET migrado = $1 WHERE id = $2 RETURNING *',
+          [migrado, id]
+      );
+      if (result.rows.length === 0) {
+          return res.status(404).send('Registro não encontrado');
+      }
+      res.json(result.rows[0]);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+  }
+});
 
 app.get('/dadosRelatorio', async (req, res) => {
   try {
