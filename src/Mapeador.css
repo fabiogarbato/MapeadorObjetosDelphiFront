@@ -30,5 +30,38 @@
 .custom-checkbox .form-check-input:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.25); 
 }
+
+.btn-save {
+    width: 100px;
+    height: 50px;
+    margin-right: 5px;
+}
+  
+.btn-save-disabled {
+    background-color: grey;
+    cursor: default;
+}
+
+.btn-save-enabled {
+    background-color: #198754;
+    cursor: pointer;
+}
+
+.btn-revert {
+    width: 100px;
+    height: 50px;
+    margin-right: 5px;
+}
+  
+.btn-revert-disabled {
+    background-color: grey;
+    cursor: default;
+}
+
+.btn-revert-enabled {
+    background-color: #dc3545;
+    cursor: pointer;
+}
+  
   
   
