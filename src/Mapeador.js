@@ -16,14 +16,12 @@ const Mapeador = () => {
 
     const [dados, setDados] = useState([]);
     const [filtro, setFiltro] = useState('');
-
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
-
     const [mudancasPendentes, setMudancasPendentes] = useState({});
     const [dadosOriginais, setDadosOriginais] = useState([]);
-
     const [mostrarModal, setMostrarModal] = useState(false);
+    const [ordenacao, setOrdenacao] = useState('asc');
 
     const navigate = useNavigate();
 
@@ -219,7 +217,25 @@ const Mapeador = () => {
     const buffer = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buffer]), 'Sombra.xlsx');
       
-    };   
+    };  
+    
+    const handleOrdenacao = (coluna) => {
+        if (ordenacao === 'asc') {
+            setOrdenacao('desc');
+            dados.sort((a, b) => {
+                const valorA = a[coluna] ? a[coluna].toLowerCase() : '';
+                const valorB = b[coluna] ? b[coluna].toLowerCase() : '';
+                return valorA > valorB ? -1 : 1;
+            });
+        } else {
+            setOrdenacao('asc');
+            dados.sort((a, b) => {
+                const valorA = a[coluna] ? a[coluna].toLowerCase() : '';
+                const valorB = b[coluna] ? b[coluna].toLowerCase() : '';
+                return valorA < valorB ? -1 : 1;
+            });
+        }
+    };    
     
   return (
     <Container fluid style={{ backgroundColor: 'white'}}>
@@ -261,7 +277,7 @@ const Mapeador = () => {
                         className={`btn-save ${temMudancasPendentes() ? 'btn-save-enabled' : 'btn-save-disabled'}`} 
                         onClick={salvarMudancas}
                         disabled={!temMudancasPendentes()}
-                        >
+                    >
                         <FaSave /> 
                     </Button>
                     <Button 
@@ -310,9 +326,24 @@ const Mapeador = () => {
             <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: '100%', margin: 'auto' }}>
                 <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                     <tr>
-                        <th>Form</th>
-                        <th>Classe</th>
-                        <th>Sombra</th>
+                        <th>
+                            Form
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('form')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
+                        <th>
+                            Classe
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('classe')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
+                        <th>
+                            Sombra
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('sombra')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
                         <th>Objetos de Banco</th>
                         <th>Migrado?</th>
                     </tr>

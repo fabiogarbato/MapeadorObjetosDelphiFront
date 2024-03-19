@@ -22,6 +22,8 @@ const MapeadorDataModule = () => {
 
     const [mostrarModal, setMostrarModal] = useState(false);
 
+    const [ordenacao, setOrdenacao] = useState('asc');
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -236,6 +238,24 @@ const MapeadorDataModule = () => {
         saveAs(new Blob([buffer]), 'DataModule.xlsx');
     };
 
+    const handleOrdenacao = (coluna) => {
+        if (ordenacao === 'asc') {
+            setOrdenacao('desc');
+            dados.sort((a, b) => {
+                const valorA = a[coluna] ? a[coluna].toLowerCase() : '';
+                const valorB = b[coluna] ? b[coluna].toLowerCase() : '';
+                return valorA > valorB ? -1 : 1;
+            });
+        } else {
+            setOrdenacao('asc');
+            dados.sort((a, b) => {
+                const valorA = a[coluna] ? a[coluna].toLowerCase() : '';
+                const valorB = b[coluna] ? b[coluna].toLowerCase() : '';
+                return valorA < valorB ? -1 : 1;
+            });
+        }
+    };
+    
   return (
     
     <Container fluid style={{ backgroundColor: 'white'}}>
@@ -326,9 +346,24 @@ const MapeadorDataModule = () => {
             <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: '100%', margin: 'auto' }}>
                 <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                     <tr>
-                        <th>Form</th>
-                        <th>Classe</th>
-                        <th>Relatorio</th>
+                        <th>
+                            Form
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('form')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
+                        <th>
+                            Classe
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('classe')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
+                        <th>
+                        Relatorio
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('relatorio')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
                         <th>Objetos de Banco</th>
                         <th>Migrado?</th>
                     </tr>
