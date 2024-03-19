@@ -10,11 +10,15 @@ import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
 import { API_BASE_URL } from './config';
 import Footer from './Footer';
+import { FaSave, FaUndo } from 'react-icons/fa';
 
 const MapeadorDataModule = () => {  
 
     const [dados, setDados] = useState([]);
     const [filtro, setFiltro] = useState('');
+
+    const [mudancasPendentes, setMudancasPendentes] = useState({});
+    const [dadosOriginais, setDadosOriginais] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,36 +26,72 @@ const MapeadorDataModule = () => {
             const response = await fetch(`${API_BASE_URL}/dadosDataModule`);
             const data = await response.json();
             setDados(data);
+            setDadosOriginais(data.map(dado => ({ ...dado }))); 
           } catch (error) {
             console.error('Erro ao buscar dados:', error);
           }
         };
         fetchData();
       }, [filtro]);
-    
-      const handleMigradoChange = async (event, id) => {
+      
+    const temMudancasPendentes = () => {
+        return dados.some((linha, index) => linha.migrado !== dadosOriginais[index].migrado);
+    };
+          
+    const handleMigradoChange = (event, id) => {
         const migrado = event.target.checked;
-        try {
-          const response = await fetch(`${API_BASE_URL}/dadosDataModule/${id}`, {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ migrado }),
-          });
-          if (response.ok) {
-            const newDados = dados.map((linha) =>
-              linha.id === id ? { ...linha, migrado } : linha
-            );
-            setDados(newDados);
-          } else {
-            throw new Error('Falha ao atualizar o registro');
-          }
-        } catch (error) {
-          console.error('Erro ao atualizar o estado de migrado:', error);
-        }
-      };
 
+        setMudancasPendentes((prevMudancas) => ({
+          ...prevMudancas,
+          [id]: migrado
+        }));
+      
+        setDados((dadosAntigos) => 
+          dadosAntigos.map((linha) => {
+            if (linha.id === id) {
+              return { ...linha, migrado };
+            }
+            return linha;
+          })
+        );
+      };
+      
+      const salvarMudancas = async () => {
+        try {
+            await Promise.all(
+            Object.entries(mudancasPendentes).map(async ([id, migrado]) => {
+                const response = await fetch(`${API_BASE_URL}/dados/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ migrado }),
+                });
+                if (!response.ok) {
+                throw new Error('Falha ao atualizar o registro com id ' + id);
+                }
+            })
+            );
+            setMudancasPendentes({});
+            setDadosOriginais(dados.map(dado => ({ ...dado }))); 
+        } catch (error) {
+            console.error('Erro ao salvar mudanças:', error);
+        }
+    };    
+
+    const reverterMudancas = () => {
+        setDados((dadosAtuais) =>
+          dadosAtuais.map((linha) => {
+            if (mudancasPendentes.hasOwnProperty(linha.id)) {
+              return { ...linha, migrado: dadosOriginais.find(d => d.id === linha.id).migrado };
+            }
+            return linha;
+          })
+        );
+        setMudancasPendentes({});
+      };
+    
+      
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState('');
 
@@ -102,7 +142,6 @@ const MapeadorDataModule = () => {
             );
         });
     };
-    
 
     const exportToExcel = async () => {
         const workbook = new ExcelJS.Workbook();
@@ -212,10 +251,27 @@ const MapeadorDataModule = () => {
                             padding: '0.375rem 0.75rem', 
                             outline: 'none', 
                             transition: 'border-color 0.15s ease-in-out', 
+                            marginRight:'5px',
                         }}
                         onMouseOver={(e) => (e.currentTarget.style.borderColor = '#198754')} 
                         onMouseOut={(e) => (e.currentTarget.style.borderColor = '#ced4da')} 
                     />
+                    <Button 
+                        variant="success" 
+                        className={`btn-save ${temMudancasPendentes() ? 'btn-save-enabled' : 'btn-save-disabled'}`} 
+                        onClick={salvarMudancas}
+                        disabled={!temMudancasPendentes()}
+                        >
+                        <FaSave /> 
+                    </Button>
+                    <Button 
+                        variant="danger" 
+                        className={`btn-revert ${temMudancasPendentes() ? 'btn-revert-enabled' : 'btn-revert-disabled'}`} 
+                        onClick={reverterMudancas}
+                        disabled={!temMudancasPendentes()}
+                        >
+                        <FaUndo /> 
+                    </Button>
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center align-items-center">
                    
@@ -273,7 +329,7 @@ const MapeadorDataModule = () => {
                                         <Form.Check
                                             type="checkbox"
                                             className="custom-checkbox"
-                                            checked={linha.migrado}
+                                            checked={mudancasPendentes.hasOwnProperty(linha.id) ? mudancasPendentes[linha.id] : linha.migrado}
                                             onChange={(e) => handleMigradoChange(e, linha.id)}
                                         />
                                     </td>
