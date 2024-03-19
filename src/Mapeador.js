@@ -36,7 +36,10 @@ const Mapeador = () => {
         wordBreak: 'break-word',
         maxWidth: '350px',
         overflow: 'hidden',
-        whiteSpace: 'normal'
+        whiteSpace: 'normal',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center'
     };
 
     const handleOpenModal = (content) => {
@@ -218,14 +221,14 @@ const Mapeador = () => {
                                     <td style={cellStyle}>{linha.classe}</td>
                                     <td style={cellStyle}>{linha.sombra}</td>
                                     <td style={cellStyle}>
-                                            <Button
-                                                variant="success"
-                                                style={{ width: '70px', height: '50px' }}
-                                                onClick={() => handleOpenModal(linha.objetobanco)}
-                                            >
-                                                Ver
-                                            </Button>
-                                        </td>
+                                        <Button
+                                            variant="success"
+                                            style={{ width: '70px', height: '50px' }}
+                                            onClick={() => handleOpenModal(linha.objetobanco)}
+                                        >
+                                            Ver
+                                        </Button>
+                                    </td>
                                 </tr>
                             );
                         })}

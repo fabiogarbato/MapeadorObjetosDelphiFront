@@ -36,7 +36,10 @@ const MapeadorDataModule = () => {
         wordBreak: 'break-word',
         maxWidth: '350px',
         overflow: 'hidden',
-        whiteSpace: 'normal'
+        whiteSpace: 'normal',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center'
     };
 
     const handleOpenModal = (content) => {
