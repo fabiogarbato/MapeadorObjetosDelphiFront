@@ -40,9 +40,12 @@ const Mapeador = () => {
       }, [filtro]);
     
     const temMudancasPendentes = () => {
-        return dados.some((linha, index) => linha.migrado !== dadosOriginais[index].migrado);
+        return dados.some((linha) => {
+            const linhaOriginal = dadosOriginais.find((original) => original.id === linha.id);
+            return linhaOriginal && linha.migrado !== linhaOriginal.migrado;
+        });
     };
-          
+    
     const handleMigradoChange = (event, id) => {
         const migrado = event.target.checked;
 
