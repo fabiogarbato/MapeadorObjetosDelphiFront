@@ -1,14 +1,11 @@
 import './Migrador.css';
 import {Container, Row, Col, Image, Button, Modal, Card, Form}  from 'react-bootstrap';
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
 import { Link } from 'react-router-dom';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
-import { API_BASE_URL } from './config';
-import jschardet from 'jschardet';
 import Footer from './Footer';
 
 Chart.register(ArcElement, Tooltip, Legend);
