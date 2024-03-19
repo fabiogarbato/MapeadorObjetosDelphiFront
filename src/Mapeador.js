@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Mps from './images/mps.png'
-import { Link } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -17,8 +17,15 @@ const Mapeador = () => {
     const [dados, setDados] = useState([]);
     const [filtro, setFiltro] = useState('');
 
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState('');
+
     const [mudancasPendentes, setMudancasPendentes] = useState({});
     const [dadosOriginais, setDadosOriginais] = useState([]);
+
+    const [mostrarModal, setMostrarModal] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -90,9 +97,17 @@ const Mapeador = () => {
         );
         setMudancasPendentes({});
       };
-
-    const [showModal, setShowModal] = useState(false);
-    const [modalContent, setModalContent] = useState('');
+    
+    const verificarMudancasPendentes = (acao, callback) => {
+        if (temMudancasPendentes()) {
+          setMostrarModal(true);
+        } else {
+          acao();
+          if (callback) {
+            callback();
+          }
+        }
+      };
 
     const cellStyle = {
         wordBreak: 'break-word',
@@ -203,7 +218,8 @@ const Mapeador = () => {
 
     const buffer = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buffer]), 'Sombra.xlsx');
-      };   
+      
+    };   
     
   return (
     <Container fluid style={{ backgroundColor: 'white'}}>
@@ -261,14 +277,32 @@ const Mapeador = () => {
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
-                    <Button classname='mr-5' variant="success" style={{ width: '100px', height: '50px', marginRight:'5px' }} onClick={() => exportToExcel(dadosDaTabela)}>
+                    <Button
+                        className='mr-5'
+                        variant="success"
+                        style={{ width: '100px', height: '50px', marginRight: '5px' }}
+                        onClick={() => verificarMudancasPendentes(() => exportToExcel(dadosDaTabela))}
+                        >
                         Excel
                     </Button>
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <Button variant="success" style={{ width: '100px', height:'50px' }}>
-                            Voltar
-                        </Button>
-                    </Link>
+                    <Button
+                        variant="success"
+                        style={{ width: '100px', height: '50px' }}
+                        onClick={() => verificarMudancasPendentes(() => {}, () => navigate('/'))}
+                        >
+                        Voltar
+                    </Button>
+                    <Modal show={mostrarModal} onHide={() => setMostrarModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Atenção</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Existem alterações para serem confirmadas ou revertidas.</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="success" onClick={() => setMostrarModal(false)}>
+                                Fechar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Col>
             </Row>    
         </Container>
