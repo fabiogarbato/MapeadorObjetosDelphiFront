@@ -28,12 +28,11 @@ const Login = () => {
         body: JSON.stringify({ usuario, senha })
       });
   
-      const data = await response.json();
-  
       if (response.ok) {
         showMessageSuccess("Usuário Logado!")
         navigate('/Home');
         setIsAuthenticated(true); 
+        localStorage.setItem('isAuthenticated', 'true');
       } else {
         showMessageError("Login ou senha incorretos.")
       }

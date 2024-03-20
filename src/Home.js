@@ -6,12 +6,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 import NavBar from './Navbar';
 import { FaMap } from 'react-icons/fa';
+import { useAuth } from './AuthProvider';
 
 const App = () => {  
 
     const navigate = useNavigate();
 
+    const { setIsAuthenticated } = useAuth();
+
     const handleLogout = () => {
+        setIsAuthenticated(false);
+        localStorage.removeItem('isAuthenticated');
         navigate('/');
     };
 
