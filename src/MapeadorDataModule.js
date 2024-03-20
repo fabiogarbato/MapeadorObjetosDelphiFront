@@ -10,6 +10,7 @@ import { API_BASE_URL } from './config';
 import Footer from './Footer';
 import { FaSave, FaUndo } from 'react-icons/fa';
 import NavBar from './Navbar';
+import {showMessageSuccess, showMessageInfo} from './utils.js';
 
 const MapeadorDataModule = () => {  
 
@@ -145,7 +146,7 @@ const MapeadorDataModule = () => {
             return (
                 <div key={index} style={{ marginBottom: '10px', maxHeight: '200px', overflowY: 'auto' }}>
                     <CopyToClipboard text={fullText}
-                        onCopy={() => console.log('Texto copiado!')}>
+                        onCopy={() => showMessageSuccess("Texto Copiado!")}>
                             <Button
                                 variant="outline-success" 
                                 className="ms-2 btn-editar"
@@ -282,7 +283,10 @@ const MapeadorDataModule = () => {
                     <Button 
                         variant="success" 
                         className={`btn-save ${temMudancasPendentes() ? 'btn-save-enabled' : 'btn-save-disabled'}`} 
-                        onClick={salvarMudancas}
+                        onClick={() => {
+                            salvarMudancas();
+                            showMessageSuccess("Alterações Salvas!");
+                        }}
                         disabled={!temMudancasPendentes()}
                         >
                         <FaSave /> 
@@ -290,7 +294,10 @@ const MapeadorDataModule = () => {
                     <Button 
                         variant="danger" 
                         className={`btn-revert ${temMudancasPendentes() ? 'btn-revert-enabled' : 'btn-revert-disabled'}`} 
-                        onClick={reverterMudancas}
+                        onClick={() => {
+                            reverterMudancas();
+                            showMessageInfo("Revertendo alterações!");
+                        }}
                         disabled={!temMudancasPendentes()}
                         >
                         <FaUndo /> 

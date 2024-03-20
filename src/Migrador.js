@@ -1,5 +1,5 @@
 import './Migrador.css';
-import {Container, Row, Col, Image, Button, Modal, Card, Form}  from 'react-bootstrap';
+import {Container, Row, Col, Button, Modal, Card, Form}  from 'react-bootstrap';
 import React, { useState, useRef } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';

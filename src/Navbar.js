@@ -2,6 +2,9 @@ import { Navbar, Row, Col, Image } from 'react-bootstrap';
 import Mps from './images/mps.png'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const NavBar = ({ title }) => {
     return (
