@@ -10,7 +10,6 @@ html, body {
   }
 }
 
-
 ::-webkit-scrollbar {
   width: 12px;  
 }
@@ -42,6 +41,32 @@ html, body {
   color: white;
   padding: 10px 0;
 }
+
+/* Adicione este CSS no seu arquivo de estilo */
+.btn-custom {
+  width: 300px;
+  height: 100px;
+  font-size: 1.5rem; /* Aumentar o tamanho da fonte */
+  font-weight: bold; /* Tornar o texto mais proeminente */
+  color: white; /* Cor do texto */
+  background-color: #28a745; /* Cor inicial */
+  border: none;
+  border-radius: 20px; /* Cantos arredondados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  transition: background-color 0.3s, transform 0.3s; /* Transição suave para hover e click */
+}
+
+.btn-custom:hover {
+  background-color: #218838; /* Cor ao passar o mouse */
+  transform: translateY(-2px); /* Pequena elevação ao passar o mouse */
+}
+
+.btn-custom:active {
+  transform: translateY(1px); /* Efeito ao clicar */
+}
+
+/* Se você estiver usando SCSS, pode adicionar :hover e :active dentro de .btn-custom */
+
 
 @font-face {
   font-family: 'Fira Sans Condensed';

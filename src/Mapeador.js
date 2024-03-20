@@ -1,24 +1,29 @@
 import './Mapeador.css';
-import {Container, Row, Col, Image, Table, Button, Modal, Form}  from 'react-bootstrap';
+import {Container, Row, Col, Table, Button, Modal, Form}  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Mps from './images/mps.png'
-import { Link } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { API_BASE_URL } from './config';
 import Footer from './Footer';
 import { FaSave, FaUndo } from 'react-icons/fa';
+import NavBar from './Navbar';
+import {showMessageSuccess, showMessageInfo} from './utils.js';
 
 const Mapeador = () => {  
 
     const [dados, setDados] = useState([]);
     const [filtro, setFiltro] = useState('');
-
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState('');
     const [mudancasPendentes, setMudancasPendentes] = useState({});
     const [dadosOriginais, setDadosOriginais] = useState([]);
+    const [mostrarModal, setMostrarModal] = useState(false);
+    const [ordenacao, setOrdenacao] = useState('asc');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,9 +40,12 @@ const Mapeador = () => {
       }, [filtro]);
     
     const temMudancasPendentes = () => {
-        return dados.some((linha, index) => linha.migrado !== dadosOriginais[index].migrado);
+        return dados.some((linha) => {
+            const linhaOriginal = dadosOriginais.find((original) => original.id === linha.id);
+            return linhaOriginal && linha.migrado !== linhaOriginal.migrado;
+        });
     };
-          
+    
     const handleMigradoChange = (event, id) => {
         const migrado = event.target.checked;
 
@@ -90,9 +98,17 @@ const Mapeador = () => {
         );
         setMudancasPendentes({});
       };
-
-    const [showModal, setShowModal] = useState(false);
-    const [modalContent, setModalContent] = useState('');
+    
+    const verificarMudancasPendentes = (acao, callback) => {
+        if (temMudancasPendentes()) {
+          setMostrarModal(true);
+        } else {
+          acao();
+          if (callback) {
+            callback();
+          }
+        }
+      };
 
     const cellStyle = {
         wordBreak: 'break-word',
@@ -126,7 +142,7 @@ const Mapeador = () => {
           return (
             <div key={index} style={{ marginBottom: '10px', maxHeight: '200px', overflowY: 'auto' }}>
                 <CopyToClipboard text={fullText}
-                    onCopy={() => console.log('Texto copiado!')}>
+                    onCopy={() => showMessageSuccess("Texto Copiado!")}>
                         <Button
                             variant="outline-success" 
                             className="ms-2 btn-editar"
@@ -203,24 +219,30 @@ const Mapeador = () => {
 
     const buffer = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buffer]), 'Sombra.xlsx');
-      };   
+      
+    };  
+    
+    const handleOrdenacao = (coluna) => {
+        if (ordenacao === 'asc') {
+            setOrdenacao('desc');
+            dados.sort((a, b) => {
+                const valorA = a[coluna] ? a[coluna].toLowerCase() : '';
+                const valorB = b[coluna] ? b[coluna].toLowerCase() : '';
+                return valorA > valorB ? -1 : 1;
+            });
+        } else {
+            setOrdenacao('asc');
+            dados.sort((a, b) => {
+                const valorA = a[coluna] ? a[coluna].toLowerCase() : '';
+                const valorB = b[coluna] ? b[coluna].toLowerCase() : '';
+                return valorA < valorB ? -1 : 1;
+            });
+        }
+    };    
     
   return (
     <Container fluid style={{ backgroundColor: 'white'}}>
-        <Navbar id='inicio' expand="lg" style={{ backgroundColor: '#98FB98'}}>
-            <Row className="w-100">
-                <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
-                    <Navbar.Brand>
-                        <Image src={Mps} alt="Logo" style={{ maxHeight: '15vh', marginRight: '10px'}} />
-                    </Navbar.Brand>
-                </Col>
-                <Col xs={12} md={4} className="d-flex justify-content-center align-items-center">
-                    <span className='fira-sans-condensed-black' style={{ fontSize: '35px', color: '#2b2928'}}>
-                        Mapeador HomePar - PCL
-                    </span>
-                </Col>
-            </Row>
-        </Navbar>
+        <NavBar title="Mapeador HomePar - Sombra" />
         <Container className='d-flex justify-content-center align-items-center' style={{ minHeight: '10vh'}}>
             <Row className="w-100">
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
@@ -243,15 +265,22 @@ const Mapeador = () => {
                     <Button 
                         variant="success" 
                         className={`btn-save ${temMudancasPendentes() ? 'btn-save-enabled' : 'btn-save-disabled'}`} 
-                        onClick={salvarMudancas}
+                        onClick={() => {
+                            salvarMudancas();
+                            showMessageSuccess("Alterações Salvas!");
+                        }}
                         disabled={!temMudancasPendentes()}
-                        >
+                        
+                    >
                         <FaSave /> 
                     </Button>
                     <Button 
                         variant="danger" 
                         className={`btn-revert ${temMudancasPendentes() ? 'btn-revert-enabled' : 'btn-revert-disabled'}`} 
-                        onClick={reverterMudancas}
+                        onClick={() => {
+                            reverterMudancas();
+                            showMessageInfo("Revertendo alterações!");
+                        }}
                         disabled={!temMudancasPendentes()}
                         >
                         <FaUndo /> 
@@ -261,14 +290,32 @@ const Mapeador = () => {
                    
                 </Col>
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end">
-                    <Button classname='mr-5' variant="success" style={{ width: '100px', height: '50px', marginRight:'5px' }} onClick={() => exportToExcel(dadosDaTabela)}>
+                    <Button
+                        className='mr-5'
+                        variant="success"
+                        style={{ width: '100px', height: '50px', marginRight: '5px' }}
+                        onClick={() => verificarMudancasPendentes(() => exportToExcel(dadosDaTabela))}
+                        >
                         Excel
                     </Button>
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <Button variant="success" style={{ width: '100px', height:'50px' }}>
-                            Voltar
-                        </Button>
-                    </Link>
+                    <Button
+                        variant="success"
+                        style={{ width: '100px', height: '50px' }}
+                        onClick={() => verificarMudancasPendentes(() => {}, () => navigate('/'))}
+                        >
+                        Voltar
+                    </Button>
+                    <Modal show={mostrarModal} onHide={() => setMostrarModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Atenção</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Existem alterações para serem confirmadas ou revertidas.</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="success" onClick={() => setMostrarModal(false)}>
+                                Fechar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Col>
             </Row>    
         </Container>
@@ -276,9 +323,24 @@ const Mapeador = () => {
             <Table striped bordered hover style={{ marginTop: '10px', marginBottom: '100px', width: '100%', margin: 'auto' }}>
                 <thead style={{ backgroundColor: '#98FB98', color: 'white' }}>
                     <tr>
-                        <th>Form</th>
-                        <th>Classe</th>
-                        <th>Sombra</th>
+                        <th>
+                            Form
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('form')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
+                        <th>
+                            Classe
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('classe')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
+                        <th>
+                            Sombra
+                            <Button variant="success" size="sm" onClick={() => handleOrdenacao('sombra')} style={{ marginLeft: '5px' }}>
+                                {ordenacao === 'asc' ? '↓' : '↑'}
+                            </Button>
+                        </th>
                         <th>Objetos de Banco</th>
                         <th>Migrado?</th>
                     </tr>
