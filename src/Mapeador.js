@@ -161,6 +161,7 @@ const Mapeador = () => {
     const [dadosDaTabela] = useState([]);
 
     const exportToExcel = async () => {
+
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Dados');
 
@@ -168,24 +169,25 @@ const Mapeador = () => {
         { header: 'Form', key: 'form', width: 20 },
         { header: 'Classe', key: 'classe', width: 20 },
         { header: 'Sombra', key: 'sombra', width: 20 },
-        { header: 'Objetos de Banco', key: 'objetobanco', width: 40 }
+        { header: 'Objetos de Banco', key: 'objetobanco', width: 40 },
+        { header: 'Migrado', key: 'migrado', width: 15 } 
     ];
 
-    worksheet.mergeCells('A1:D1');
+    worksheet.mergeCells('A1:E1');
     worksheet.getCell('A1').value = 'Nome: Mapeador Sombra';
     worksheet.getCell('A1').font = { bold: true };
 
-    worksheet.mergeCells('A2:D2');
+    worksheet.mergeCells('A2:E2');
     worksheet.getCell('A2').value = 'Autor: Fábio Garbato';
     worksheet.getCell('A2').font = { bold: true };
 
-    worksheet.mergeCells('A3:D3');
+    worksheet.mergeCells('A3:E3');
     worksheet.getCell('A3').value = 'Objetivo: Mapear todos os arquivos do sistema que utilizam a tecnologia sombra e seus objetos de banco';
     worksheet.getCell('A3').font = { bold: true };
 
     worksheet.addRow([]); 
 
-    worksheet.addRow(['Form', 'Classe', 'Sombra', 'Objetos de Banco']);
+    worksheet.addRow(['Form', 'Classe', 'Sombra', 'Objetos de Banco', 'Migrado']);
 
     const headerRowNumber = 5; 
     const headerRow = worksheet.getRow(headerRowNumber);
@@ -205,7 +207,8 @@ const Mapeador = () => {
             form: linha.form,
             classe: linha.classe,
             sombra: linha.sombra,
-            objetobanco: linha.objetobanco
+            objetobanco: linha.objetobanco,
+            migrado: linha.migrado ? 'Sim' : 'Não'
         });
     });
 

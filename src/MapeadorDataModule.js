@@ -163,6 +163,7 @@ const MapeadorDataModule = () => {
     };
 
     const exportToExcel = async () => {
+
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Dados');
     
@@ -170,24 +171,25 @@ const MapeadorDataModule = () => {
             { header: '', key: 'form', width: 20 },
             { header: '', key: 'classe', width: 20 },
             { header: '', key: 'relatorio', width: 20 },  
-            { header: '', key: 'objetosDeBanco', width: 40 }
+            { header: '', key: 'objetosDeBanco', width: 40 },
+            { header: '', key: 'migrado', width: 10 }
         ];
     
-        worksheet.mergeCells('A1:D1');
+        worksheet.mergeCells('A1:E1');
         worksheet.getCell('A1').value = 'Nome: Mapeador Data Module';
         worksheet.getCell('A1').font = { bold: true };
     
-        worksheet.mergeCells('A2:D2');
+        worksheet.mergeCells('A2:E2');
         worksheet.getCell('A2').value = 'Autor: Fábio Garbato';
         worksheet.getCell('A2').font = { bold: true };
     
-        worksheet.mergeCells('A3:E3');
+        worksheet.mergeCells('A3:F3');
         worksheet.getCell('A3').value = 'Objetivo: Mapear todos os arquivos do sistema que utilizam a tecnologia sombra e seus objetos de banco';
         worksheet.getCell('A3').font = { bold: true };
     
         worksheet.addRow([]); 
     
-        worksheet.addRow(['Form', 'Classe', 'Relatório', 'Objetos de Banco']);
+        worksheet.addRow(['Form', 'Classe', 'Relatório', 'Objetos de Banco', 'Migrado']);
     
         const headerRowNumber = 5; 
         const headerRow = worksheet.getRow(headerRowNumber);
@@ -222,7 +224,8 @@ const MapeadorDataModule = () => {
                 classe,
                 form,
                 relatorio,
-                objetosDeBanco
+                objetosDeBanco, 
+                migrado: linha.migrado ? 'Sim' : 'Não'
             });
         });
           
