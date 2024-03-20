@@ -1,12 +1,11 @@
 import './Migrador.css';
 import {Container, Row, Col, Image, Button, Modal, Card, Form}  from 'react-bootstrap';
 import React, { useState, useRef } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Mps from './images/mps.png'
 import { Link } from 'react-router-dom';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import Footer from './Footer';
+import NavBar from './Navbar';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -59,20 +58,7 @@ const Migrador = () => {
 
     return (
       <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
-            <Navbar id='inicio' expand="lg" style={{ backgroundColor: '#98FB98', minWidth: '100vh'}}>
-                <Row className="w-100">
-                    <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
-                        <Navbar.Brand>
-                            <Image src={Mps} alt="Logo" style={{ maxHeight: '15vh', marginRight: '10px'}} />
-                        </Navbar.Brand>
-                    </Col>
-                    <Col xs={12} md={4} className="d-flex justify-content-center align-items-center">
-                        <span className='fira-sans-condensed-black' style={{ fontSize: '35px', color: '#2b2928'}}>
-                            Migração HomePar - PCL
-                        </span>
-                    </Col>
-                </Row>
-            </Navbar>
+            <NavBar title="Migração HomePar" />
             <Container style={{ minHeight: '5vh'}}></Container>
             <Container className="my-5">
                 <Row>

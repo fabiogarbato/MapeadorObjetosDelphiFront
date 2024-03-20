@@ -1,9 +1,7 @@
 import './Relatorio.css';
-import {Container, Row, Col, Image, Button, Modal}  from 'react-bootstrap';
+import {Container, Row, Col, Button, Modal}  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Mps from './images/mps.png'
 import { Link } from 'react-router-dom';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
@@ -14,6 +12,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ListaEventos from './ListaEventos.js'
 import { API_BASE_URL } from './config';
 import Footer from './Footer';
+import NavBar from './Navbar';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -157,20 +156,7 @@ const Relatorio = () => {
 
     return (
       <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
-            <Navbar id='inicio' expand="lg" style={{ backgroundColor: '#98FB98', minWidth: '100vh'}}>
-                <Row className="w-100">
-                    <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
-                        <Navbar.Brand>
-                            <Image src={Mps} alt="Logo" style={{ maxHeight: '15vh', marginRight: '10px'}} />
-                        </Navbar.Brand>
-                    </Col>
-                    <Col xs={12} md={4} className="d-flex justify-content-center align-items-center">
-                        <span className='fira-sans-condensed-black' style={{ fontSize: '35px', color: '#2b2928'}}>
-                            Migração HomePar - PCL
-                        </span>
-                    </Col>
-                </Row>
-            </Navbar>
+            <NavBar title="Migração HomePar" />
             <Container style={{ minHeight: '5vh'}}></Container>
             <Container className='my-5 p-5 bg-white shadow-lg rounded'>
                 <Row className="justify-content-center text-center mb-5">

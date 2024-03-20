@@ -1,9 +1,7 @@
 import './Mapeador.css';
-import {Container, Row, Col, Image, Table, Button, Modal, Form}  from 'react-bootstrap';
+import {Container, Row, Col, Table, Button, Modal, Form}  from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Mps from './images/mps.png'
 import { useNavigate  } from 'react-router-dom';
 import ExcelJS from 'exceljs';
 import saveAs from 'file-saver';
@@ -11,6 +9,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { API_BASE_URL } from './config';
 import Footer from './Footer';
 import { FaSave, FaUndo } from 'react-icons/fa';
+import NavBar from './Navbar';
 
 const Mapeador = () => {  
 
@@ -242,20 +241,7 @@ const Mapeador = () => {
     
   return (
     <Container fluid style={{ backgroundColor: 'white'}}>
-        <Navbar id='inicio' expand="lg" style={{ backgroundColor: '#98FB98'}}>
-            <Row className="w-100">
-                <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
-                    <Navbar.Brand>
-                        <Image src={Mps} alt="Logo" style={{ maxHeight: '15vh', marginRight: '10px'}} />
-                    </Navbar.Brand>
-                </Col>
-                <Col xs={12} md={4} className="d-flex justify-content-center align-items-center">
-                    <span className='fira-sans-condensed-black' style={{ fontSize: '35px', color: '#2b2928'}}>
-                        Mapeador HomePar - PCL
-                    </span>
-                </Col>
-            </Row>
-        </Navbar>
+        <NavBar title="Mapeador HomePar - Sombra" />
         <Container className='d-flex justify-content-center align-items-center' style={{ minHeight: '10vh'}}>
             <Row className="w-100">
                 <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-start">
