@@ -57,7 +57,7 @@ const Login = () => {
             <Col md={12}>
               <h1 className="text-center mb-4">Login</h1>
               <Form onSubmit={handleLogin}>
-                <Form.Group controlId="formUsuario">
+                <Form.Group controlId="formUsuario" className="mb-3">
                   <Form.Label style={{ fontFamily: 'Fira Sans Condensed', fontWeight: 'bold', fontSize:'20px' }}>Usuário</Form.Label>
                   <Form.Control
                     type="text"
