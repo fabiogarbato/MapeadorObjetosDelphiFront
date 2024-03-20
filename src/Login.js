@@ -29,13 +29,15 @@ const Login = () => {
       });
   
       if (response.ok) {
-        showMessageSuccess("Usuário Logado!")
+        showMessageSuccess("Usuário Logado!");
         navigate('/Home');
         setIsAuthenticated(true); 
         localStorage.setItem('isAuthenticated', 'true');
       } else {
-        showMessageError("Login ou senha incorretos.")
+          const data = await response.json(); 
+          showMessageError(data.message); 
       }
+    
     } catch (error) {
       console.error('Erro na solicitação:', error);
     }
