@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import NavBar from './Navbar';
+import { FaMap } from 'react-icons/fa';
 
 const App = () => {  
   return (
@@ -14,8 +15,8 @@ const App = () => {
             <Row className='mb-5'>
                 <Col className='d-flex justify-content-center'>
                     <Link to="/MapMenu" style={{ textDecoration: 'none' }}>
-                        <Button variant="success" style={{ width: '300px', height:'100px' }}>
-                            Mapeador
+                        <Button variant="success" className="btn-custom">
+                            <FaMap /> Mapeador
                         </Button>
                     </Link>
                 </Col>
@@ -23,14 +24,14 @@ const App = () => {
             <Row className='mb-5'>
                 <Col className='d-flex justify-content-center'>
                     <Link to="/Migrador" style={{ textDecoration: 'none' }}>
-                        <Button variant="success" style={{ width: '300px', height:'100px' }}>Migrador</Button>
+                        <Button variant="success" className="btn-custom">Migrador</Button>
                     </Link>
                 </Col>
             </Row>
             <Row className='mb-5'>
                 <Col className='d-flex justify-content-center'>
                     <Link to="/Relatorio" style={{ textDecoration: 'none' }}>
-                        <Button variant="success" style={{ width: '300px', height:'100px' }}>
+                        <Button variant="success" className="btn-custom">
                             Relatório
                         </Button>
                     </Link>
