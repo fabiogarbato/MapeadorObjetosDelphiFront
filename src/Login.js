@@ -6,12 +6,15 @@ import NavBar from './Navbar';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from './config';
 import {showMessageSuccess, showMessageError} from './utils.js';
+import { useAuth } from './AuthProvider';
 
 const Login = () => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
 
   const navigate = useNavigate();
+
+  const { setIsAuthenticated } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,11 +31,10 @@ const Login = () => {
       const data = await response.json();
   
       if (response.ok) {
-        console.log('Login bem-sucedido:', data);
         showMessageSuccess("Usuário Logado!")
-        navigate('/Home'); 
+        navigate('/Home');
+        setIsAuthenticated(true); 
       } else {
-        console.error('Erro no login:', data.message);
         showMessageError("Login ou senha incorretos.")
       }
     } catch (error) {
