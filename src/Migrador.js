@@ -140,7 +140,7 @@ const Migrador = () => {
             </Container>
             <Container style={{ minHeight: '4vh'}}></Container>
             <Container style={{ minHeight: '10vh'}}>
-                <Link to="/" style={{ textDecoration: 'none' }}>
+                <Link to="/Home" style={{ textDecoration: 'none' }}>
                     <Button variant="success" className="shadow-sm" style={{ width: '100px', height:'50px' }}>
                         Voltar
                     </Button>

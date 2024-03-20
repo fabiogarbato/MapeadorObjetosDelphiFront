@@ -304,7 +304,7 @@ const Mapeador = () => {
                     <Button
                         variant="success"
                         style={{ width: '100px', height: '50px' }}
-                        onClick={() => verificarMudancasPendentes(() => {}, () => navigate('/'))}
+                        onClick={() => verificarMudancasPendentes(() => {}, () => navigate('/Home'))}
                         >
                         Voltar
                     </Button>

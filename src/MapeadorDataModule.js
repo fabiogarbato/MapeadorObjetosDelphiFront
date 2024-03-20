@@ -314,14 +314,14 @@ const MapeadorDataModule = () => {
                         className='mr-5'
                         variant="success"
                         style={{ width: '100px', height: '50px', marginRight: '5px' }}
-                        onClick={() => verificarMudancasPendentes(exportToExcel)} // Chamada direta da função exportToExcel
+                        onClick={() => verificarMudancasPendentes(exportToExcel)} 
                         >
                         Excel
                     </Button>
                     <Button
                         variant="success"
                         style={{ width: '100px', height: '50px' }}
-                        onClick={() => verificarMudancasPendentes(() => {}, () => navigate('/'))}
+                        onClick={() => verificarMudancasPendentes(() => {}, () => navigate('/Home'))}
                         >
                         Voltar
                     </Button>
