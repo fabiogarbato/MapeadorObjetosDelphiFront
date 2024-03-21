@@ -163,6 +163,21 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: "Erro ao autenticar o usuário" });
     }
   });
+
+  app.get('/telas', async (req, res) => {
+    try {
+      const telasMigradas = await pool.query('SELECT Count(*) FROM Mapa WHERE migrado = True');
+      const telasNaoMigradas = await pool.query('SELECT Count(*) FROM Mapa WHERE migrado = False');
+  
+      res.json({
+        telasMigradas: telasMigradas.rows[0].count,
+        telasNaoMigradas: telasNaoMigradas.rows[0].count
+      });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  });  
   
 
 const PORT = process.env.PORT || 5000;
