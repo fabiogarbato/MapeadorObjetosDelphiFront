@@ -28,10 +28,10 @@ const App = () => {
       }, []);
 
   return (
-    <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
+    <Container fluid style={{ backgroundColor: 'white' }}>
        <NavBar title="Migração HomePar" />
        <Container style={{ minHeight: '4vh'}}></Container>
-        <Container className='d-flex flex-column justify-content-center align-items-center' style={{display: 'flex', flexDirection: 'column', minHeight: '70vh' }}>
+        <Container className='d-flex flex-column justify-content-center align-items-center' style={{display: 'flex', flexDirection: 'column', minHeight: '75vh' }}>
             <Row className='mb-5'>
                 <Col className='d-flex justify-content-center'>
                     <Link to="/MapMenu" style={{ textDecoration: 'none' }}>
