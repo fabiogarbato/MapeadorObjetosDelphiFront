@@ -44,12 +44,11 @@ const App = () => {
                     <Nav.Link as={Link} to="/Relatorio" className="nav-link text-success custom-logout-link">
                         <FaChartLine /> Relatório
                     </Nav.Link>
-                    <Nav.Link as={Button} onClick={handleLogout} className="nav-link text-danger custom-logout-link">
+                    <Nav.Link as={Link} onClick={handleLogout} className="nav-link text-danger custom-logout-link">
                         <FaSignOutAlt /> Sair
                     </Nav.Link>
                 </Nav>
             </Col>
-
             <Col md={9} lg={10} className="p-3">
                 <Container fluid className='h-100 d-flex flex-column'>
                     <Row>
