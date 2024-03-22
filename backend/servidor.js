@@ -15,6 +15,10 @@ const pool = new Pool({
   ssl: false 
 });
 
+/*---------------------------------------*/
+/*                 SOMBRA                */
+/*---------------------------------------*/
+
 app.get('/dados', async (req, res) => {
     try {
       const result = await pool.query('SELECT id, form, classe, sombra, objetobanco, migrado FROM Mapa WHERE sombra IS NOT NULL ORDER BY form ASC');
@@ -44,6 +48,9 @@ app.patch('/dados/:id', async (req, res) => {
     }
   });
   
+/*---------------------------------------*/
+/*              DataModule               */
+/*---------------------------------------*/
 
 app.get('/dadosDataModule', async (req, res) => {
     try {
@@ -84,6 +91,10 @@ app.get('/dadosRelatorio', async (req, res) => {
       res.status(500).send('Server Error');
   }
 });  
+
+/*---------------------------------------*/
+/*              Cronograma               */
+/*---------------------------------------*/
 
 app.post('/eventosProjeto', async (req, res) => {
   const { data, evento } = req.body;
@@ -135,6 +146,10 @@ app.delete('/eventosProjeto/:id', async (req, res) => {
   }
 });
 
+/*---------------------------------------*/
+/*              Login                    */
+/*---------------------------------------*/
+
 app.post('/login', async (req, res) => {
     const { usuario, senha } = req.body;
   
@@ -164,21 +179,24 @@ app.post('/login', async (req, res) => {
     }
   });
 
-  app.get('/telas', async (req, res) => {
-    try {
-      const telasMigradas = await pool.query('SELECT Count(*) FROM Mapa WHERE migrado = True');
-      const telasNaoMigradas = await pool.query('SELECT Count(*) FROM Mapa WHERE migrado = False');
-  
-      res.json({
-        telasMigradas: telasMigradas.rows[0].count,
-        telasNaoMigradas: telasNaoMigradas.rows[0].count
-      });
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
-    }
-  });  
-  
+/*---------------------------------------*/
+/*              Relatório                */
+/*---------------------------------------*/
+
+app.get('/telas', async (req, res) => {
+  try {
+    const telasMigradas = await pool.query('SELECT Count(*) FROM Mapa WHERE migrado = True');
+    const telasNaoMigradas = await pool.query('SELECT Count(*) FROM Mapa WHERE migrado = False');
+
+    res.json({
+      telasMigradas: telasMigradas.rows[0].count,
+      telasNaoMigradas: telasNaoMigradas.rows[0].count
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});  
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

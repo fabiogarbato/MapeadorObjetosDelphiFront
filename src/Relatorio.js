@@ -14,48 +14,25 @@ import { API_BASE_URL } from './config';
 import Footer from './Footer';
 import NavBar from './Navbar';
 import ExcelJS from 'exceljs';
+import useTelasProgresso from './useTelasProgresso';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
 const Relatorio = () => {  
 
     const [showModal, setShowModal] = useState(false);
-    const [telasMapeadas, setTelasMapeadas] = useState(0);
-    const [telasFaltantes, setTelasFaltantes] = useState(0);
+    const { telasMapeadas, telasFaltantes, progresso } = useTelasProgresso();
 
-    useEffect(() => {
-        fetch(`${API_BASE_URL}/telas`)
-          .then(response => response.json())
-          .then(data => {
-            setTelasMapeadas(data.telasMigradas);
-            setTelasFaltantes(data.telasNaoMigradas);
-          })
-          .catch(error => {
-            console.error('Houve um erro ao recuperar as informações:', error);
-          });
-      }, []); 
-    
-      const handleClose = () => setShowModal(false);
-      const handleShow = () => setShowModal(true);
-    
-      const dataForPieChart = {
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
+
+    const dataForPieChart = {
         labels: ['Telas Mapeadas', 'Telas Faltantes'],
         datasets: [{
-          data: [telasMapeadas, telasFaltantes],
-          backgroundColor: ['#FF6384', '#36A2EB'],
-          hoverBackgroundColor: ['#FF6384', '#36A2EB']
+            data: [telasMapeadas, telasFaltantes],
+            backgroundColor: ['#FF6384', '#36A2EB'],
+            hoverBackgroundColor: ['#FF6384', '#36A2EB']
         }]
-      };
-
-    const data = {
-        labels: ['Telas Migradas', 'Telas Faltantes'],
-        datasets: [
-            {
-                data: [telasMapeadas, telasFaltantes],
-                backgroundColor: ['#4CAF50', '#F44336'],
-                hoverBackgroundColor: ['#66BB6A', '#EF5350']
-            }
-        ]
     };
 
     const [showCronogramaModal, setShowCronogramaModal] = useState(false);
@@ -219,6 +196,13 @@ const Relatorio = () => {
       <Container fluid style={{ backgroundColor: 'white', minHeight: '100vh' }}>
             <NavBar title="Migração HomePar" />
             <Container style={{ minHeight: '5vh'}}></Container>
+            <Container style={{ minHeight: '10vh'}}>
+                <Link to="/Home" style={{ textDecoration: 'none' }}>
+                    <Button variant="success" className="shadow-sm" style={{ width: '100px', height:'50px' }}>
+                        Voltar
+                    </Button>
+                </Link>
+            </Container>
             <Container className='my-5 p-5 bg-white shadow-lg rounded'>
                 <Row className="justify-content-center text-center mb-5">
                     <Col>
@@ -227,7 +211,6 @@ const Relatorio = () => {
                         <hr />
                     </Col>
                 </Row>
-                
                 <Row className="mb-4 align-items-center">
                     <Col md={6}>
                         <h2 className="h3">Resumo do Projeto</h2>
@@ -286,9 +269,7 @@ const Relatorio = () => {
                                     <strong>Telas Faltantes:</strong> {telasFaltantes}
                                 </div>
                                 <div style={{ margin: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '50%' }}>
-                                    <strong>Progresso:</strong> {
-                                        ((telasMapeadas / (telasMapeadas + telasFaltantes)) * 100).toFixed(2)
-                                    }%
+                                    <strong>Progresso:</strong> {progresso}%
                                 </div>
                                 <Button 
                                     variant="success" 
@@ -345,13 +326,6 @@ const Relatorio = () => {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-            </Container>
-            <Container style={{ minHeight: '10vh'}}>
-                <Link to="/Home" style={{ textDecoration: 'none' }}>
-                    <Button variant="success" className="shadow-sm" style={{ width: '100px', height:'50px' }}>
-                        Voltar
-                    </Button>
-                </Link>
             </Container>
             <Container style={{ minHeight: '4vh'}}></Container>
             <Footer/>

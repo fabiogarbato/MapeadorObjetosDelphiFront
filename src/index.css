@@ -64,6 +64,11 @@ html, body {
   transform: translateY(1px); 
 }
 
+.custom-logout-link:hover, .custom-logout-link:focus {
+  color: rgb(255, 38, 0) !important;
+  background-color: rgb(202, 250, 202) !important; 
+}
+
 @font-face {
   font-family: 'Fira Sans Condensed';
   font-style: normal;
